@@ -154,6 +154,226 @@ a {
   }
 }
 
+/* ─── Command-center product surface ─── */
+@keyframes command-grid-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(28px, 28px, 0); }
+}
+
+@keyframes command-scan {
+  0%, 100% { opacity: 0.15; transform: translateY(-110%); }
+  50% { opacity: 0.55; }
+  80% { opacity: 0.15; transform: translateY(780%); }
+}
+
+.app-command-page {
+  background:
+    radial-gradient(68rem 38rem at 76% -10%, rgba(133, 237, 117, 0.075), transparent 65%),
+    linear-gradient(180deg, #090909 0%, #070707 44%, #0b0b0b 100%);
+}
+
+.command-main {
+  max-width: 1560px;
+  padding-top: 6.75rem;
+}
+
+.command-title {
+  font-size: clamp(2.6rem, 6vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+}
+
+.command-stats {
+  min-width: 15.625rem;
+}
+
+.command-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.command-chain--active {
+  border-color: rgba(133, 237, 117, 0.45);
+  background: rgba(133, 237, 117, 0.07);
+}
+
+.command-quote-summary {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.command-activity {
+  min-height: 9.375rem;
+}
+
+.command-modal {
+  z-index: 100;
+}
+
+.command-hero {
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.command-noise {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.command-noise::before,
+.command-noise::after {
+  position: absolute;
+  inset: -35%;
+  content: "";
+}
+
+.command-noise::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(90deg, transparent, black 35%, black 80%, transparent);
+  animation: command-grid-drift 18s linear infinite;
+}
+
+.command-noise::after {
+  top: -8%;
+  height: 10%;
+  background: linear-gradient(180deg, transparent, rgba(133, 237, 117, 0.13), transparent);
+  filter: blur(8px);
+  animation: command-scan 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.command-panel {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  background: linear-gradient(145deg, rgba(19, 19, 19, 0.96), rgba(11, 11, 11, 0.98));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.026);
+}
+
+.command-panel::before {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(133, 237, 117, 0.22), transparent 18%, transparent 82%, rgba(255,255,255,0.08)) border-box;
+  content: "";
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+.command-panel:hover::before {
+  opacity: 1;
+}
+
+.command-label,
+.command-metric-label {
+  font-family: var(--font-favorit);
+  font-size: 0.625rem;
+  line-height: 1.1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.command-label { color: rgba(255, 255, 255, 0.48); }
+.command-metric-label { color: rgba(255, 255, 255, 0.32); }
+
+.command-tab {
+  min-width: 5.4rem;
+  padding: 0.5rem 0.8rem;
+  font-family: var(--font-favorit);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.command-tab:hover { color: rgba(255, 255, 255, 0.85); }
+
+.command-tab--active {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+.command-route-track {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.command-route-node {
+  display: grid;
+  height: 2rem;
+  min-width: 3.2rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(0, 0, 0, 0.26);
+  font-family: var(--font-favorit);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.command-route-node--active {
+  border-color: rgba(133, 237, 117, 0.55);
+  background: rgba(133, 237, 117, 0.075);
+  color: #a6f899;
+  box-shadow: 0 0 18px rgba(133, 237, 117, 0.08);
+}
+
+.command-route-line {
+  position: relative;
+  height: 1px;
+  flex: 1;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.command-route-line::after {
+  position: absolute;
+  top: -1px;
+  left: -20%;
+  width: 20%;
+  height: 3px;
+  background: #85ed75;
+  box-shadow: 0 0 8px rgba(133, 237, 117, 0.95);
+  content: "";
+  animation: command-route-flow 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes command-route-flow {
+  to { transform: translateX(600%); }
+}
+
+@media (max-width: 640px) {
+  .command-noise::before { animation-duration: 24s; }
+  .command-panel::before { display: none; }
+}
+
+@media (min-width: 768px) {
+  .command-quote-summary {
+    grid-template-columns: minmax(0, 1fr) 13rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .command-grid {
+    grid-template-columns: minmax(17rem, 0.78fr) minmax(31rem, 1.42fr) minmax(18rem, 0.8fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .command-noise::before,
+  .command-noise::after,
+  .command-route-line::after {
+    animation: none;
+  }
+}
+
 /* ─── Operator Playbooks Animated Focus Transition ─── */
 .h-122\.5 {
   height: 490px;
