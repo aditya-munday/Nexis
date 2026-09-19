@@ -1,303 +1,443 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import AsciiGlitchRipple from "./AsciiGlitchRipple";
+
+function CornerBrackets() {
+  return (
+    <span
+      className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+      aria-hidden="true"
+    >
+      <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white" />
+      <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white" />
+      <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white" />
+      <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white" />
+    </span>
+  );
+}
+
+function ChevronSlide() {
+  return (
+    <div className="w-3 h-3 overflow-hidden relative">
+      <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
+        <svg
+          className="w-3 h-3 shrink-0"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M4.75 9.125L7.875 6L4.75 2.875"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinecap="square"
+          />
+        </svg>
+        <svg
+          className="w-3 h-3 shrink-0"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M4.75 9.125L7.875 6L4.75 2.875"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinecap="square"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+interface NavItem {
+  label: string;
+  index: string;
+  href: string;
+  description: string;
+  external?: boolean;
+}
+
+const BENCHMARKS_NAV: NavItem[] = [
+  { label: "BENCHMARKS", index: "B1", href: "/benchmarks", description: "Suite & methodology" },
+  { label: "LEADERBOARD", index: "B2", href: "/benchmarks/leaderboard", description: "Ranked, verified runs" },
+  { label: "COMPARISON", index: "B3", href: "/benchmarks/compare", description: "Agents head-to-head" },
+  { label: "GUIDE", index: "B4", href: "/benchmarks/guide", description: "Run & submit" },
+  { label: "SUBMIT", index: "B5", href: "/benchmarks/submit", description: "Validated run intake" },
+];
+
+const DOCS_NAV: NavItem[] = [
+  { label: "DEVELOPER DOCS", index: "D1", href: "/docs", description: "Guides & API reference" },
+  { label: "CHANGELOG", index: "D2", href: "/docs/changelog", description: "Monthly product updates" },
+  { label: "GITHUB", index: "D3", href: "https://github.com/Nexis-AI/NexBench", description: "NEXBENCH source & CLI", external: true },
+];
+
+const PRODUCT_NAV = [
+  { label: "PLATFORM", index: "01", href: "/#platform" },
+  { label: "PAYMENTS", index: "02", href: "/#payments" },
+  { label: "MARKETS", index: "03", href: "/#markets" },
+  { label: "RESEARCH", index: "04", href: "/#research" },
+];
+
+function NavDropdown({
+  label,
+  items,
+  activePath,
+}: {
+  label: string;
+  items: NavItem[];
+  activePath: string;
+}) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const timeoutRef = useRef<number | undefined>(undefined);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isActive = pathname === activePath || pathname.startsWith(`${activePath}/`);
+
+  const clearTimer = () => window.clearTimeout(timeoutRef.current);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const onPointer = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("pointerdown", onPointer);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("pointerdown", onPointer);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative"
+      onMouseEnter={() => {
+        clearTimer();
+        setOpen(true);
+      }}
+      onMouseLeave={() => {
+        clearTimer();
+        timeoutRef.current = window.setTimeout(() => setOpen(false), 150);
+      }}
+    >
+      <button
+        type="button"
+        className={`group flex h-7 items-center gap-1.5 whitespace-nowrap font-favorit text-xs uppercase transition-colors duration-150 hover:cursor-pointer hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 ${
+          isActive || open ? "text-white" : "text-white/90"
+        }`}
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+      >
+        {isActive && (
+          <span className="w-1 h-1 bg-available" aria-hidden="true" />
+        )}
+        <span className="uppercase">
+          <AsciiGlitchRipple>{label}</AsciiGlitchRipple>
+        </span>
+        <svg
+          className={`transition-transform duration-150 ${open ? "rotate-180" : ""}`}
+          width="8"
+          height="8"
+          viewBox="0 0 8 8"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M1.5 2.75L4 5.25L6.5 2.75"
+            stroke="currentColor"
+            strokeWidth="1.1"
+            strokeLinecap="square"
+          />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute left-1/2 top-full z-[120] w-72 -translate-x-1/2 pt-3">
+          <nav
+            className="flex flex-col border border-border bg-[#0e0e0e]/95 shadow-[0_18px_50px_rgba(0,0,0,0.5)] backdrop-blur-md"
+            aria-label={label}
+          >
+            {items.map((item) => {
+              const current =
+                !item.external &&
+                (item.href === activePath
+                  ? pathname === item.href
+                  : pathname.startsWith(item.href));
+              return (
+                <Link
+                  key={item.href}
+                  className="group flex items-center justify-between gap-3 border-b border-border px-3.5 py-3 transition-colors last:border-b-0 hover:bg-white/5"
+                  href={item.href}
+                  aria-current={current ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                  {...(item.external
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : { prefetch: false })}
+                >
+                  <span className="flex flex-col gap-1.5">
+                    <span
+                      className={`font-favorit text-xs uppercase leading-none ${
+                        current ? "text-available" : "text-white/88 group-hover:text-white"
+                      }`}
+                    >
+                      <AsciiGlitchRipple>{item.label}</AsciiGlitchRipple>
+                    </span>
+                    <span className="font-favorit text-[10px] uppercase leading-none tracking-wide text-white/35">
+                      {item.description}
+                    </span>
+                  </span>
+                  <span className="font-favorit text-[10px] text-white/30 transition-colors group-hover:text-white/60">
+                    {item.index}
+                  </span>
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MobileSection({
+  label,
+  index,
+  items,
+  onNavigate,
+}: {
+  label: string;
+  index: string;
+  items: NavItem[];
+  onNavigate: () => void;
+}) {
+  const first = items[0];
+  if (!first) return null;
+  return (
+    <>
+      <Link
+        className="flex min-h-11 items-center justify-between border-b border-border px-5 font-favorit text-xs uppercase text-white/88 hover:bg-white/5 hover:text-white"
+        href={first.href}
+        onClick={onNavigate}
+      >
+        <span>
+          <AsciiGlitchRipple>{label}</AsciiGlitchRipple>
+        </span>
+        <span className="text-white/65">{index}</span>
+      </Link>
+      {items.slice(1).map((item, i) => (
+        <Link
+          key={item.href}
+          className="flex min-h-11 items-center justify-between border-b border-border pl-9 pr-5 font-favorit text-xs uppercase text-white/60 hover:bg-white/5 hover:text-white"
+          href={item.href}
+          onClick={onNavigate}
+          {...(item.external ? { target: "_blank", rel: "noreferrer" } : {})}
+        >
+          <span>
+            <AsciiGlitchRipple>{item.label}</AsciiGlitchRipple>
+          </span>
+          <span className="text-white/30">{`${index}.${i + 1}`}</span>
+        </Link>
+      ))}
+    </>
+  );
+}
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [benchmarksOpen, setBenchmarksOpen] = useState(false);
-  const [docsOpen, setDocsOpen] = useState(false);
+  const [scrollFraction, setScrollFraction] = useState(0);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const rafRef = useRef(0);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    const target = document.getElementById(targetId);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setScrollFraction(Math.min(Math.max(window.scrollY / 36, 0), 1));
+      });
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleResize = () => setMobileOpen(false);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileOpen]);
+
+  const scrolledPastHeader = scrollFraction >= 0.999;
+  const navOffset = Math.round((1 - scrollFraction) * 36);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-colors duration-200 bg-transparent">
+      {/* Top background gradient that appears on scroll */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 hidden h-24 bg-gradient-to-b from-black/55 via-black/22 to-transparent transition-opacity duration-75 ease-out xl:block"
-        style={{ opacity: 1 }}
+        style={{ opacity: scrollFraction }}
         aria-hidden="true"
       />
-      <a
-        className="absolute inset-x-0 top-0 z-[110] hidden h-9 items-center justify-center border-b border-white/[0.045] bg-black/14 px-5 font-favorit text-[0.82rem] leading-none text-white/70 shadow-[0_10px_36px_rgba(0,0,0,0.14)] backdrop-blur-md transition-[opacity,transform,background-color,color] duration-75 ease-out will-change-transform hover:bg-white/[0.055] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 xl:flex"
+
+      {/* Announcement top bar that translates up and fades out */}
+      <Link
+        className={`absolute inset-x-0 top-0 z-[110] hidden h-9 items-center justify-center border-b border-white/[0.045] bg-black/14 px-5 font-favorit text-[0.82rem] leading-none text-white/70 shadow-[0_10px_36px_rgba(0,0,0,0.14)] backdrop-blur-md transition-[opacity,transform,background-color,color] duration-75 ease-out will-change-transform hover:bg-white/[0.055] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 xl:flex ${
+          scrolledPastHeader ? "pointer-events-none" : ""
+        }`}
         href="/blog"
-        style={{ opacity: 1, transform: "translateY(-0px)" }}
+        prefetch={false}
+        tabIndex={scrolledPastHeader ? -1 : undefined}
+        style={{
+          opacity: 1 - scrollFraction,
+          transform: `translateY(-${Math.round(36 * scrollFraction)}px)`,
+        }}
       >
         <span className="inline-flex items-center gap-1.5">
           Announcing the Nexis agent platform
           <span className="text-current">↗</span>
         </span>
-      </a>
+      </Link>
+
+      {/* Main navigation row */}
       <div
-        className="relative z-100 mx-auto flex h-16 max-w-360 items-center justify-between bg-transparent px-4 transition-transform duration-75 ease-out will-change-transform md:px-5 xl:translate-y-[var(--home-nav-offset)]"
-        style={{ "--home-nav-offset": "36px" } as React.CSSProperties}
+        className="relative z-100 mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between bg-transparent px-4 transition-transform duration-75 ease-out will-change-transform md:px-5"
+        style={{
+          transform: `translateY(${navOffset}px)`,
+        }}
       >
-        <a aria-label="Nexis home" className="relative z-[80] flex items-center shrink-0" href="/">
+        {/* Logo */}
+        <Link
+          className="relative z-[80] flex items-center shrink-0"
+          href="/"
+          aria-label="Nexis home"
+        >
           <img
             alt="Nexis"
-            width="190"
-            height="32"
+            width={190}
+            height={32}
             decoding="async"
             className="h-[0.98rem] w-auto [filter:invert(1)] transition-[filter] duration-200"
             style={{ color: "transparent" }}
             src="/assets/logo-dark.svg"
           />
-        </a>
+        </Link>
+
+        {/* Desktop nav */}
         <div className="hidden xl:flex flex-1 items-center justify-between gap-5 ml-8">
-          <nav className="flex items-center gap-1 overflow-visible relative z-[80]" aria-label="Product">
-            <a
-              className="group flex h-7.5 items-center justify-between px-2 font-favorit text-xs uppercase backdrop-blur-md transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 bg-white/25 text-white/88 hover:bg-white/33 hover:text-white focus-visible:outline-white/60 w-31"
-              href="#platform"
-              onClick={(e) => handleNavClick(e, "platform")}
-            >
-              <span className="uppercase">
-                <span className="inline-block min-w-0 max-w-full">
-                  <span className="sr-only">PLATFORM</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                    PLATFORM
-                  </span>
-                </span>
-              </span>
-              <span className="transition-colors text-white/65 group-hover:text-white/80">01</span>
-            </a>
-            <a
-              className="group flex h-7.5 items-center justify-between px-2 font-favorit text-xs uppercase backdrop-blur-md transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 bg-white/25 text-white/88 hover:bg-white/33 hover:text-white focus-visible:outline-white/60 w-31"
-              href="#payments"
-              onClick={(e) => handleNavClick(e, "payments")}
-            >
-              <span className="uppercase">
-                <span className="inline-block min-w-0 max-w-full">
-                  <span className="sr-only">PAYMENTS</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                    PAYMENTS
-                  </span>
-                </span>
-              </span>
-              <span className="transition-colors text-white/65 group-hover:text-white/80">02</span>
-            </a>
-            <a
-              className="group flex h-7.5 items-center justify-between px-2 font-favorit text-xs uppercase backdrop-blur-md transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 bg-white/25 text-white/88 hover:bg-white/33 hover:text-white focus-visible:outline-white/60 w-31"
-              href="#markets"
-              onClick={(e) => handleNavClick(e, "markets")}
-            >
-              <span className="uppercase">
-                <span className="inline-block min-w-0 max-w-full">
-                  <span className="sr-only">MARKETS</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                    MARKETS
-                  </span>
-                </span>
-              </span>
-              <span className="transition-colors text-white/65 group-hover:text-white/80">03</span>
-            </a>
-            <a
-              className="group flex h-7.5 items-center justify-between px-2 font-favorit text-xs uppercase backdrop-blur-md transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 bg-white/25 text-white/88 hover:bg-white/33 hover:text-white focus-visible:outline-white/60 w-31"
-              href="#research"
-              onClick={(e) => handleNavClick(e, "research")}
-            >
-              <span className="uppercase">
-                <span className="inline-block min-w-0 max-w-full">
-                  <span className="sr-only">RESEARCH</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                    RESEARCH
-                  </span>
-                </span>
-              </span>
-              <span className="transition-colors text-white/65 group-hover:text-white/80">04</span>
-            </a>
-          </nav>
-          <div className="relative z-[80] flex items-center gap-5">
-            <nav className="flex items-center overflow-visible gap-6" aria-label="Secondary">
-              <div
-                className="relative"
-                onMouseEnter={() => setBenchmarksOpen(true)}
-                onMouseLeave={() => setBenchmarksOpen(false)}
-              >
-                <button
-                  type="button"
-                  className="group flex h-7 items-center gap-1.5 whitespace-nowrap font-favorit text-xs uppercase transition-colors duration-150 hover:cursor-pointer hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 text-white/90"
-                  aria-expanded={benchmarksOpen}
-                  aria-haspopup="true"
-                  onClick={() => setBenchmarksOpen(!benchmarksOpen)}
-                >
-                  <span className="uppercase">
-                    <span className="inline-block min-w-0 max-w-full">
-                      <span className="sr-only">BENCHMARKS</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                        BENCHMARKS
-                      </span>
-                    </span>
-                  </span>
-                  <svg
-                    className={`transition-transform duration-150 ${benchmarksOpen ? "rotate-180" : ""}`}
-                    width="8"
-                    height="8"
-                    viewBox="0 0 8 8"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path d="M1.5 2.75L4 5.25L6.5 2.75" stroke="currentColor" strokeWidth="1.1" strokeLinecap="square" />
-                  </svg>
-                </button>
-                {benchmarksOpen && (
-                  <div className="absolute left-0 top-full mt-2 w-48 border border-white/10 bg-black/90 p-2 shadow-xl backdrop-blur-xl z-50">
-                    <a
-                      href="/benchmarks"
-                      className="block px-3 py-2 text-xs font-favorit uppercase text-white/80 hover:bg-white/10 hover:text-white"
-                    >
-                      Benchmarks
-                    </a>
-                    <a
-                      href="/benchmarks/leaderboard"
-                      className="block px-3 py-2 text-xs font-favorit uppercase text-white/80 hover:bg-white/10 hover:text-white"
-                    >
-                      Leaderboard
-                    </a>
-                  </div>
-                )}
-              </div>
-              <div
-                className="relative"
-                onMouseEnter={() => setDocsOpen(true)}
-                onMouseLeave={() => setDocsOpen(false)}
-              >
-                <button
-                  type="button"
-                  className="group flex h-7 items-center gap-1.5 whitespace-nowrap font-favorit text-xs uppercase transition-colors duration-150 hover:cursor-pointer hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 text-white/90"
-                  aria-expanded={docsOpen}
-                  aria-haspopup="true"
-                  onClick={() => setDocsOpen(!docsOpen)}
-                >
-                  <span className="uppercase">
-                    <span className="inline-block min-w-0 max-w-full">
-                      <span className="sr-only">DOCS</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                        DOCS
-                      </span>
-                    </span>
-                  </span>
-                  <svg
-                    className={`transition-transform duration-150 ${docsOpen ? "rotate-180" : ""}`}
-                    width="8"
-                    height="8"
-                    viewBox="0 0 8 8"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path d="M1.5 2.75L4 5.25L6.5 2.75" stroke="currentColor" strokeWidth="1.1" strokeLinecap="square" />
-                  </svg>
-                </button>
-                {docsOpen && (
-                  <div className="absolute left-0 top-full mt-2 w-48 border border-white/10 bg-black/90 p-2 shadow-xl backdrop-blur-xl z-50">
-                    <a
-                      href="/docs"
-                      className="block px-3 py-2 text-xs font-favorit uppercase text-white/80 hover:bg-white/10 hover:text-white"
-                    >
-                      Documentation
-                    </a>
-                    <a
-                      href="/docs/api"
-                      className="block px-3 py-2 text-xs font-favorit uppercase text-white/80 hover:bg-white/10 hover:text-white"
-                    >
-                      API Reference
-                    </a>
-                  </div>
-                )}
-              </div>
+          {/* Product Nav */}
+          <nav
+            className="flex items-center gap-1 overflow-visible relative z-[80] shrink-0"
+            aria-label="Product"
+          >
+            {PRODUCT_NAV.map((p) => (
               <a
-                className="group flex h-7 items-center gap-2 font-favorit text-xs uppercase transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 text-white/90 hover:text-white focus-visible:outline-white/60 whitespace-nowrap"
-                href="/blog"
+                key={p.index}
+                className="group flex h-7.5 items-center justify-between px-2 font-favorit text-xs uppercase backdrop-blur-md transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 bg-white/25 text-white/88 hover:bg-white/33 hover:text-white focus-visible:outline-white/60 w-31 w-[124px]"
+                href={p.href}
               >
                 <span className="uppercase">
-                  <span className="inline-block min-w-0 max-w-full">
-                    <span className="sr-only">BLOG</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                      BLOG
-                    </span>
-                  </span>
+                  <AsciiGlitchRipple>{p.label}</AsciiGlitchRipple>
+                </span>
+                <span className="transition-colors text-white/65 group-hover:text-white/80">
+                  {p.index}
                 </span>
               </a>
+            ))}
+          </nav>
+
+          {/* Secondary nav and actions */}
+          <div className="relative z-[80] flex items-center gap-5">
+            <nav className="flex items-center overflow-visible gap-6" aria-label="Secondary">
+              <NavDropdown
+                label="BENCHMARKS"
+                items={BENCHMARKS_NAV}
+                activePath="/benchmarks"
+              />
+              <NavDropdown
+                label="DOCS"
+                items={DOCS_NAV}
+                activePath="/docs"
+              />
+              <Link
+                className="group flex h-7 items-center gap-2 font-favorit text-xs uppercase transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 text-white/90 hover:text-white focus-visible:outline-white/60 whitespace-nowrap"
+                href="/blog"
+                prefetch={false}
+              >
+                <span className="uppercase">
+                  <AsciiGlitchRipple>{`BLOG`}</AsciiGlitchRipple>
+                </span>
+              </Link>
               <a
                 className="group flex h-7 items-center gap-2 font-favorit text-xs uppercase transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 text-white/90 hover:text-white focus-visible:outline-white/60 whitespace-nowrap"
                 href="https://testflight.apple.com/join/TSb64zQy"
-                rel="noreferrer"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className="uppercase">
-                  <span className="inline-block min-w-0 max-w-full">
-                    <span className="sr-only">IOS</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                      IOS
-                    </span>
-                  </span>
+                  <AsciiGlitchRipple>{`IOS`}</AsciiGlitchRipple>
                 </span>
               </a>
             </nav>
+
+            {/* CTAs */}
             <div className="flex items-center gap-1">
-              <a
-                className="group relative inline-flex h-7 items-center justify-center border px-2 font-favorit text-xs leading-none uppercase shadow-none backdrop-blur-md transition-colors border-white/12 bg-white/10 text-white/80 hover:border-transparent hover:bg-transparent hover:text-white focus-visible:outline-white/60"
-                href="/app"
+              <Link
+                className="group relative inline-flex h-7 items-center justify-center border px-2 font-favorit text-xs leading-none uppercase shadow-none backdrop-blur-md transition-colors border-white/12 bg-white/10 text-white/80 hover:cursor-none hover:border-transparent hover:bg-transparent hover:text-white focus-visible:outline-white/60"
+                href="/auth?mode=signin&next=/app"
+                prefetch={false}
               >
-                <span className="inline-block min-w-0 max-w-full">
-                  <span className="sr-only">Login</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                    Login
-                  </span>
-                </span>
-                <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">
-                  <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white" />
-                  <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white" />
-                  <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white" />
-                  <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white" />
-                </span>
-              </a>
-              <a
-                className="group relative inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black hover:bg-transparent hover:text-white min-h-7 px-2 py-2 text-xs leading-none"
+                <AsciiGlitchRipple>{`Login`}</AsciiGlitchRipple>
+                <CornerBrackets />
+              </Link>
+
+              <Link
+                className="group relative inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors hover:cursor-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black hover:bg-transparent hover:text-white min-h-7 px-2 py-2 text-xs leading-none"
                 href="/app"
+                prefetch={false}
               >
-                <span className="inline-block min-w-0 max-w-full">
-                  <span className="sr-only">Launch Nexis</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">
-                    Launch Nexis
-                  </span>
-                </span>
-                <div className="w-3 h-3 overflow-hidden relative">
-                  <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
-                    <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path d="M4.75 9.125L7.875 6L4.75 2.875" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square" />
-                    </svg>
-                    <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path d="M4.75 9.125L7.875 6L4.75 2.875" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">
-                  <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white" />
-                  <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white" />
-                  <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white" />
-                  <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white" />
-                </span>
-              </a>
+                <AsciiGlitchRipple>{`Launch Nexis`}</AsciiGlitchRipple>
+                <ChevronSlide />
+                <CornerBrackets />
+              </Link>
             </div>
           </div>
         </div>
+
+        {/* Mobile menu button */}
         <div className="flex items-center gap-1 xl:hidden">
           <button
-            className="inline-flex items-center justify-center shrink-0 outline-none hover:cursor-pointer w-12 h-12 -mr-2 bg-surface-raised/95 text-white hover:bg-button-container/95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenuOpen}
+            className="inline-flex items-center justify-center shrink-0 outline-none hover:cursor-pointer w-12 h-12 -mr-2 bg-[#121212]/95 text-white hover:bg-[#1a1a1a]/95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileOpen((v) => !v)}
           >
             <span className="relative w-6 h-6">
               <span
                 className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ease-out ${
-                  mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+                  mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -307,7 +447,7 @@ export default function Header() {
               </span>
               <span
                 className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ease-out ${
-                  mobileMenuOpen ? "opacity-0" : "opacity-100"
+                  mobileOpen ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -319,71 +459,50 @@ export default function Header() {
           </button>
         </div>
       </div>
-      {mobileMenuOpen && (
-        <div className="xl:hidden fixed inset-x-0 top-16 bottom-0 z-40 bg-black/95 backdrop-blur-2xl px-6 py-8 flex flex-col justify-between overflow-y-auto border-t border-white/10">
-          <nav className="flex flex-col gap-6">
-            <a
-              href="#platform"
-              onClick={(e) => handleNavClick(e, "platform")}
-              className="font-favorit text-lg uppercase tracking-wider text-white/80 hover:text-white transition-colors"
+
+      {/* Mobile dropdown menu */}
+      {mobileOpen && (
+        <nav
+          className="absolute inset-x-0 top-16 z-[105] flex flex-col border-y border-border bg-[#0a0a0a]/98 backdrop-blur-md xl:hidden"
+          aria-label="Mobile"
+        >
+          {PRODUCT_NAV.map((p) => (
+            <Link
+              key={p.index}
+              className="flex min-h-11 items-center justify-between border-b border-border px-5 font-favorit text-xs uppercase text-white/88 last:border-b-0 hover:bg-white/5 hover:text-white"
+              href={p.href}
+              onClick={() => setMobileOpen(false)}
             >
-              01 Platform
-            </a>
-            <a
-              href="#payments"
-              onClick={(e) => handleNavClick(e, "payments")}
-              className="font-favorit text-lg uppercase tracking-wider text-white/80 hover:text-white transition-colors"
-            >
-              02 Payments
-            </a>
-            <a
-              href="#markets"
-              onClick={(e) => handleNavClick(e, "markets")}
-              className="font-favorit text-lg uppercase tracking-wider text-white/80 hover:text-white transition-colors"
-            >
-              03 Markets
-            </a>
-            <a
-              href="#research"
-              onClick={(e) => handleNavClick(e, "research")}
-              className="font-favorit text-lg uppercase tracking-wider text-white/80 hover:text-white transition-colors"
-            >
-              04 Research
-            </a>
-            <div className="h-px bg-white/10 my-2" />
-            <a href="/benchmarks" className="font-favorit text-sm uppercase text-white/60 hover:text-white">
-              Benchmarks
-            </a>
-            <a href="/docs" className="font-favorit text-sm uppercase text-white/60 hover:text-white">
-              Documentation
-            </a>
-            <a href="/blog" className="font-favorit text-sm uppercase text-white/60 hover:text-white">
-              Blog
-            </a>
-            <a
-              href="https://testflight.apple.com/join/TSb64zQy"
-              target="_blank"
-              rel="noreferrer"
-              className="font-favorit text-sm uppercase text-white/60 hover:text-white"
-            >
-              iOS TestFlight
-            </a>
-          </nav>
-          <div className="flex flex-col gap-3 pt-6 border-t border-white/10">
-            <a
-              href="/app"
-              className="flex items-center justify-center py-3 border border-white/20 bg-white/10 font-favorit text-sm uppercase text-white hover:bg-white/20"
-            >
-              Login
-            </a>
-            <a
-              href="/app"
-              className="flex items-center justify-center py-3 bg-white font-favorit text-sm uppercase text-black hover:bg-white/90"
-            >
-              Launch Nexis
-            </a>
-          </div>
-        </div>
+              <span>
+                <AsciiGlitchRipple>{p.label}</AsciiGlitchRipple>
+              </span>
+              <span className="text-white/65">{p.index}</span>
+            </Link>
+          ))}
+          <MobileSection
+            label="BENCHMARKS"
+            index="05"
+            items={BENCHMARKS_NAV}
+            onNavigate={() => setMobileOpen(false)}
+          />
+          <MobileSection
+            label="DOCS"
+            index="06"
+            items={DOCS_NAV}
+            onNavigate={() => setMobileOpen(false)}
+          />
+          <Link
+            className="flex min-h-11 items-center justify-between px-5 font-favorit text-xs uppercase text-white hover:bg-white/5"
+            href="/app"
+            prefetch={false}
+            onClick={() => setMobileOpen(false)}
+          >
+            <span>
+              <AsciiGlitchRipple>{`Launch Nexis`}</AsciiGlitchRipple>
+            </span>
+            <span className="text-white/65">↗</span>
+          </Link>
+        </nav>
       )}
     </header>
   );

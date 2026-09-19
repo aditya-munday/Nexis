@@ -1,5 +1,13 @@
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import CopyButton from "./components/CopyButton";
+import UnicornHero from "./components/UnicornHero";
+import SimFigure from "./components/SimFigure";
+import FanOutFigure from "./components/FanOutFigure";
+import GlitterGridSeparator from "./components/GlitterGridSeparator";
+import MarketsGraph from "./components/MarketsGraph";
+import RouteBoard from "./components/RouteBoard";
+import AsciiGlitchRipple from "./components/AsciiGlitchRipple";
 
 const POLICY_KIT_CODE = `import { policy } from "@nexis/agent"
 export const treasury = policy({
@@ -23,10 +31,8 @@ export default function Home() {
             <section className="relative -mx-4 flex flex-col md:-mx-5">
               <div className="hero-video-edge-blend pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[528px] overflow-hidden bg-surface max-[560px]:h-[680px] md:h-[640px]">
                 <div className="absolute inset-0">
-                  <div className="absolute inset-0 transform-gpu will-change-transform" style={{ transform: 'translate3d(0, var(--hero-parallax-y, 0px), 0)' }} aria-hidden="true">
-                    
-                    <img src="/backgrounds/compute-bg.png" alt="Nexis compute backdrop" className="w-full h-full object-cover object-center opacity-40 mix-blend-screen pointer-events-none" />
-                    
+                  <div className="absolute inset-0 transform-gpu will-change-transform" style={{ transform: 'translate3d(0, var(--hero-parallax-y, 0px), 0)' } as React.CSSProperties} aria-hidden="true">
+                    <UnicornHero projectId="2PvJj4fVH8PXnSKtrEbt" />
                   </div>
                 </div>
               </div>
@@ -36,7 +42,7 @@ export default function Home() {
                     <h1 className="font-sans leading-100 tracking-normal">
                       <span className="block font-favorit text-sm leading-none uppercase text-white/30">                      The On-Chain Autonomy Stack
 </span>
-                      <span className="group/title-glow relative text-white/90 [text-shadow:0_0_44px_rgba(120,231,114,0.2)] mt-2 block text-[36px] leading-[1.1]" style={{ '--glow-x': '50%', '--glow-y': '50%' }}>                      <span className="relative z-0">                      Own Your Execution
+                      <span className="group/title-glow relative text-white/90 [text-shadow:0_0_44px_rgba(120,231,114,0.2)] mt-2 block text-[36px] leading-[1.1]" style={{ '--glow-x': '50%', '--glow-y': '50%' } as React.CSSProperties}>                      <span className="relative z-0">                      Own Your Execution
 </span>
                       <span className="pointer-events-none absolute inset-0 z-10 animate-[hero-title-wash_9s_ease-in-out_infinite] bg-[linear-gradient(105deg,rgba(255,255,255,0)_0%,rgba(219,255,212,0.34)_42%,rgba(255,255,255,0.68)_50%,rgba(120,231,114,0.28)_58%,rgba(255,255,255,0)_100%)] bg-[length:220%_100%] bg-clip-text text-transparent opacity-28 motion-reduce:animate-none" aria-hidden="true">                      Own Your Execution
 </span>
@@ -48,11 +54,8 @@ export default function Home() {
                       Plan, simulate, approve, and reconcile wallet operations across payments and DeFi from one governed control layer.
                     </p>
                     <div className="mt-6 flex items-center gap-1 font-favorit">
-                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">                      <span className="inline-block min-w-0 max-w-full">                      <span className="sr-only">                      LAUNCH NEXIS
-</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                      LAUNCH NEXIS
-</span>
-</span>
+                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
+                        <AsciiGlitchRipple animateOn="parentHover">LAUNCH NEXIS</AsciiGlitchRipple>
                       <div className="w-3 h-3 overflow-hidden relative">
                         <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                           <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -71,11 +74,8 @@ export default function Home() {
                       <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white"></span>
 </span>
 </a>
-                      <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">                      <span className="inline-block min-w-0 max-w-full">                      <span className="sr-only">                      DOCS
-</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                      DOCS
-</span>
-</span>
+                      <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">
+                        <AsciiGlitchRipple animateOn="parentHover">DOCS</AsciiGlitchRipple>
                       <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">                      <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white"></span>
                       <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white"></span>
                       <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white"></span>
@@ -146,7 +146,7 @@ export default function Home() {
               </div>
               <div className="relative z-10 bg-surface px-5">
                 <div className="grid grid-cols-5 border border-border">
-                  <a aria-label="Ethereum: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5   border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Ethereum.png" />
+                  <a aria-label="Ethereum: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5   border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Ethereum.png" />
                   <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Ethereum
 </span>
 </span>
@@ -158,7 +158,7 @@ export default function Home() {
                   </svg>
 </span>
 </a>
-                  <a aria-label="Solana: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Solana.png" />
+                  <a aria-label="Solana: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Solana.png" />
                   <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Solana
 </span>
 </span>
@@ -170,7 +170,7 @@ export default function Home() {
                   </svg>
 </span>
 </a>
-                  <a aria-label="Base: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Base.png" />
+                  <a aria-label="Base: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Base.png" />
                   <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Base
 </span>
 </span>
@@ -183,30 +183,30 @@ export default function Home() {
 </span>
 </a>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Arbitrum.png" />
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Arbitrum.png" />
                     <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Arbitrum
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Optimism.png" />
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Optimism.png" />
                     <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Optimism
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5  border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Bitcoin.png" />
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Bitcoin.png" />
                     <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Bitcoin
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/BNB.png" />
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/BNB.png" />
                     <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    BNB Chain
 </span>
 </span>
                   </div>
-                  <a aria-label="Polygon: Read more" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/blog">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Polygon.png" />
+                  <a aria-label="Polygon: Read more" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/blog">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Polygon.png" />
                   <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Polygon
 </span>
 </span>
@@ -219,13 +219,13 @@ export default function Home() {
 </span>
 </a>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Sui.png" />
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Sui.png" />
                     <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Sui
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' }} src="/assets/chains/Sei.png" />
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Sei.png" />
                     <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Sei
 </span>
 </span>
@@ -233,13 +233,12 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <div aria-hidden="true" className="relative w-full overflow-hidden bg-surface h-5 md:h-8 lg:h-20" data-city-grid-separator="afterHero">
-            </div>
+            <GlitterGridSeparator size="afterHero" />
             <section id="platform" className="flex flex-col scroll-mt-17 xl:scroll-mt-[104px]">
               <div className="border border-border flex flex-col">
                 <div className="h-80 border-b border-border flex flex-col gap-8 px-5 py-5 relative overflow-hidden">
                   <div className="pointer-events-none absolute inset-0 bg-surface mix-blend-screen" aria-hidden="true">
-                    <img alt="" loading="lazy" decoding="async" className="object-cover object-center opacity-100 saturate-[1.58] brightness-[1.28] contrast-[1.16]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' }} sizes="100vw" src="/backgrounds/lab.png" />
+                    <img alt="" loading="lazy" decoding="async" className="object-cover object-center opacity-100 saturate-[1.58] brightness-[1.28] contrast-[1.16]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="100vw" src="/backgrounds/lab.png" />
                   </div>
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-87.5 bg-linear-to-b from-surface/70 to-transparent" aria-hidden="true">
                   </div>
@@ -250,11 +249,8 @@ export default function Home() {
 </span>
                   </p>
                   <div className="relative z-10 flex items-center gap-1">
-                    <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    Launch Nexis
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    Launch Nexis
-</span>
-</span>
+                    <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
+                      <AsciiGlitchRipple animateOn="parentHover">Launch Nexis</AsciiGlitchRipple>
                     <div className="w-3 h-3 overflow-hidden relative">
                       <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                         <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -273,11 +269,8 @@ export default function Home() {
                     <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white"></span>
 </span>
 </a>
-                    <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/contact">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    Book a Demo
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    Book a Demo
-</span>
-</span>
+                    <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/contact">
+                      <AsciiGlitchRipple animateOn="parentHover">Book a Demo</AsciiGlitchRipple>
                     <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">                    <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white"></span>
                     <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white"></span>
                     <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white"></span>
@@ -440,11 +433,8 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/app">                      <span className="inline-block min-w-0 max-w-full">                      <span className="sr-only">                      Create Workflows
-</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                      Create Workflows
-</span>
-</span>
+                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/app">
+                        <AsciiGlitchRipple animateOn="parentHover">Create Workflows</AsciiGlitchRipple>
                       <div className="w-3 h-3 overflow-hidden relative">
                         <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                           <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -577,11 +567,8 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/app">                      <span className="inline-block min-w-0 max-w-full">                      <span className="sr-only">                      Set your policies
-</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                      Set your policies
-</span>
-</span>
+                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/app">
+                        <AsciiGlitchRipple animateOn="parentHover">Set your policies</AsciiGlitchRipple>
                       <div className="w-3 h-3 overflow-hidden relative">
                         <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                           <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -608,115 +595,8 @@ export default function Home() {
                         FIG.3
                       </p>
                     </div>
-                    <div className="h-62.5 md:h-75 lg:h-100.5 relative overflow-hidden">
-                      <div className="flex items-center justify-center h-full px-3 md:px-0">
-                        <div className="flex h-reward-curve-card-h w-reward-curve-shell-w select-none items-start gap-reward-curve-panel-gap bg-surface font-favorit-sans text-white/90">
-                          <div className="relative z-10 box-border flex h-full w-reward-curve-card-w shrink-0 flex-col gap-reward-curve-card-gap bg-surface px-reward-curve-card-x py-reward-curve-card-y">
-                            <div className="pointer-events-none absolute top-0 right-0 z-20 h-full border-r border-dashed border-white-soft" aria-hidden="true">
-                            </div>
-                            <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-reward-curve-shadow-fade translate-x-full bg-linear-to-r from-surface to-transparent" aria-hidden="true">
-                            </div>
-                            <div className="flex items-start justify-between whitespace-nowrap text-xs font-normal">
-                              <span className="text-xs font-normal text-white">                              Confidence
-</span>
-                              <span className="capitalize leading-14.057 tabular-nums text-reward-curve-low">                              0.02
-</span>
-                            </div>
-                            <div className="relative h-reward-curve-chart-h shrink-0 pl-reward-curve-chart-pl">
-                              <div className="pointer-events-none absolute top-0 bottom-0 left-0 z-2 flex flex-col justify-between">
-                                <span className="font-favorit text-reward-axis leading-normal font-normal text-white/40 tabular-nums uppercase">                                1
-</span>
-                                <span className="font-favorit text-reward-axis leading-normal font-normal text-white/40 tabular-nums uppercase">                                0.8
-</span>
-                                <span className="font-favorit text-reward-axis leading-normal font-normal text-white/40 tabular-nums uppercase">                                0.6
-</span>
-                                <span className="font-favorit text-reward-axis leading-normal font-normal text-white/40 tabular-nums uppercase">                                0.4
-</span>
-                                <span className="font-favorit text-reward-axis leading-normal font-normal text-white/40 tabular-nums uppercase">                                0.2
-</span>
-                                <span className="font-favorit text-reward-axis leading-normal font-normal text-white/40 tabular-nums uppercase">                                0
-</span>
-                              </div>
-                              <svg className="block h-full w-full cursor-crosshair" viewBox="0 0 330 135" preserveAspectRatio="none" aria-hidden="true">
-                                <path d="M 65.4 0 V 129 M 62.400000000000006 64.5 H 68.4" stroke="rgba(255,255,255,0.14)" strokeDasharray="2 3" fill="none">
-                                </path>
-                                <path d="M 130.8 0 V 129 M 127.80000000000001 64.5 H 133.8" stroke="rgba(255,255,255,0.14)" strokeDasharray="2 3" fill="none">
-                                </path>
-                                <path d="M 196.2 0 V 129 M 193.2 64.5 H 199.2" stroke="rgba(255,255,255,0.14)" strokeDasharray="2 3" fill="none">
-                                </path>
-                                <path d="M 261.6 0 V 129 M 258.6 64.5 H 264.6" stroke="rgba(255,255,255,0.14)" strokeDasharray="2 3" fill="none">
-                                </path>
-                                <path d="M0.0,125.2 L6.9,114.5 L13.8,104.9 L20.6,96.7 L27.5,89.8 L34.4,84.3 L41.3,80.0 L48.1,76.6 L55.0,73.8 L61.9,71.3 L68.8,68.8 L75.6,65.9 L82.5,62.7 L89.4,59.1 L96.3,55.1 L103.1,50.9 L110.0,46.8 L116.9,43.0 L123.8,39.6 L130.6,36.8 L137.5,34.6 L144.4,33.0 L151.3,32.0 L158.1,31.2 L165.0,30.6 L171.9,29.8 L178.8,28.9 L185.6,27.7 L192.5,26.1 L199.4,24.2 L206.3,22.1 L213.1,19.9 L220.0,17.8 L226.9,15.9 L233.8,14.4 L240.6,13.1 L247.5,12.2 L254.4,11.6 L261.3,11.2 L268.1,11.0 L275.0,10.8 L281.9,10.5 L288.8,10.2 L295.6,9.9 L302.5,9.4 L309.4,9.0 L316.3,8.7 L323.1,8.4 L330.0,8.3 L330,129 L0,129 Z" fill="rgba(133,237,117,0.06)">
-                                </path>
-                                <path d="M0.0,125.2 L6.9,114.5 L13.8,104.9 L20.6,96.7 L27.5,89.8 L34.4,84.3 L41.3,80.0 L48.1,76.6 L55.0,73.8 L61.9,71.3 L68.8,68.8 L75.6,65.9 L82.5,62.7 L89.4,59.1 L96.3,55.1 L103.1,50.9 L110.0,46.8 L116.9,43.0 L123.8,39.6 L130.6,36.8 L137.5,34.6 L144.4,33.0 L151.3,32.0 L158.1,31.2 L165.0,30.6 L171.9,29.8 L178.8,28.9 L185.6,27.7 L192.5,26.1 L199.4,24.2 L206.3,22.1 L213.1,19.9 L220.0,17.8 L226.9,15.9 L233.8,14.4 L240.6,13.1 L247.5,12.2 L254.4,11.6 L261.3,11.2 L268.1,11.0 L275.0,10.8 L281.9,10.5 L288.8,10.2 L295.6,9.9 L302.5,9.4 L309.4,9.0 L316.3,8.7 L323.1,8.4 L330.0,8.3" pathLength="1" stroke="rgba(255,255,255,0.72)" strokeWidth="1.1" fill="none">
-                                </path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div className="relative z-0 flex w-reward-params-w shrink-0 flex-col gap-1">
-                            <div className="reward-param-row  flex h-reward-param-row-h shrink-0 items-center gap-reward-curve-card-gap text-xs leading-normal whitespace-nowrap">
-                              <span className="shrink-0 text-white/50">                              max_slippage
-</span>
-                              <svg className="reward-param-divider block h-0.5 min-w-px flex-1 overflow-visible text-reward-divider" aria-hidden="true">
-                                <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor">
-                                </line>
-                              </svg>
-                              <span className="reward-param-value shrink-0 text-white">                              0.50%
-</span>
-                            </div>
-                            <div className="reward-param-row  flex h-reward-param-row-h shrink-0 items-center gap-reward-curve-card-gap text-xs leading-normal whitespace-nowrap">
-                              <span className="shrink-0 text-white/50">                              gas_ceiling
-</span>
-                              <svg className="reward-param-divider block h-0.5 min-w-px flex-1 overflow-visible text-reward-divider" aria-hidden="true">
-                                <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor">
-                                </line>
-                              </svg>
-                              <span className="reward-param-value shrink-0 text-white">                              21 gwei
-</span>
-                            </div>
-                            <div className="reward-param-row  flex h-reward-param-row-h shrink-0 items-center gap-reward-curve-card-gap text-xs leading-normal whitespace-nowrap">
-                              <span className="shrink-0 text-white/50">                              daily_limit
-</span>
-                              <svg className="reward-param-divider block h-0.5 min-w-px flex-1 overflow-visible text-reward-divider" aria-hidden="true">
-                                <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor">
-                                </line>
-                              </svg>
-                              <span className="reward-param-value shrink-0 text-white">                              25,000
-</span>
-                            </div>
-                            <div className="reward-param-row  flex h-reward-param-row-h shrink-0 items-center gap-reward-curve-card-gap text-xs leading-normal whitespace-nowrap">
-                              <span className="shrink-0 text-white/50">                              approvals
-</span>
-                              <svg className="reward-param-divider block h-0.5 min-w-px flex-1 overflow-visible text-reward-divider" aria-hidden="true">
-                                <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor">
-                                </line>
-                              </svg>
-                              <span className="reward-param-value shrink-0 text-white">                              required
-</span>
-                            </div>
-                            <div className="reward-param-row  flex h-reward-param-row-h shrink-0 items-center gap-reward-curve-card-gap text-xs leading-normal whitespace-nowrap">
-                              <span className="shrink-0 text-white/50">                              route_depth
-</span>
-                              <svg className="reward-param-divider block h-0.5 min-w-px flex-1 overflow-visible text-reward-divider" aria-hidden="true">
-                                <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor">
-                                </line>
-                              </svg>
-                              <span className="reward-param-value shrink-0 text-white">                              3
-</span>
-                            </div>
-                            <div className="reward-param-row  flex h-reward-param-row-h shrink-0 items-center gap-reward-curve-card-gap text-xs leading-normal whitespace-nowrap">
-                              <span className="shrink-0 text-white/50">                              sim_runs
-</span>
-                              <svg className="reward-param-divider block h-0.5 min-w-px flex-1 overflow-visible text-reward-divider" aria-hidden="true">
-                                <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor">
-                                </line>
-                              </svg>
-                              <span className="reward-param-value shrink-0 text-white">                              128
-</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="h-62.5 md:h-75 lg:h-100.5 relative overflow-hidden flex items-center justify-center">
+                      <SimFigure />
                     </div>
                     <div className="p-4 md:p-5 flex-1 flex flex-col gap-5 lg:gap-8">
                       <div className="flex flex-col gap-5 font-sans leading-normal lg:flex-row lg:items-start lg:gap-8">
@@ -752,11 +632,8 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/app">                      <span className="inline-block min-w-0 max-w-full">                      <span className="sr-only">                      Run a simulation
-</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                      Run a simulation
-</span>
-</span>
+                      <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/app">
+                        <AsciiGlitchRipple animateOn="parentHover">Run a simulation</AsciiGlitchRipple>
                       <div className="w-3 h-3 overflow-hidden relative">
                         <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                           <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -783,86 +660,8 @@ export default function Home() {
                         FIG.4
                       </p>
                     </div>
-                    <div className="h-62.5 md:h-75 lg:h-100.5 relative overflow-hidden">
-                      <div className="flex items-center justify-center h-full px-3 md:px-0">
-                        <svg width="700" height="402" viewBox="0 0 700 402" fill="none" aria-hidden="true">
-                          <rect x="292" y="58" width="116" height="34" stroke="#373737" fill="#101010">
-                          </rect>
-                          <text x="308" y="79" className="font-favorit" fontSize="9.5" fill="rgba(255,255,255,0.8)">
-                            NEXIS RUNTIME
-                          </text>
-                          <g className="fig-chain">
-                            <path className="fig-chain-path" d="M350 92 C 350 180, 96 210, 96 288" stroke="#2a2a2a" fill="none">
-                            </path>
-                            <path className="fig-comet" d="M350 92 C 350 180, 96 210, 96 288" pathLength="100" style={{ animationDelay: '0s' }}>
-                            </path>
-                            <rect x="94" y="286" width="4" height="4" fill="rgba(255,255,255,0.5)">
-                            </rect>
-                            <text x="96" y="312" textAnchor="middle" className="font-favorit fig-chain-label" fontSize="9" fill="rgba(255,255,255,0.45)">
-                              BASE
-                            </text>
-                          </g>
-                          <g className="fig-chain">
-                            <path className="fig-chain-path" d="M350 92 C 350 180, 222 210, 222 288" stroke="#2a2a2a" fill="none">
-                            </path>
-                            <path className="fig-comet" d="M350 92 C 350 180, 222 210, 222 288" pathLength="100" style={{ animationDelay: '0.75s' }}>
-                            </path>
-                            <rect x="220" y="286" width="4" height="4" fill="rgba(255,255,255,0.5)">
-                            </rect>
-                            <text x="222" y="312" textAnchor="middle" className="font-favorit fig-chain-label" fontSize="9" fill="rgba(255,255,255,0.45)">
-                              ETHEREUM
-                            </text>
-                          </g>
-                          <g className="fig-chain">
-                            <path className="fig-chain-path" d="M350 92 C 350 180, 350 210, 350 288" stroke="#2a2a2a" fill="none">
-                            </path>
-                            <path className="fig-comet" d="M350 92 C 350 180, 350 210, 350 288" pathLength="100" style={{ animationDelay: '1.5s' }}>
-                            </path>
-                            <rect x="348" y="286" width="4" height="4" fill="rgba(255,255,255,0.5)">
-                            </rect>
-                            <text x="350" y="312" textAnchor="middle" className="font-favorit fig-chain-label" fontSize="9" fill="rgba(255,255,255,0.45)">
-                              SOLANA
-                            </text>
-                          </g>
-                          <g className="fig-chain">
-                            <path className="fig-chain-path" d="M350 92 C 350 180, 478 210, 478 288" stroke="#2a2a2a" fill="none">
-                            </path>
-                            <path className="fig-comet" d="M350 92 C 350 180, 478 210, 478 288" pathLength="100" style={{ animationDelay: '2.25s' }}>
-                            </path>
-                            <rect x="476" y="286" width="4" height="4" fill="rgba(255,255,255,0.5)">
-                            </rect>
-                            <text x="478" y="312" textAnchor="middle" className="font-favorit fig-chain-label" fontSize="9" fill="rgba(255,255,255,0.45)">
-                              ARBITRUM
-                            </text>
-                          </g>
-                          <g className="fig-chain">
-                            <path className="fig-chain-path" d="M350 92 C 350 180, 596 210, 596 288" stroke="#2a2a2a" fill="none">
-                            </path>
-                            <path className="fig-comet" d="M350 92 C 350 180, 596 210, 596 288" pathLength="100" style={{ animationDelay: '3s' }}>
-                            </path>
-                            <rect x="594" y="286" width="4" height="4" fill="rgba(255,255,255,0.5)">
-                            </rect>
-                            <text x="596" y="312" textAnchor="middle" className="font-favorit fig-chain-label" fontSize="9" fill="rgba(255,255,255,0.45)">
-                              BITCOIN
-                            </text>
-                          </g>
-                          <rect className="fig-pulse-strong" x="348" y="90" width="4" height="4" fill="#85ed75">
-                          </rect>
-                          <path className="fig-dash-flow-slow" d="M350 292 V 344" stroke="#2a2a2a" strokeDasharray="3 3">
-                          </path>
-                          <rect x="284" y="344" width="132" height="30" stroke="#2a2a2a" fill="#0e0e0e">
-                          </rect>
-                          <text x="300" y="363" className="font-favorit fig-pulse-soft" fontSize="9" fill="rgba(133,237,117,0.9)">
-                            RECEIPT / 0047
-                          </text>
-                          <text x="24" y="34" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.25)">
-                            EXECUTION FAN-OUT
-                          </text>
-                          <text x="604" y="34" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.25)">
-                            T+24S
-                          </text>
-                        </svg>
-                      </div>
+                    <div className="h-62.5 md:h-75 lg:h-100.5 relative overflow-hidden flex items-center justify-center">
+                      <FanOutFigure />
                     </div>
                     <div className="p-4 md:p-5 flex-1 flex flex-col gap-5 lg:gap-8">
                       <div className="flex flex-col gap-5 font-sans leading-normal lg:flex-row lg:items-start lg:gap-8">
@@ -898,11 +697,8 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border px-2.5 font-favorit text-xs leading-none font-medium uppercase shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 !px-2 border-white bg-white text-black relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/docs">                      <span className="inline-block min-w-0 max-w-full">                      <span className="sr-only">                      Docs
-</span>
-                      <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                      Docs
-</span>
-</span>
+                      <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border px-2.5 font-favorit text-xs leading-none font-medium uppercase shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 !px-2 border-white bg-white text-black relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white mt-1 lg:mt-auto" href="/docs">
+                        <AsciiGlitchRipple animateOn="parentHover">Docs</AsciiGlitchRipple>
                       <div className="w-3 h-3 overflow-hidden relative">
                         <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                           <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -933,7 +729,7 @@ export default function Home() {
                 </p>
                 <div className="relative z-10 flex items-center justify-between">
                   <div className="flex items-center gap-5 [&amp;_img]:invert [&amp;_img]:opacity-90">
-                    <img alt="" aria-hidden="true" loading="lazy" width="40" height="40" decoding="async" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                    <img alt="" aria-hidden="true" loading="lazy" width="40" height="40" decoding="async" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                     <div className="flex flex-col font-sans">
                       <p className="text-18 text-white leading-normal">
                         Nexis Receipts
@@ -950,7 +746,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-5">
-                    <img alt="" aria-hidden="true" loading="lazy" width="28" height="28" decoding="async" className="[filter:invert(1)] opacity-90" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                    <img alt="" aria-hidden="true" loading="lazy" width="28" height="28" decoding="async" className="[filter:invert(1)] opacity-90" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                     <div className="flex flex-col font-sans">
                       <p className="text-18 text-white leading-normal">
                         Nexis Policies
@@ -972,7 +768,7 @@ export default function Home() {
               </div>
               <div className="mt-6 md:mt-8 lg:mt-10 flex flex-col">
                 <div className="group/spotlight relative border flex flex-col lg:flex-row lg:h-110.75 overflow-hidden rounded-none bg-surface p-0 border-border dark:border-border">
-                  <div className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100" style={{ backgroundColor: '#262626', maskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )', WebkitMaskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )' }}>
+                  <div className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100" style={{ backgroundColor: '#262626', maskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )', WebkitMaskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )' } as React.CSSProperties}>
                   </div>
                   <div className="relative z-20 lg:w-131 shrink-0 flex flex-col justify-center gap-8 p-5">
                     <div className="flex flex-col gap-1 font-sans text-xl">
@@ -983,11 +779,8 @@ export default function Home() {
                         Access and contribute to community playbooks for payments, DeFi, and treasury operations — versioned, reviewed, and policy-aware.
                       </p>
                     </div>
-                    <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white self-start" href="/app">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    Explore Workflows
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    Explore Workflows
-</span>
-</span>
+                    <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white self-start" href="/app">
+                      <AsciiGlitchRipple animateOn="parentHover">Explore Workflows</AsciiGlitchRipple>
                     <div className="w-3 h-3 overflow-hidden relative">
                       <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                         <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -1056,7 +849,7 @@ export default function Home() {
                           <div className="w-79.75 shrink-0 bg-surface-card px-4 py-3 flex flex-col gap-5 overflow-hidden transition-colors hover:bg-surface-hover">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
-                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                                 <span className="text-2xs text-white/50">                                nexis
 </span>
                               </div>
@@ -1105,7 +898,7 @@ export default function Home() {
                           <div className="w-79.75 shrink-0 bg-surface-card px-4 py-3 flex flex-col gap-5 overflow-hidden transition-colors hover:bg-surface-hover">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
-                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                                 <span className="text-2xs text-white/50">                                nexis
 </span>
                               </div>
@@ -1215,7 +1008,7 @@ export default function Home() {
                           <div className="w-79.75 shrink-0 bg-surface-card px-4 py-3 flex flex-col gap-5 overflow-hidden transition-colors hover:bg-surface-hover">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
-                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                                 <span className="text-2xs text-white/50">                                nexis
 </span>
                               </div>
@@ -1264,7 +1057,7 @@ export default function Home() {
                           <div className="w-79.75 shrink-0 bg-surface-card px-4 py-3 flex flex-col gap-5 overflow-hidden transition-colors hover:bg-surface-hover">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
-                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                                 <span className="text-2xs text-white/50">                                nexis
 </span>
                               </div>
@@ -1311,7 +1104,7 @@ export default function Home() {
                           <div className="w-79.75 shrink-0 bg-surface-card px-4 py-3 flex flex-col gap-5 overflow-hidden transition-colors hover:bg-surface-hover">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
-                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                                 <span className="text-2xs text-white/50">                                nexis
 </span>
                               </div>
@@ -1470,7 +1263,7 @@ export default function Home() {
                           <div className="w-79.75 shrink-0 bg-surface-card px-4 py-3 flex flex-col gap-5 overflow-hidden transition-colors hover:bg-surface-hover">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
-                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                                <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                                 <span className="text-2xs text-white/50">                                nexis
 </span>
                               </div>
@@ -1747,12 +1540,11 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <div aria-hidden="true" className="relative w-full overflow-hidden bg-surface h-5 md:h-8 lg:h-17.5" data-city-grid-separator="chapter">
-            </div>
+            <GlitterGridSeparator size="chapter" />
             <section id="payments" className="border border-border flex flex-col bg-[linear-gradient(180deg,#111_0%,#0e0e0e_100%)] scroll-mt-17 xl:scroll-mt-[104px]">
               <div className="h-90 border-b border-border flex flex-col items-start p-5 gap-8 relative overflow-hidden">
                 <div className="pointer-events-none absolute inset-0 mix-blend-lighten" aria-hidden="true">
-                  <img alt="" loading="lazy" decoding="async" className="object-cover object-center opacity-100 saturate-[1.58] brightness-[1.28] contrast-[1.16]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' }} sizes="100vw" src="/backgrounds/compute-bg.png" />
+                  <img alt="" loading="lazy" decoding="async" className="object-cover object-center opacity-100 saturate-[1.58] brightness-[1.28] contrast-[1.16]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="100vw" src="/backgrounds/compute-bg.png" />
                 </div>
                 <p className="relative z-10 font-sans text-white text-7 leading-120 max-w-170">
                   <span className="text-white">                  Payments.
@@ -1763,11 +1555,8 @@ export default function Home() {
 </span>
                 </p>
                 <div className="relative z-10 flex items-center gap-1">
-                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">                  <span className="inline-block min-w-0 max-w-full">                  <span className="sr-only">                  Docs
-</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                  Docs
-</span>
-</span>
+                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">
+                    <AsciiGlitchRipple animateOn="parentHover">Docs</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -1786,11 +1575,8 @@ export default function Home() {
                   <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white"></span>
 </span>
 </a>
-                  <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/research">                  <span className="inline-block min-w-0 max-w-full">                  <span className="sr-only">                  Learn More
-</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                  Learn More
-</span>
-</span>
+                  <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/research">
+                    <AsciiGlitchRipple animateOn="parentHover">Learn More</AsciiGlitchRipple>
                   <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">                  <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white"></span>
                   <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white"></span>
                   <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white"></span>
@@ -1823,7 +1609,7 @@ export default function Home() {
                         </text>
                         <rect x="356" y="56" width="4" height="4" fill="rgba(255,255,255,0.4)">
                         </rect>
-                        <path className="fig-wave" style={{ '--fig-delay': '0s', '--fig-dur': '4s' }} d="M214.5 86 L210 94 M214.5 86 L219 94" stroke="#3a3a3a">
+                        <path className="fig-wave" style={{ '--fig-delay': '0s', '--fig-dur': '4s' } as React.CSSProperties} d="M214.5 86 L210 94 M214.5 86 L219 94" stroke="#3a3a3a">
                         </path>
                       </g>
                       <g className="fig-group">
@@ -1837,7 +1623,7 @@ export default function Home() {
                         </text>
                         <rect x="356" y="130" width="4" height="4" fill="rgba(255,255,255,0.4)">
                         </rect>
-                        <path className="fig-wave" style={{ '--fig-delay': '0.4s', '--fig-dur': '4s' }} d="M214.5 160 L210 168 M214.5 160 L219 168" stroke="#3a3a3a">
+                        <path className="fig-wave" style={{ '--fig-delay': '0.4s', '--fig-dur': '4s' } as React.CSSProperties} d="M214.5 160 L210 168 M214.5 160 L219 168" stroke="#3a3a3a">
                         </path>
                       </g>
                       <g className="fig-group">
@@ -1851,7 +1637,7 @@ export default function Home() {
                         </text>
                         <rect x="356" y="204" width="4" height="4" fill="rgba(255,255,255,0.4)">
                         </rect>
-                        <path className="fig-wave" style={{ '--fig-delay': '0.8s', '--fig-dur': '4s' }} d="M214.5 234 L210 242 M214.5 234 L219 242" stroke="#3a3a3a">
+                        <path className="fig-wave" style={{ '--fig-delay': '0.8s', '--fig-dur': '4s' } as React.CSSProperties} d="M214.5 234 L210 242 M214.5 234 L219 242" stroke="#3a3a3a">
                         </path>
                       </g>
                       <g className="fig-group">
@@ -1865,7 +1651,7 @@ export default function Home() {
                         </text>
                         <rect x="356" y="278" width="4" height="4" fill="rgba(255,255,255,0.4)">
                         </rect>
-                        <path className="fig-wave" style={{ '--fig-delay': '1.2000000000000002s', '--fig-dur': '4s' }} d="M214.5 308 L210 316 M214.5 308 L219 316" stroke="#3a3a3a">
+                        <path className="fig-wave" style={{ '--fig-delay': '1.2000000000000002s', '--fig-dur': '4s' } as React.CSSProperties} d="M214.5 308 L210 316 M214.5 308 L219 316" stroke="#3a3a3a">
                         </path>
                       </g>
                       <g className="fig-group">
@@ -1898,7 +1684,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="mt-10 flex flex-1 items-end justify-center">
-                    <div className="w-full opacity-90" style={{ maxWidth: '210px' }}>
+                    <div className="w-full opacity-90" style={{ maxWidth: '210px' } as React.CSSProperties}>
                       <svg className="w-full" viewBox="0 0 210 286" fill="none" aria-hidden="true">
                         <g className="fig-group">
                           <rect className="fig-node" x="24" y="18" width="162" height="64" stroke="#2a2a2a" fill="#101010">
@@ -1950,7 +1736,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="mt-10 flex flex-1 items-end justify-center">
-                    <div className="w-full opacity-90" style={{ maxWidth: '414px' }}>
+                    <div className="w-full opacity-90" style={{ maxWidth: '414px' } as React.CSSProperties}>
                       <svg className="w-full" viewBox="0 0 414 350" fill="none" aria-hidden="true">
                         <rect x="24" y="252" width="120" height="56" stroke="#2a2a2a" fill="#101010">
                         </rect>
@@ -1999,7 +1785,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="mt-10 flex flex-1 items-end justify-center">
-                    <div className="w-full opacity-90" style={{ maxWidth: '273px' }}>
+                    <div className="w-full opacity-90" style={{ maxWidth: '273px' } as React.CSSProperties}>
                       <svg className="w-full" viewBox="0 0 273 288" fill="none" aria-hidden="true">
                         <rect x="30" y="34" width="213" height="188" stroke="#2a2a2a" fill="#101010">
                         </rect>
@@ -2009,65 +1795,65 @@ export default function Home() {
                         <text x="48" y="82" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
                           nexis.to/p/9f2k · 100 usdc
                         </text>
-                        <rect className="fig-wave" style={{ '--fig-delay': '0s', '--fig-dur': '5.6s' }} x="48" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '0s', '--fig-dur': '5.6s' } as React.CSSProperties} x="48" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' }} x="84" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="84" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '0.5s', '--fig-dur': '5.6s' }} x="96" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '0.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="96" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' }} x="108" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' } as React.CSSProperties} x="108" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '3.5s', '--fig-dur': '5.6s' }} x="120" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '3.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="120" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '1.5s', '--fig-dur': '5.6s' }} x="84" y="116" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '1.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="84" y="116" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' }} x="108" y="116" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="108" y="116" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '0.5s', '--fig-dur': '5.6s' }} x="120" y="116" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '0.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="120" y="116" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '5s', '--fig-dur': '5.6s' }} x="48" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="48" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '1s', '--fig-dur': '5.6s' }} x="60" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '1s', '--fig-dur': '5.6s' } as React.CSSProperties} x="60" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '2.5s', '--fig-dur': '5.6s' }} x="72" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '2.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="72" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '3s', '--fig-dur': '5.6s' }} x="120" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '3s', '--fig-dur': '5.6s' } as React.CSSProperties} x="120" y="128" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '3.5s', '--fig-dur': '5.6s' }} x="60" y="140" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '3.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="60" y="140" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '2.5s', '--fig-dur': '5.6s' }} x="96" y="140" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '2.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="96" y="140" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '4s', '--fig-dur': '5.6s' }} x="108" y="140" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '4s', '--fig-dur': '5.6s' } as React.CSSProperties} x="108" y="140" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' }} x="72" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' } as React.CSSProperties} x="72" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '3.5s', '--fig-dur': '5.6s' }} x="84" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '3.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="84" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '5s', '--fig-dur': '5.6s' }} x="96" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="96" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '1s', '--fig-dur': '5.6s' }} x="108" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '1s', '--fig-dur': '5.6s' } as React.CSSProperties} x="108" y="152" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '1.5s', '--fig-dur': '5.6s' }} x="48" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '1.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="48" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' }} x="72" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="72" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' }} x="96" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' } as React.CSSProperties} x="96" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '5s', '--fig-dur': '5.6s' }} x="120" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="120" y="164" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '4s', '--fig-dur': '5.6s' }} x="48" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '4s', '--fig-dur': '5.6s' } as React.CSSProperties} x="48" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '0s', '--fig-dur': '5.6s' }} x="60" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '0s', '--fig-dur': '5.6s' } as React.CSSProperties} x="60" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '1.5s', '--fig-dur': '5.6s' }} x="72" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '1.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="72" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '3s', '--fig-dur': '5.6s' }} x="84" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '3s', '--fig-dur': '5.6s' } as React.CSSProperties} x="84" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' }} x="96" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '4.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="96" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '0.5s', '--fig-dur': '5.6s' }} x="108" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '0.5s', '--fig-dur': '5.6s' } as React.CSSProperties} x="108" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
-                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' }} x="120" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
+                        <rect className="fig-wave" style={{ '--fig-delay': '2s', '--fig-dur': '5.6s' } as React.CSSProperties} x="120" y="176" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
                         <text x="160" y="132" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.5)">
                           EXPIRES 72H
@@ -2097,11 +1883,8 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-1">
-                    <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border px-2.5 font-favorit text-xs leading-none font-medium uppercase shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 !px-2 border-white bg-white text-black relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    Docs
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    Docs
-</span>
-</span>
+                    <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border px-2.5 font-favorit text-xs leading-none font-medium uppercase shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 !px-2 border-white bg-white text-black relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">
+                      <AsciiGlitchRipple animateOn="parentHover">Docs</AsciiGlitchRipple>
                     <div className="w-3 h-3 overflow-hidden relative">
                       <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                         <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -2124,7 +1907,7 @@ export default function Home() {
                 </div>
                 <div className="order-1 flex min-h-96 items-center justify-center overflow-hidden lg:order-1">
                   <svg width="700" height="402" viewBox="0 0 700 402" fill="none" aria-hidden="true">
-                    <g className="fig-wave" style={{ '--fig-delay': '4.16s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '4.16s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="336" y="84" width="3.4" height="3.4" fill="rgba(255,255,255,0.50)">
                       </rect>
                       <rect x="328.6" y="84" width="3.4" height="3.4" fill="rgba(255,255,255,0.45)">
@@ -2138,7 +1921,7 @@ export default function Home() {
                       <rect x="378.8" y="84" width="3.4" height="3.4" fill="rgba(255,255,255,0.40)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '4s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '4s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="330.6" y="93" width="3.4" height="3.4" fill="rgba(255,255,255,0.49)">
                       </rect>
                       <rect x="323.2" y="93" width="3.4" height="3.4" fill="rgba(255,255,255,0.44)">
@@ -2152,7 +1935,7 @@ export default function Home() {
                       <rect x="384.2" y="93" width="3.4" height="3.4" fill="rgba(255,255,255,0.39)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '3.84s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '3.84s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="325.2" y="102" width="3.4" height="3.4" fill="rgba(255,255,255,0.47)">
                       </rect>
                       <rect x="317.8" y="102" width="3.4" height="3.4" fill="rgba(255,255,255,0.42)">
@@ -2166,7 +1949,7 @@ export default function Home() {
                       <rect x="389.6" y="102" width="3.4" height="3.4" fill="rgba(255,255,255,0.37)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '3.68s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '3.68s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="319.8" y="111" width="3.4" height="3.4" fill="rgba(255,255,255,0.46)">
                       </rect>
                       <rect x="312.4" y="111" width="3.4" height="3.4" fill="rgba(255,255,255,0.41)">
@@ -2180,7 +1963,7 @@ export default function Home() {
                       <rect x="395" y="111" width="3.4" height="3.4" fill="rgba(255,255,255,0.36)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '3.52s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '3.52s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="314.4" y="120" width="3.4" height="3.4" fill="rgba(255,255,255,0.44)">
                       </rect>
                       <rect x="307" y="120" width="3.4" height="3.4" fill="rgba(255,255,255,0.39)">
@@ -2194,7 +1977,7 @@ export default function Home() {
                       <rect x="400.4" y="120" width="3.4" height="3.4" fill="rgba(255,255,255,0.34)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '3.36s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '3.36s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="309" y="129" width="3.4" height="3.4" fill="rgba(255,255,255,0.43)">
                       </rect>
                       <rect x="301.6" y="129" width="3.4" height="3.4" fill="rgba(255,255,255,0.38)">
@@ -2208,7 +1991,7 @@ export default function Home() {
                       <rect x="405.8" y="129" width="3.4" height="3.4" fill="rgba(255,255,255,0.33)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '3.2s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '3.2s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="303.6" y="138" width="3.4" height="3.4" fill="rgba(255,255,255,0.42)">
                       </rect>
                       <rect x="296.2" y="138" width="3.4" height="3.4" fill="rgba(255,255,255,0.37)">
@@ -2222,7 +2005,7 @@ export default function Home() {
                       <rect x="411.2" y="138" width="3.4" height="3.4" fill="rgba(255,255,255,0.32)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '3.04s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '3.04s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="298.2" y="147" width="3.4" height="3.4" fill="rgba(255,255,255,0.40)">
                       </rect>
                       <rect x="290.8" y="147" width="3.4" height="3.4" fill="rgba(255,255,255,0.35)">
@@ -2236,7 +2019,7 @@ export default function Home() {
                       <rect x="416.6" y="147" width="3.4" height="3.4" fill="rgba(255,255,255,0.30)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '2.88s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '2.88s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="292.8" y="156" width="3.4" height="3.4" fill="rgba(255,255,255,0.39)">
                       </rect>
                       <rect x="285.4" y="156" width="3.4" height="3.4" fill="rgba(255,255,255,0.34)">
@@ -2250,7 +2033,7 @@ export default function Home() {
                       <rect x="422" y="156" width="3.4" height="3.4" fill="rgba(255,255,255,0.29)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '2.72s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '2.72s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="287.4" y="165" width="3.4" height="3.4" fill="rgba(255,255,255,0.38)">
                       </rect>
                       <rect x="280" y="165" width="3.4" height="3.4" fill="rgba(255,255,255,0.33)">
@@ -2264,7 +2047,7 @@ export default function Home() {
                       <rect x="427.4" y="165" width="3.4" height="3.4" fill="rgba(255,255,255,0.28)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '2.56s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '2.56s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="282" y="174" width="3.4" height="3.4" fill="rgba(255,255,255,0.36)">
                       </rect>
                       <rect x="274.6" y="174" width="3.4" height="3.4" fill="rgba(255,255,255,0.31)">
@@ -2278,7 +2061,7 @@ export default function Home() {
                       <rect x="432.8" y="174" width="3.4" height="3.4" fill="rgba(255,255,255,0.26)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '2.4s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '2.4s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="276.6" y="183" width="3.4" height="3.4" fill="rgba(255,255,255,0.35)">
                       </rect>
                       <rect x="269.2" y="183" width="3.4" height="3.4" fill="rgba(255,255,255,0.30)">
@@ -2292,7 +2075,7 @@ export default function Home() {
                       <rect x="438.2" y="183" width="3.4" height="3.4" fill="rgba(255,255,255,0.25)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '2.24s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '2.24s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="271.2" y="192" width="3.4" height="3.4" fill="rgba(255,255,255,0.33)">
                       </rect>
                       <rect x="263.79999999999995" y="192" width="3.4" height="3.4" fill="rgba(255,255,255,0.28)">
@@ -2306,7 +2089,7 @@ export default function Home() {
                       <rect x="443.6" y="192" width="3.4" height="3.4" fill="rgba(255,255,255,0.23)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '2.08s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '2.08s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="265.8" y="201" width="3.4" height="3.4" fill="rgba(255,255,255,0.32)">
                       </rect>
                       <rect x="258.4" y="201" width="3.4" height="3.4" fill="rgba(255,255,255,0.27)">
@@ -2320,7 +2103,7 @@ export default function Home() {
                       <rect x="449" y="201" width="3.4" height="3.4" fill="rgba(255,255,255,0.22)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '1.92s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '1.92s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="260.4" y="210" width="3.4" height="3.4" fill="rgba(255,255,255,0.31)">
                       </rect>
                       <rect x="253" y="210" width="3.4" height="3.4" fill="rgba(255,255,255,0.26)">
@@ -2334,7 +2117,7 @@ export default function Home() {
                       <rect x="454.4" y="210" width="3.4" height="3.4" fill="rgba(255,255,255,0.21)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '1.76s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '1.76s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="255" y="219" width="3.4" height="3.4" fill="rgba(255,255,255,0.29)">
                       </rect>
                       <rect x="247.6" y="219" width="3.4" height="3.4" fill="rgba(255,255,255,0.24)">
@@ -2348,7 +2131,7 @@ export default function Home() {
                       <rect x="459.8" y="219" width="3.4" height="3.4" fill="rgba(255,255,255,0.19)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '1.6s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '1.6s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="249.6" y="228" width="3.4" height="3.4" fill="rgba(255,255,255,0.28)">
                       </rect>
                       <rect x="242.2" y="228" width="3.4" height="3.4" fill="rgba(255,255,255,0.23)">
@@ -2362,7 +2145,7 @@ export default function Home() {
                       <rect x="465.2" y="228" width="3.4" height="3.4" fill="rgba(255,255,255,0.18)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '1.44s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '1.44s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="244.2" y="237" width="3.4" height="3.4" fill="rgba(255,255,255,0.26)">
                       </rect>
                       <rect x="236.79999999999998" y="237" width="3.4" height="3.4" fill="rgba(255,255,255,0.21)">
@@ -2376,7 +2159,7 @@ export default function Home() {
                       <rect x="470.6" y="237" width="3.4" height="3.4" fill="rgba(255,255,255,0.16)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '1.28s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '1.28s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="238.8" y="246" width="3.4" height="3.4" fill="rgba(255,255,255,0.25)">
                       </rect>
                       <rect x="231.39999999999998" y="246" width="3.4" height="3.4" fill="rgba(255,255,255,0.20)">
@@ -2390,7 +2173,7 @@ export default function Home() {
                       <rect x="476" y="246" width="3.4" height="3.4" fill="rgba(255,255,255,0.15)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '1.12s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '1.12s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="233.39999999999998" y="255" width="3.4" height="3.4" fill="rgba(255,255,255,0.24)">
                       </rect>
                       <rect x="226" y="255" width="3.4" height="3.4" fill="rgba(255,255,255,0.19)">
@@ -2404,7 +2187,7 @@ export default function Home() {
                       <rect x="481.4" y="255" width="3.4" height="3.4" fill="rgba(255,255,255,0.14)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '0.96s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '0.96s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="228" y="264" width="3.4" height="3.4" fill="rgba(255,255,255,0.22)">
                       </rect>
                       <rect x="220.6" y="264" width="3.4" height="3.4" fill="rgba(255,255,255,0.17)">
@@ -2418,7 +2201,7 @@ export default function Home() {
                       <rect x="486.8" y="264" width="3.4" height="3.4" fill="rgba(255,255,255,0.12)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '0.8s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '0.8s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="222.6" y="273" width="3.4" height="3.4" fill="rgba(255,255,255,0.21)">
                       </rect>
                       <rect x="215.2" y="273" width="3.4" height="3.4" fill="rgba(255,255,255,0.16)">
@@ -2432,7 +2215,7 @@ export default function Home() {
                       <rect x="492.20000000000005" y="273" width="3.4" height="3.4" fill="rgba(255,255,255,0.11)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '0.64s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '0.64s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="217.2" y="282" width="3.4" height="3.4" fill="rgba(255,255,255,0.20)">
                       </rect>
                       <rect x="209.79999999999998" y="282" width="3.4" height="3.4" fill="rgba(255,255,255,0.15)">
@@ -2446,7 +2229,7 @@ export default function Home() {
                       <rect x="497.6" y="282" width="3.4" height="3.4" fill="rgba(255,255,255,0.10)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '0.48s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '0.48s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="211.8" y="291" width="3.4" height="3.4" fill="rgba(255,255,255,0.18)">
                       </rect>
                       <rect x="204.4" y="291" width="3.4" height="3.4" fill="rgba(255,255,255,0.13)">
@@ -2460,7 +2243,7 @@ export default function Home() {
                       <rect x="503" y="291" width="3.4" height="3.4" fill="rgba(255,255,255,0.08)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '0.32s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '0.32s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="206.39999999999998" y="300" width="3.4" height="3.4" fill="rgba(255,255,255,0.17)">
                       </rect>
                       <rect x="198.99999999999997" y="300" width="3.4" height="3.4" fill="rgba(255,255,255,0.12)">
@@ -2474,7 +2257,7 @@ export default function Home() {
                       <rect x="508.40000000000003" y="300" width="3.4" height="3.4" fill="rgba(255,255,255,0.08)">
                       </rect>
                     </g>
-                    <g className="fig-wave" style={{ '--fig-delay': '0.16s', '--fig-dur': '5s' }}>
+                    <g className="fig-wave" style={{ '--fig-delay': '0.16s', '--fig-dur': '5s' } as React.CSSProperties}>
                       <rect x="201" y="309" width="3.4" height="3.4" fill="rgba(255,255,255,0.15)">
                       </rect>
                       <rect x="193.6" y="309" width="3.4" height="3.4" fill="rgba(255,255,255,0.10)">
@@ -2497,12 +2280,10 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <div aria-hidden="true" className="relative w-full overflow-hidden bg-surface h-5 md:h-8 lg:h-17.5" data-city-grid-separator="chapter">
-            </div>
+            <GlitterGridSeparator size="chapter" />
             <section id="markets" className="border border-border flex flex-col scroll-mt-17 xl:scroll-mt-[104px]">
               <div className="h-90 border-b border-border flex flex-col items-start p-5 gap-8 relative overflow-hidden bg-surface">
-                <canvas className="absolute inset-0 h-full w-full" aria-hidden="true">
-                </canvas>
+                <MarketsGraph />
                 <div className="pointer-events-none absolute inset-0" aria-hidden="true">
                   <div className="absolute inset-0 mix-blend-overlay opacity-50 bg-[repeating-linear-gradient(180deg,rgba(255,255,255,0.045)_0px,rgba(255,255,255,0.045)_1px,transparent_1px,transparent_28px),repeating-linear-gradient(90deg,rgba(255,255,255,0.028)_0px,rgba(255,255,255,0.028)_1px,transparent_1px,transparent_28px)]">
                   </div>
@@ -2518,11 +2299,8 @@ export default function Home() {
 </span>
                 </p>
                 <div className="relative z-10 flex items-center gap-1">
-                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">                  <span className="inline-block min-w-0 max-w-full">                  <span className="sr-only">                  OPEN MARKETS
-</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                  OPEN MARKETS
-</span>
-</span>
+                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
+                    <AsciiGlitchRipple animateOn="parentHover">OPEN MARKETS</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -2541,11 +2319,8 @@ export default function Home() {
                   <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white"></span>
 </span>
 </a>
-                  <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/contact">                  <span className="inline-block min-w-0 max-w-full">                  <span className="sr-only">                  BOOK A DEMO
-</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                  BOOK A DEMO
-</span>
-</span>
+                  <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/contact">
+                    <AsciiGlitchRipple animateOn="parentHover">BOOK A DEMO</AsciiGlitchRipple>
                   <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">                  <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white"></span>
                   <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white"></span>
                   <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white"></span>
@@ -2607,11 +2382,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">                  <span className="inline-block min-w-0 max-w-full">                  <span className="sr-only">                  GET ROUTES
-</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                  GET ROUTES
-</span>
-</span>
+                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
+                    <AsciiGlitchRipple animateOn="parentHover">GET ROUTES</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -2631,530 +2403,7 @@ export default function Home() {
 </span>
 </a>
                 </div>
-                <div className="flex flex-col overflow-hidden">
-                  <div className="px-3 py-3">
-                    <p className="text-2xs text-white/25 uppercase font-favorit">
-                      FIG.5
-                    </p>
-                  </div>
-                  <div className="flex-1 flex flex-col overflow-hidden py-4">
-                    <div className="border border-border p-0.5 flex items-center gap-3.5 self-center w-81.75">
-                      <button className="flex flex-1 min-w-0 items-center justify-center gap-1 px-1.5 py-1 text-sm leading-140 font-sans transition-colors cursor-pointer bg-white/8 text-white" type="button">
-                        <svg className="size-3 shrink-0 " viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                          <rect x="1" y="1" width="4" height="4" stroke="currentColor" className="text-white">
-                          </rect>
-                          <rect x="7" y="7" width="4" height="4" stroke="currentColor" className="text-white/60">
-                          </rect>
-                          <path d="M5 8.5H2.5V5" stroke="currentColor" className="text-white/40">
-                          </path>
-                        </svg>
-                        <span>                        <span className="inline-block min-w-0 max-w-full">                        <span className="sr-only">                        Swap Routes
-</span>
-                        <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                        Swap Routes
-</span>
-</span>
-</span>
-                      </button>
-                      <button className="flex flex-1 min-w-0 items-center justify-center gap-1 px-1.5 py-1 text-sm leading-140 font-sans transition-colors cursor-pointer text-white/50" type="button">
-                        <svg className="size-3 shrink-0 opacity-50" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                          <rect x="1" y="1" width="4" height="4" stroke="currentColor" className="text-white">
-                          </rect>
-                          <rect x="7" y="7" width="4" height="4" stroke="currentColor" className="text-white/60">
-                          </rect>
-                          <path d="M5 8.5H2.5V5" stroke="currentColor" className="text-white/40">
-                          </path>
-                        </svg>
-                        <span>                        <span className="inline-block min-w-0 max-w-full">                        <span className="sr-only">                        Bridge Routes
-</span>
-                        <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                        Bridge Routes
-</span>
-</span>
-</span>
-                      </button>
-                    </div>
-                    <div className="flex-1 flex items-start justify-center overflow-hidden pt-2.5">
-                      <div className="flex justify-center overflow-hidden transition-transform duration-500 ease-in-out translate-x-0">
-                        <div className="w-81.75 shrink-0 flex flex-col opacity-25">
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    USDC → ETH
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    ethereum
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  4.2 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.09% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              31s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth ok
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    USDC → ETH
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    arbitrum
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  3.1 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.07% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              19s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth ok
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    USDC → ETH
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    optimism
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  3.8 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.08% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              22s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth ok
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    USDC → ETH
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    polygon
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  5.0 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.12% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              40s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth low
-</span>
-</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="w-81.75 shrink-0 flex flex-col ">
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border-active">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] " style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    USDC → ETH
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-available">                                    Best route
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    base
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  1.9 BPS
-                                </p>
-                                <p className="text-2xs text-available leading-none whitespace-nowrap">
-                                  Gas 0.4 gwei
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.04% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              12s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth deep
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border-active">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] " style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    ETH → SOL
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-available">                                    Best route
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    wormhole
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  2.6 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.06% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              48s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth ok
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border-active">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] " style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    USDC → BTC
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-available">                                    Best route
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    thorchain
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  4.4 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.09% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              4m settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth ok
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border-active">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] " style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    DAI → USDC
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-available">                                    Best route
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    curve
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  0.4 BPS
-                                </p>
-                                <p className="text-2xs text-available leading-none whitespace-nowrap">
-                                  Spot 0.9998
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.01% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              14s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth deep
-</span>
-</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="w-81.75 shrink-0 flex flex-col opacity-25">
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    SOL → USDC
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    jupiter
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  2.2 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.05% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              9s settle
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              depth deep
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    ETH → USDT
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    uniswap
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  2.9 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.06% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              16s settle
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    WBTC → ETH
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    ethereum
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  3.6 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.08% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              28s settle
-</span>
-</span>
-                            </div>
-                          </div>
-                          <div className="border -mt-px first:mt-0 p-5 flex flex-col gap-5 font-sans border-border">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="flex items-start gap-3">
-                                <img alt="" aria-hidden="true" loading="lazy" width="16" height="16" decoding="async" className="mt-0.5 shrink-0 [filter:invert(1)] opacity-50" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
-                                <div className="flex flex-col gap-2.5">
-                                  <p className="text-sm text-white leading-none whitespace-nowrap">
-                                    USDC → SUI
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-2xs leading-none text-white/50">                                    Streaming
-</span>
-                                    <span className="text-2xs text-white/50 leading-none">                                    ·
-                                    
-                                    sui bridge
-</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2.5">
-                                <p className="text-xs text-white leading-none whitespace-nowrap">
-                                  6.1 BPS
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1 text-2xs leading-none">
-                              <span className="contents">                              <span className="whitespace-nowrap text-white">                              0.14% slip
-</span>
-</span>
-                              <span className="contents">                              <span className="text-white/25">                              ·
-</span>
-                              <span className="whitespace-nowrap text-white/50">                              2m settle
-</span>
-</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <RouteBoard />
               </div>
               <div className="flex flex-col lg:grid lg:min-h-151.5 lg:grid-cols-2">
                 <div className="order-2 lg:order-0 lg:col-start-2 p-5 flex flex-col justify-between gap-8 font-sans">
@@ -3210,11 +2459,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-center gap-1">
-                    <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    PLAN A POSITION
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    PLAN A POSITION
-</span>
-</span>
+                    <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
+                      <AsciiGlitchRipple animateOn="parentHover">PLAN A POSITION</AsciiGlitchRipple>
                     <div className="w-3 h-3 overflow-hidden relative">
                       <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                         <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -3233,11 +2479,8 @@ export default function Home() {
                     <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white"></span>
 </span>
 </a>
-                    <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    DOCS
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    DOCS
-</span>
-</span>
+                    <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">
+                      <AsciiGlitchRipple animateOn="parentHover">DOCS</AsciiGlitchRipple>
                     <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">                    <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white"></span>
                     <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white"></span>
                     <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white"></span>
@@ -3247,7 +2490,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="group/spotlight relative dark:border-neutral-800 order-1 lg:order-0 lg:col-start-1 lg:row-start-1 flex flex-col overflow-hidden border-0 border-b lg:border-b-0 lg:border-r border-border rounded-none bg-surface p-0">
-                  <div className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100" style={{ backgroundColor: '#262626', maskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )', WebkitMaskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )' }}>
+                  <div className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100" style={{ backgroundColor: '#262626', maskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )', WebkitMaskImage: 'radial-gradient( 350px circle at 0px 0px, white, transparent 80% )' } as React.CSSProperties}>
                   </div>
                   <div className="relative z-20 px-3 py-3">
                     <p className="text-2xs text-white/25 uppercase font-favorit">
@@ -3274,7 +2517,7 @@ export default function Home() {
                       <div className="p-4 border-b border-border">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex flex-col gap-4">
-                            <img alt="" aria-hidden="true" loading="lazy" width="30" height="30" decoding="async" className="[filter:invert(1)] opacity-80" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                            <img alt="" aria-hidden="true" loading="lazy" width="30" height="30" decoding="async" className="[filter:invert(1)] opacity-80" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                             <div className="flex flex-col gap-4">
                               <p className="text-white text-xl leading-none">
                                 USDC → ETH × 25,000
@@ -3319,23 +2562,23 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="mt-5 h-2 flex fig-sheen">
-                          <div className="bg-white" style={{ width: '26.40%' }}>
+                          <div className="bg-white" style={{ width: '26.40%' } as React.CSSProperties}>
                           </div>
-                          <div className="" style={{ width: '19.14%', backgroundColor: '#282828' }}>
+                          <div className="" style={{ width: '19.14%', backgroundColor: '#282828' } as React.CSSProperties}>
                           </div>
-                          <div className="bg-white" style={{ width: '0.33%' }}>
+                          <div className="bg-white" style={{ width: '0.33%' } as React.CSSProperties}>
                           </div>
-                          <div className="" style={{ width: '3.96%', backgroundColor: '#282828' }}>
+                          <div className="" style={{ width: '3.96%', backgroundColor: '#282828' } as React.CSSProperties}>
                           </div>
-                          <div className="bg-white" style={{ width: '3.41%' }}>
+                          <div className="bg-white" style={{ width: '3.41%' } as React.CSSProperties}>
                           </div>
-                          <div className="" style={{ width: '0.33%', backgroundColor: '#282828' }}>
+                          <div className="" style={{ width: '0.33%', backgroundColor: '#282828' } as React.CSSProperties}>
                           </div>
-                          <div className="bg-white" style={{ width: '3.63%' }}>
+                          <div className="bg-white" style={{ width: '3.63%' } as React.CSSProperties}>
                           </div>
-                          <div className="" style={{ width: '16.17%', backgroundColor: '#282828' }}>
+                          <div className="" style={{ width: '16.17%', backgroundColor: '#282828' } as React.CSSProperties}>
                           </div>
-                          <div className="bg-white" style={{ width: '26.62%' }}>
+                          <div className="bg-white" style={{ width: '26.62%' } as React.CSSProperties}>
                           </div>
                         </div>
                       </div>
@@ -3388,8 +2631,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <div aria-hidden="true" className="relative w-full overflow-hidden bg-surface h-5 md:h-8 lg:h-17.5" data-city-grid-separator="chapter">
-            </div>
+            <GlitterGridSeparator size="chapter" />
             <section id="research" className="border border-border flex flex-col scroll-mt-17 xl:scroll-mt-[104px]">
               <div className="border-b border-border p-5 flex flex-col gap-6 lg:min-h-[136px]">
                 <p className="font-sans text-7 leading-120 xl:whitespace-nowrap">
@@ -3398,11 +2640,8 @@ export default function Home() {
                   <span className="text-white/50">                  Notes from building governed autonomy
 </span>
                 </p>
-                <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white self-start" href="/research">                <span className="inline-block min-w-0 max-w-full">                <span className="sr-only">                DISCOVER
-</span>
-                <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                DISCOVER
-</span>
-</span>
+                <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white self-start" href="/research">
+                  <AsciiGlitchRipple animateOn="parentHover">DISCOVER</AsciiGlitchRipple>
                 <div className="w-3 h-3 overflow-hidden relative">
                   <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                     <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -3425,7 +2664,7 @@ export default function Home() {
               <div className="flex flex-col lg:flex-row border-b border-border">
                 <a className="group flex-1 border-b lg:border-b-0 lg:border-r border-border bg-research-bg flex flex-col min-h-95 md:min-h-120 relative overflow-hidden font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research">                <div className="pointer-events-none absolute inset-0 opacity-70 transition-opacity duration-300 group-hover:opacity-90">
                   <div className="absolute inset-0 h-full w-full">
-                    <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' }} aria-label="Dithered image" role="img">
+                    <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
                     </canvas>
                   </div>
                   <div className="absolute inset-0 bg-linear-to-b from-black/10 via-research-bg/35 to-research-bg/90">
@@ -3450,7 +2689,7 @@ export default function Home() {
                 </div>
 </a>
                 <div className="flex flex-col lg:w-116.75">
-                  <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.7857142857142856, minHeight: '158px' }}>                  <div className="flex items-start justify-between gap-5">
+                  <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.7857142857142856, minHeight: '158px' } as React.CSSProperties}>                  <div className="flex items-start justify-between gap-5">
                     <p className="text-white leading-6 underline-offset-4 decoration-white/60 group-hover:underline">
                       Receipts as a training signal
                     </p>
@@ -3467,7 +2706,7 @@ export default function Home() {
                     Turning settled runs into policy improvements and evals.
                   </p>
 </a>
-                  <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.3571428571428572, minHeight: '134px' }}>                  <div className="flex items-start justify-between gap-5">
+                  <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.3571428571428572, minHeight: '134px' } as React.CSSProperties}>                  <div className="flex items-start justify-between gap-5">
                     <p className="text-white leading-6 underline-offset-4 decoration-white/60 group-hover:underline">
                       The policy engine behind Nexis
                     </p>
@@ -3484,7 +2723,7 @@ export default function Home() {
                     How boundaries compile into gates the runtime cannot skip.
                   </p>
 </a>
-                  <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.3571428571428572, minHeight: '134px' }}>                  <div className="flex items-start justify-between gap-5">
+                  <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.3571428571428572, minHeight: '134px' } as React.CSSProperties}>                  <div className="flex items-start justify-between gap-5">
                     <p className="text-white leading-6 underline-offset-4 decoration-white/60 group-hover:underline">
                       Cross-chain routing under constraints
                     </p>
@@ -3504,7 +2743,7 @@ export default function Home() {
                   <a className="group flex-1 min-h-15 lg:min-h-19 flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/blog">                  <div className="flex items-center gap-2 p-2">
                     <span className="text-sm font-favorit text-white uppercase leading-none underline-offset-4 decoration-white/60 group-hover:underline">                    VIEW ALL
 </span>
-                    <img alt="" aria-hidden="true" loading="lazy" width="18" height="18" decoding="async" className="[filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-new.svg" />
+                    <img alt="" aria-hidden="true" loading="lazy" width="18" height="18" decoding="async" className="[filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                     <span className="text-sm font-favorit text-white uppercase leading-none underline-offset-4 decoration-white/60 group-hover:underline">                    RESEARCH NOTES
 </span>
                   </div>
@@ -3516,11 +2755,8 @@ export default function Home() {
                   <p className="text-white text-h3-title font-sans">
                     Latest Research.
                   </p>
-                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/blog">                  <span className="inline-block min-w-0 max-w-full">                  <span className="sr-only">                  SEE ALL
-</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                  SEE ALL
-</span>
-</span>
+                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/blog">
+                    <AsciiGlitchRipple animateOn="parentHover">SEE ALL</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -3544,7 +2780,7 @@ export default function Home() {
                   <a className="block border-t border-border md:border-r md:last:border-r-0" href="/blog">                  <div className="flex w-full cursor-pointer flex-col overflow-hidden transition-opacity hover:opacity-90 h-[22rem] md:h-[23rem] lg:h-[24rem]">
                     <div className="relative box-border shrink-0 overflow-hidden border-b border-border h-45 md:h-50 lg:h-54">
                       <div className="relative h-full w-full">
-                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' }} aria-label="Dithered image" role="img">
+                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
                         </canvas>
                       </div>
                     </div>
@@ -3564,7 +2800,7 @@ export default function Home() {
                   <a className="block border-t border-border md:border-r md:last:border-r-0" href="/blog">                  <div className="flex w-full cursor-pointer flex-col overflow-hidden transition-opacity hover:opacity-90 h-[22rem] md:h-[23rem] lg:h-[24rem]">
                     <div className="relative box-border shrink-0 overflow-hidden border-b border-border h-45 md:h-50 lg:h-54">
                       <div className="relative h-full w-full">
-                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' }} aria-label="Dithered image" role="img">
+                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
                         </canvas>
                       </div>
                     </div>
@@ -3584,7 +2820,7 @@ export default function Home() {
                   <a className="block border-t border-border md:border-r md:last:border-r-0" href="/blog">                  <div className="flex w-full cursor-pointer flex-col overflow-hidden transition-opacity hover:opacity-90 h-[22rem] md:h-[23rem] lg:h-[24rem]">
                     <div className="relative box-border shrink-0 overflow-hidden border-b border-border h-45 md:h-50 lg:h-54">
                       <div className="relative h-full w-full">
-                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' }} aria-label="Dithered image" role="img">
+                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
                         </canvas>
                       </div>
                     </div>
@@ -3604,8 +2840,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <div aria-hidden="true" className="relative w-full overflow-hidden bg-surface h-10 md:h-18 lg:h-37.5" data-city-grid-separator="beforeStories">
-            </div>
+            <GlitterGridSeparator size="beforeStories" />
             <section>
               <div className="w-full border border-border flex flex-col">
                 <div className="flex items-start px-5 py-5 md:py-8 lg:py-10 overflow-hidden">
@@ -3614,7 +2849,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex flex-col lg:flex-row">
-                  <a className="relative flex flex-col items-start justify-between h-122.5 p-5 overflow-hidden border-t border-border min-w-0 flex-1 lg:shrink-0 transition-[flex-grow,flex-basis] duration-500 ease-in-out bg-[#101010] lg:grow-3 lg:basis-0" href="/blog">                  <img alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none object-cover object-left opacity-85 transition-transform duration-500 ease-in-out select-none group-hover:scale-[1.03]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' }} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/art/playbook-treasury.webp" />
+                  <a className="relative flex flex-col items-start justify-between h-122.5 p-5 overflow-hidden border-t border-border min-w-0 flex-1 lg:shrink-0 transition-[flex-grow,flex-basis] duration-500 ease-in-out bg-[#101010] lg:grow-3 lg:basis-0" href="/blog">                  <img alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none object-cover object-left opacity-85 transition-transform duration-500 ease-in-out select-none group-hover:scale-[1.03]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/art/playbook-treasury.webp" />
                   <div className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-60 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.035)_0px,rgba(255,255,255,0.035)_1px,transparent_1px,transparent_34px)]" aria-hidden="true">
                   </div>
                   <div className="customer-story-readable-gradient pointer-events-none absolute inset-x-0 bottom-0 h-41.25" aria-hidden="true">
@@ -3631,7 +2866,7 @@ export default function Home() {
                     </p>
                   </div>
 </a>
-                  <a className="relative flex flex-col items-start justify-between h-122.5 p-5 overflow-hidden border-t border-border min-w-0 flex-1 lg:shrink-0 transition-[flex-grow,flex-basis] duration-500 ease-in-out bg-[#101010] lg:grow-0 lg:basis-92.5 lg:border-l" href="/blog">                  <img alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none object-cover object-right opacity-85 transition-transform duration-500 ease-in-out select-none group-hover:scale-[1.03]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' }} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/art/playbook-yield.webp" />
+                  <a className="relative flex flex-col items-start justify-between h-122.5 p-5 overflow-hidden border-t border-border min-w-0 flex-1 lg:shrink-0 transition-[flex-grow,flex-basis] duration-500 ease-in-out bg-[#101010] lg:grow-0 lg:basis-92.5 lg:border-l" href="/blog">                  <img alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none object-cover object-right opacity-85 transition-transform duration-500 ease-in-out select-none group-hover:scale-[1.03]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/art/playbook-yield.webp" />
                   <div className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-60 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.035)_0px,rgba(255,255,255,0.035)_1px,transparent_1px,transparent_34px)]" aria-hidden="true">
                   </div>
                   <div className="customer-story-readable-gradient pointer-events-none absolute inset-x-0 bottom-0 h-41.25" aria-hidden="true">
@@ -3651,8 +2886,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <div aria-hidden="true" className="relative w-full overflow-hidden bg-surface h-11 md:h-20 lg:h-40" data-city-grid-separator="beforeJoin">
-            </div>
+            <GlitterGridSeparator size="beforeJoin" />
             <div className="pb-12 md:pb-16 lg:pb-40">
               <section className="flex flex-col lg:flex-row p-5 justify-between gap-5 lg:gap-0 border border-border">
                 <div className="flex flex-col justify-between w-full lg:max-w-135 min-h-50 lg:min-h-94.25">
@@ -3668,11 +2902,8 @@ export default function Home() {
                       Ship agents that move value under boundaries you define — with the SDK, the CLI, and receipts for everything they do.
                     </p>
                   </div>
-                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white uppercase" href="/app">                  <span className="inline-block min-w-0 max-w-full">                  <span className="sr-only">                  Start building
-</span>
-                  <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                  Start building
-</span>
-</span>
+                  <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white uppercase" href="/app">
+                    <AsciiGlitchRipple animateOn="parentHover">Start building</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -3693,144 +2924,14 @@ export default function Home() {
 </a>
                 </div>
                 <div className="relative w-full h-50 md:h-70 lg:h-auto lg:max-w-204.75 lg:self-stretch overflow-hidden">
-                  <img alt="Nexis platform artwork" loading="lazy" decoding="async" className="object-cover object-center opacity-90 saturate-[1.12]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' }} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/figma/workflows-background.png" />
+                  <img alt="Nexis platform artwork" loading="lazy" decoding="async" className="object-cover object-center opacity-90 saturate-[1.12]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/figma/workflows-background.png" />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(14,14,14,0.9)_0%,rgba(14,14,14,0.25)_40%,rgba(14,14,14,0)_100%)]" aria-hidden="true">
                   </div>
                 </div>
               </section>
             </div>
           </main>
-      <footer className="relative isolate w-full overflow-hidden bg-surface-raised pb-10" aria-label="Footer">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-surface-raised" data-footer-shader-preset="a6ccb6de-4c60-4ef8-8920-5b199cccb207">
-          </div>
-          <div className="relative z-10 px-10 pt-8 pb-5 md:pt-14 md:gap-14 lg:pt-20 flex flex-col gap-10 lg:gap-20 max-w-350 mx-auto">
-            <div className="flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-0">
-              <div className="w-full flex flex-none flex-col gap-22 items-start lg:w-2/3">
-                <a aria-label="Nexis home" href="/">                <img alt="Nexis" loading="lazy" width="101" height="17" decoding="async" className="h-auto w-auto [filter:invert(1)]" style={{ color: 'transparent' }} src="/assets/logo-dark.svg" />
-</a>
-                <div className="flex flex-col gap-20 w-full">
-                  <div className="relative hidden h-51.25 w-full max-w-166.5 md:block" aria-label="Own your execution.">
-                    <canvas className="absolute inset-0 cursor-crosshair">
-                    </canvas>
-                    <span className="sr-only">                    Own your execution.
-</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    Launch Nexis
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    Launch Nexis
-</span>
-</span>
-                    <div className="w-3 h-3 overflow-hidden relative">
-                      <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
-                        <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                          <path d="M4.75 9.125L7.875 6L4.75 2.875" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square">
-                          </path>
-                        </svg>
-                        <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                          <path d="M4.75 9.125L7.875 6L4.75 2.875" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square">
-                          </path>
-                        </svg>
-                      </div>
-                    </div>
-                    <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">                    <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white"></span>
-                    <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white"></span>
-                    <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white"></span>
-                    <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white"></span>
-</span>
-</a>
-                    <a className="group inline-flex h-7 w-fit self-start shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-md border border-white/16 bg-white/10 px-2.5 font-favorit text-xs leading-none font-medium uppercase text-white/85 shadow-none backdrop-blur-md transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/docs">                    <span className="inline-block min-w-0 max-w-full">                    <span className="sr-only">                    Docs
-</span>
-                    <span aria-hidden="true" className="inline-block whitespace-pre select-none transition-colors duration-200">                    Docs
-</span>
-</span>
-                    <span className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true">                    <span className="absolute left-0 top-0 h-1.5 w-1.5 border-l border-t border-white"></span>
-                    <span className="absolute right-0 top-0 h-1.5 w-1.5 border-r border-t border-white"></span>
-                    <span className="absolute bottom-0 left-0 h-1.5 w-1.5 border-b border-l border-white"></span>
-                    <span className="absolute bottom-0 right-0 h-1.5 w-1.5 border-b border-r border-white"></span>
-</span>
-</a>
-                  </div>
-                </div>
-              </div>
-              <div className="flex-1 flex flex-col gap-20 items-start">
-                <div className="flex flex-wrap gap-20 items-start">
-                  <div className="flex flex-col gap-5 items-start">
-                    <p className="font-favorit text-xs text-white/60 uppercase leading-none">
-                      Platform
-                    </p>
-                    <div className="flex flex-col gap-3 items-start">
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#platform">                      Platform
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#payments">                      Payments
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#markets">                      Markets
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#research">                      Research
-</a>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-5 items-start">
-                    <p className="font-favorit text-xs text-white/60 uppercase leading-none">
-                      Company
-                    </p>
-                    <div className="flex flex-col gap-3 items-start">
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/about">                      About
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/blog">                      Blog
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/contact">                      Contact
-</a>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-5 items-start">
-                    <p className="font-favorit text-xs text-white/60 uppercase leading-none">
-                      Community
-                    </p>
-                    <div className="flex flex-col gap-3 items-start">
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="https://testflight.apple.com/join/TSb64zQy" rel="noreferrer" target="_blank">                      iOS TestFlight
-</a>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-20 items-start">
-                  <div className="flex flex-col gap-5 items-start">
-                    <p className="font-favorit text-xs text-white/60 uppercase leading-none">
-                      Resources
-                    </p>
-                    <div className="flex flex-col gap-3 items-start">
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/docs">                      Docs
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/blog">                      Writings
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/benchmarks">                      Benchmarks
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/benchmarks/leaderboard">                      Leaderboard
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/app">                      Dashboard
-</a>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-5 items-start">
-                    <p className="font-favorit text-xs text-white/60 uppercase leading-none">
-                      Terms
-                    </p>
-                    <div className="flex flex-col gap-3 items-start">
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/terms">                      Terms of Service
-</a>
-                      <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/privacy">                      Privacy Policy
-</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between font-favorit text-sm text-white uppercase">
-              <span>              © 2026 Nexis, Inc.
-</span>
-            </div>
-          </div>
-        </footer>
+      <Footer />
     </div>
   );
 }
