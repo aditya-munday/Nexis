@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import RouteLifecycle from "./components/RouteLifecycle";
 
 export const metadata: Metadata = {
   title: "Nex Copilot — The Autonomous Economy Runs on Nexis",
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="font-sans geist_f3917156-module__8abXJW__variable geist_mono_8135f3c4-module__mC3Wtq__variable chivo_mono_b95da7ba-module__6lSSaG__variable">
       <head>
+        <link rel="alternate" type="application/rss+xml" title="Nexis RSS" href="/rss.xml" />
         <link rel="stylesheet" href="/module/css/0_lip61trs5ex.css" />
         <link rel="stylesheet" href="/module/css/0z2w9nzo7p43w.css" />
         <link rel="stylesheet" href="/module/css/0b4pon~wu5796.css" />
@@ -28,15 +30,10 @@ export default function RootLayout({
         <link rel="stylesheet" href="/module/css/046d217hzyb~2.css" />
         <link rel="stylesheet" href="/module/css/04kuxjfu0zhd0.css" />
         <link rel="stylesheet" href="/module/css/14d9izr73949a.css" />
-        <script src="/unicornStudio.umd.js" async />
       </head>
       <body className="inter_d50ff178-module__JsvCAG__variable m-0">
+        <RouteLifecycle />
         {children}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.addEventListener('load',function(){if(window.UnicornStudio){try{window.UnicornStudio.init()}catch(e){}}});`
-          }}
-        />
       </body>
     </html>
   );

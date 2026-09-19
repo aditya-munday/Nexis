@@ -53,17 +53,21 @@ export default function RouteBoard() {
   const columns = tab === "swap" ? SWAP_ROUTES : BRIDGE_ROUTES;
 
   return (
-    <div className="flex flex-col overflow-hidden">
-      <div className="px-3 py-3">
-        <p className="text-2xs text-white/25 uppercase font-favorit">FIG.5</p>
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-[#090909]">
+      <div className="flex items-center justify-between border-b border-border/70 px-5 py-3">
+        <p className="text-2xs text-white/25 uppercase font-favorit">FIG.6</p>
+        <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-white/35">
+          <span className="size-1.5 rounded-full bg-[#85ed75] shadow-[0_0_8px_rgba(133,237,117,0.75)]" />
+          12 venues live
+        </div>
       </div>
-      <div className="flex-1 flex flex-col overflow-hidden py-4">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden px-5 pb-5 pt-4">
         {/* Toggle Switch */}
-        <div className="border border-border p-0.5 flex items-center gap-3.5 self-center w-80 mb-4 bg-black/40">
+        <div className="mb-4 ml-auto flex w-92 border border-border bg-black/40 p-0.5">
           <button
             type="button"
             onClick={() => setTab("swap")}
-            className={`flex flex-1 min-w-0 items-center justify-center gap-1.5 px-2 py-1 text-xs font-mono uppercase transition-colors cursor-pointer ${
+            className={`flex flex-1 min-w-0 items-center justify-center gap-2 px-2 py-2 font-mono text-xs uppercase transition-colors cursor-pointer ${
               tab === "swap" ? "bg-white/10 text-white font-medium shadow-sm" : "text-white/40 hover:text-white/70"
             }`}
           >
@@ -73,7 +77,7 @@ export default function RouteBoard() {
           <button
             type="button"
             onClick={() => setTab("bridge")}
-            className={`flex flex-1 min-w-0 items-center justify-center gap-1.5 px-2 py-1 text-xs font-mono uppercase transition-colors cursor-pointer ${
+            className={`flex flex-1 min-w-0 items-center justify-center gap-2 px-2 py-2 font-mono text-xs uppercase transition-colors cursor-pointer ${
               tab === "bridge" ? "bg-white/10 text-white font-medium shadow-sm" : "text-white/40 hover:text-white/70"
             }`}
           >
@@ -83,24 +87,28 @@ export default function RouteBoard() {
         </div>
 
         {/* Route Quotes Matrix */}
-        <div className="flex-1 flex items-start justify-center overflow-hidden pt-2.5">
-          <div className="flex justify-center gap-2 overflow-x-auto w-full transition-all duration-300">
+        <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+          <div className="flex h-full min-h-0 w-full justify-center gap-3 overflow-x-auto pb-0 transition-all duration-300">
             {columns.map((col, colIdx) => (
               <div
                 key={colIdx}
-                className={`w-72 md:w-80 shrink-0 flex flex-col transition-opacity duration-300 ${
+                className={`w-72 md:w-80 shrink-0 flex h-full min-h-0 flex-col transition-opacity duration-300 ${
                   colIdx === 1 ? "opacity-100" : "opacity-35 hover:opacity-80"
                 }`}
               >
                 {col.map((route, routeIdx) => (
                   <div
                     key={routeIdx}
-                    className={`border -mt-px first:mt-0 p-3.5 flex flex-col gap-3 font-sans bg-[#111111]/70 backdrop-blur-sm transition-all ${
+                    className={`relative flex min-h-0 flex-1 flex-col justify-between border -mt-px first:mt-0 p-3.5 font-sans backdrop-blur-sm transition-all ${
                       route.active
-                        ? "border-[#85ed75]/40 shadow-[0_0_15px_rgba(133,237,117,0.06)]"
-                        : "border-border hover:border-white/20"
+                        ? "border-[#85ed75]/45 bg-[linear-gradient(135deg,rgba(133,237,117,0.09),rgba(17,17,17,0.92)_42%)] shadow-[inset_0_0_28px_rgba(133,237,117,0.045)]"
+                        : "border-border bg-[#111111]/70 hover:border-white/20 hover:bg-[#151515]"
                     }`}
                   >
+                    <div className="mb-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-white/25">
+                      <span>Route {String(routeIdx + 1).padStart(2, "0")}</span>
+                      <span className={route.active ? "text-[#85ed75]/80" : "text-white/30"}>{route.active ? "Selected" : "Quote"}</span>
+                    </div>
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-start gap-2.5">
                         <div className="flex flex-col gap-1">
@@ -126,7 +134,7 @@ export default function RouteBoard() {
                         )}
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-mono text-white/40">
+                    <div className="mt-4 border-t border-white/8 pt-2.5 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[10px] font-mono text-white/40">
                       {route.stats.map((s, idx) => (
                         <span key={idx} className="contents">
                           {idx > 0 && <span className="text-white/20">·</span>}
@@ -134,6 +142,12 @@ export default function RouteBoard() {
                         </span>
                       ))}
                     </div>
+                    {route.active && (
+                      <div className="mt-2 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wide text-white/30">
+                        <span className="h-px flex-1 bg-[#85ed75]/25" />
+                        policy verified
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

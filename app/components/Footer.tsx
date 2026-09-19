@@ -6,6 +6,226 @@ import AsciiGlitchRipple from "./AsciiGlitchRipple";
 
 const SLOGAN = "Own your execution.";
 
+/* ─── Localized glass lens / flowing dot field ─── */
+function FooterLensField() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const footer = canvas?.closest("footer");
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !footer || !ctx) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const pointer = {
+      x: -1000,
+      y: -1000,
+      targetX: -1000,
+      targetY: -1000,
+      previousX: -1000,
+      previousY: -1000,
+      velocity: 0,
+      energy: 0,
+    };
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let raf = 0;
+    let lastFrameTime = 0;
+    let isInView = false;
+    let activeFrames = 0;
+    let time = 0;
+    let grain: Array<{ x: number; y: number; alpha: number }> = [];
+
+    const resize = () => {
+      if (!isInView) return;
+      const rect = footer.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      grain = Array.from({ length: Math.round((width * height) / 520) }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        alpha: 0.018 + Math.random() * 0.042,
+      }));
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      const rect = footer.getBoundingClientRect();
+      pointer.targetX = event.clientX - rect.left;
+      pointer.targetY = event.clientY - rect.top;
+      if (pointer.previousX > -500) {
+        const dx = pointer.targetX - pointer.previousX;
+        const dy = pointer.targetY - pointer.previousY;
+        pointer.velocity = Math.min(32, Math.hypot(dx, dy));
+        pointer.energy = Math.min(1, pointer.energy + pointer.velocity * 0.012);
+      }
+      pointer.previousX = pointer.targetX;
+      pointer.previousY = pointer.targetY;
+      activeFrames = 14;
+      requestRender();
+    };
+
+    const onPointerLeave = () => {
+      pointer.targetX = -1000;
+      pointer.targetY = -1000;
+      pointer.velocity = 0;
+      pointer.energy = 0;
+      activeFrames = 14;
+      requestRender();
+    };
+
+    const requestRender = () => {
+      if (isInView && !document.hidden && !raf) {
+        raf = requestAnimationFrame(render);
+      }
+    };
+
+    const render = (now: number) => {
+      raf = 0;
+      if (!isInView || document.hidden) return;
+      if (!reducedMotion && now - lastFrameTime < 32) {
+        requestRender();
+        return;
+      }
+      lastFrameTime = now;
+      time += 0.016;
+      pointer.x += (pointer.targetX - pointer.x) * 0.12;
+      pointer.y += (pointer.targetY - pointer.y) * 0.12;
+      pointer.energy *= pointer.velocity > 1 ? 0.997 : 0.965;
+      pointer.velocity *= 0.9;
+      ctx.clearRect(0, 0, width, height);
+
+      for (const speck of grain) {
+        ctx.fillStyle = `rgba(210, 218, 232, ${speck.alpha})`;
+        ctx.fillRect(speck.x, speck.y, 1, 1);
+      }
+
+      const step = Math.max(17, Math.min(23, width / 38));
+      const lensRadius = Math.min(360, Math.max(260, width * 0.42));
+      const active = pointer.x > -500 && !reducedMotion;
+      const cols = Math.ceil(width / step) + 1;
+      const rows = Math.ceil(height / step) + 1;
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let col = 0; col < cols; col += 1) {
+          const baseX = col * step + (row % 2 ? step * 0.5 : 0);
+          const baseY = row * step;
+          const dx = baseX - pointer.x;
+          const dy = baseY - pointer.y;
+          const distance = Math.hypot(dx, dy);
+          const reveal = active
+            ? Math.max(0, 1 - distance / lensRadius)
+            : 0;
+          const influence = reveal * reveal * (3 - 2 * reveal);
+          const wave = active
+            ? Math.sin(distance * 0.095 - time * 4.5) * influence * (7 + pointer.velocity * 0.3)
+            : 0;
+          const angle = Math.atan2(dy, dx);
+          const x = baseX + Math.cos(angle) * wave;
+          const y = baseY + Math.sin(angle) * wave;
+          const size = 1.4 + influence * (7.5 + pointer.velocity * 0.12);
+          const alpha = influence * 0.82;
+
+          if (influence > 0.02) {
+            const fracture = pointer.energy * influence;
+            const fractureX = Math.cos(angle) * (1.5 + fracture * 8);
+            const fractureY = Math.sin(angle) * (1.5 + fracture * 8);
+
+            if (fracture > 0.08) {
+              ctx.save();
+              ctx.globalCompositeOperation = "screen";
+              ctx.fillStyle = `rgba(255, 38, 92, ${fracture * 0.62})`;
+              ctx.beginPath();
+              ctx.arc(x - fractureX, y - fractureY, size * (0.55 + fracture * 0.2), 0, Math.PI * 2);
+              ctx.fill();
+              ctx.fillStyle = `rgba(48, 212, 255, ${fracture * 0.62})`;
+              ctx.beginPath();
+              ctx.arc(x + fractureX, y + fractureY, size * (0.55 + fracture * 0.2), 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
+            }
+
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.arc(x + Math.sin(time * 5 + distance) * fracture * 1.5, y, size, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (fracture > 0.2) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(190, 92, 255, ${fracture * 0.5})`;
+              ctx.lineWidth = 0.8 + fracture * 1.2;
+              ctx.arc(x, y, size * 1.16, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      if (!reducedMotion && activeFrames > 0) {
+        activeFrames -= 1;
+        requestRender();
+      }
+    };
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(footer);
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isInView = Boolean(entry?.isIntersecting);
+        if (isInView) {
+          resize();
+          lastFrameTime = 0;
+          requestRender();
+        } else {
+          cancelAnimationFrame(raf);
+          raf = 0;
+          canvas.width = 1;
+          canvas.height = 1;
+          grain = [];
+        }
+      },
+      { rootMargin: "150px" }
+    );
+    visibilityObserver.observe(footer);
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      } else if (isInView) {
+        requestRender();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    footer.addEventListener("pointermove", onPointerMove);
+    footer.addEventListener("pointerleave", onPointerLeave);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+      visibilityObserver.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      footer.removeEventListener("pointermove", onPointerMove);
+      footer.removeEventListener("pointerleave", onPointerLeave);
+      canvas.width = 1;
+      canvas.height = 1;
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none absolute inset-0 h-full w-full"
+      aria-hidden="true"
+    />
+  );
+}
+
 /* ─── Dot-text canvas ("Own your execution." in pixel dots) ─── */
 function FooterDotCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,7 +245,7 @@ function FooterDotCanvas() {
       const parent = canvas.parentElement;
       if (!parent || parent.getBoundingClientRect().width === 0) return;
       const rect = parent.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
 
       canvas.width = Math.round(rect.width * dpr);
       canvas.height = Math.round(rect.height * dpr);
@@ -139,6 +359,9 @@ function FooterGlassMatrix() {
 
     let frame = 0;
     let raf = 0;
+    let lastFrameTime = 0;
+    let isInView = false;
+    let activeFrames = 0;
 
     // Mouse & interaction state
     const mouse = {
@@ -177,10 +400,11 @@ function FooterGlassMatrix() {
     let width = 0;
     let height = 0;
     const resize = () => {
+      if (!isInView) return;
       const parent = canvas.parentElement;
       if (!parent) return;
       const rect = parent.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
       width = rect.width;
       height = rect.height;
       canvas.width = Math.round(width * dpr);
@@ -189,7 +413,6 @@ function FooterGlassMatrix() {
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-    resize();
     window.addEventListener("resize", resize);
 
     /* ─── 1. Build 3D Volumetric Rounded Cube Model ─── */
@@ -211,7 +434,7 @@ function FooterGlassMatrix() {
     };
 
     const cubeVertices: CubeVertex[] = [];
-    const FACE_GRID = 13; // 13x13 grid per face = 169 points * 6 = 1014 vertices
+    const FACE_GRID = 10; // 10x10 grid per face = 600 vertices; visually dense, materially lighter.
     const CUBE_SIZE = 220; // base cube half-extent in 3D units
 
     // Directional light vector for calm state (upper-right top light)
@@ -332,6 +555,13 @@ function FooterGlassMatrix() {
       chromatic: 0,
       isAlt: v.isAlt,
     }));
+    const sortedDots = [...cubeParticles];
+
+    const requestRender = () => {
+      if (isInView && !document.hidden && !raf) {
+        raf = requestAnimationFrame(render);
+      }
+    };
 
     // Pointer events on footer
     const footerEl = canvas.closest("footer");
@@ -353,15 +583,16 @@ function FooterGlassMatrix() {
       mouse.x = x;
       mouse.y = y;
       mouse.isHovered = true;
+      activeFrames = 54;
 
       // Spawn water ripple if cursor moved enough distance
       const dRipple = Math.hypot(x - mouse.lastRippleX, y - mouse.lastRippleY);
-      if (dRipple > 26 && ripples.length < 9) {
+      if (dRipple > 26 && ripples.length < 6) {
         ripples.push({
           x,
           y,
           age: 0,
-          maxAge: 85,
+          maxAge: 42,
           speed: 4.2,
           wavelength: 36,
           strength: Math.min(1.6, 0.45 + mouse.speed * 0.05),
@@ -369,11 +600,14 @@ function FooterGlassMatrix() {
         mouse.lastRippleX = x;
         mouse.lastRippleY = y;
       }
+      requestRender();
     };
 
     const handlePointerLeave = () => {
       mouse.isHovered = false;
       mouse.speed = 0;
+      activeFrames = 42;
+      requestRender();
     };
 
     if (footerEl) {
@@ -466,7 +700,14 @@ function FooterGlassMatrix() {
     };
 
     // Render loop
-    const render = () => {
+    const render = (now: number) => {
+      raf = 0;
+      if (!isInView || document.hidden) return;
+      if (!prefersReducedMotion && now - lastFrameTime < 32) {
+        requestRender();
+        return;
+      }
+      lastFrameTime = now;
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       frame++;
@@ -751,7 +992,7 @@ function FooterGlassMatrix() {
 
       /* ─── 7. Render 3D Halftone Dots with Depth & Jiggle ─── */
       // Sort by depth (back to front) for crisp occlusion
-      const sortedDots = [...cubeParticles].sort((a, b) => a.z - b.z);
+      sortedDots.sort((a, b) => a.z - b.z);
 
       for (let i = 0; i < sortedDots.length; i++) {
         const dot = sortedDots[i];
@@ -803,10 +1044,38 @@ function FooterGlassMatrix() {
       }
 
       ctx.globalAlpha = 1.0;
-      raf = requestAnimationFrame(render);
+      if (!prefersReducedMotion && activeFrames > 0) {
+        activeFrames -= 1;
+        requestRender();
+      }
     };
 
-    raf = requestAnimationFrame(render);
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isInView = Boolean(entry?.isIntersecting);
+        if (isInView) {
+          resize();
+          lastFrameTime = 0;
+          requestRender();
+        } else {
+          cancelAnimationFrame(raf);
+          raf = 0;
+          canvas.width = 1;
+          canvas.height = 1;
+        }
+      },
+      { rootMargin: "150px" }
+    );
+    visibilityObserver.observe(canvas);
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      } else if (isInView) {
+        requestRender();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       window.removeEventListener("resize", resize);
@@ -815,6 +1084,10 @@ function FooterGlassMatrix() {
         footerEl.removeEventListener("pointerleave", handlePointerLeave);
       }
       cancelAnimationFrame(raf);
+      visibilityObserver.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      canvas.width = 1;
+      canvas.height = 1;
     };
   }, []);
 
@@ -830,15 +1103,11 @@ function FooterGlassMatrix() {
 export default function Footer() {
   return (
     <footer className="relative isolate w-full overflow-hidden bg-surface-raised pb-10" aria-label="Footer">
-      {/* Glass matrix background shader */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        data-footer-shader-preset="a6ccb6de-4c60-4ef8-8920-5b199cccb207"
-      >
-        <FooterGlassMatrix />
-      </div>
-
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100"
+        style={{ backgroundImage: "url('/assets/footer/dark-grain.png')" }}
+      />
       <div className="relative z-10 px-10 pt-8 pb-5 md:pt-14 md:gap-14 lg:pt-20 flex flex-col gap-10 lg:gap-20 max-w-350 mx-auto">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-0">
           <div className="w-full flex flex-none flex-col gap-22 items-start lg:w-2/3">

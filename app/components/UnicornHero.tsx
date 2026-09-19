@@ -6,6 +6,12 @@ interface Props {
   projectId: string;
 }
 
+interface UnicornScene {
+  destroy?: () => void;
+}
+
+let unicornLoader: Promise<void> | null = null;
+
 declare global {
   interface Window {
     UnicornStudio?: {
@@ -17,15 +23,32 @@ declare global {
         dpi?: number;
         altText?: string;
         ariaLabel?: string;
-      }) => Promise<unknown>;
+      }) => Promise<UnicornScene>;
       init: () => Promise<unknown>;
+      destroy?: () => void;
     };
   }
+}
+
+function loadUnicornStudio() {
+  if (window.UnicornStudio) return Promise.resolve();
+  if (unicornLoader) return unicornLoader;
+
+  unicornLoader = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "/unicornStudio.umd.js";
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Unable to load the hero runtime."));
+    document.head.appendChild(script);
+  });
+  return unicornLoader;
 }
 
 export default function UnicornHero({ projectId }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const initialized = useRef(false);
+  const sceneRef = useRef<UnicornScene | null>(null);
 
   useEffect(() => {
     // Parallax scroll handler
@@ -49,35 +72,67 @@ export default function UnicornHero({ projectId }: Props) {
 
   useEffect(() => {
     if (initialized.current) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const tryInit = () => {
+    let cancelled = false;
+
+    const tryInit = async () => {
       const el = containerRef.current;
       if (!el || !window.UnicornStudio?.addScene) return false;
       initialized.current = true;
-      window.UnicornStudio.addScene({
-        projectId,
-        element: el,
-        lazyLoad: false,
-        scale: 1,
-        dpi: Math.min(1.5, window.devicePixelRatio || 1),
-        altText: "",
-        ariaLabel: "",
-      }).catch((err) => {
+      try {
+        const scene = await window.UnicornStudio.addScene({
+          projectId,
+          element: el,
+          lazyLoad: true,
+          scale: 1,
+          dpi: Math.min(1.5, window.devicePixelRatio || 1),
+          altText: "",
+          ariaLabel: "",
+        });
+        if (cancelled) {
+          scene.destroy?.();
+          return false;
+        }
+        sceneRef.current = scene;
+      } catch (err) {
+        initialized.current = false;
         console.warn("UnicornStudio scene init fallback:", err);
-      });
+        return false;
+      }
       return true;
     };
 
-    if (!tryInit()) {
-      const iv = setInterval(() => {
-        if (tryInit()) clearInterval(iv);
-      }, 100);
-      const timeout = setTimeout(() => clearInterval(iv), 5000);
-      return () => {
-        clearInterval(iv);
-        clearTimeout(timeout);
-      };
-    }
+    const start = async () => {
+      try {
+        await loadUnicornStudio();
+        if (!cancelled) await tryInit();
+      } catch (error) {
+        console.warn("UnicornStudio runtime fallback:", error);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        observer.disconnect();
+        start();
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(container);
+
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+      sceneRef.current?.destroy?.();
+      sceneRef.current = null;
+      initialized.current = false;
+      // Unicorn Studio keeps a module-level scene registry. This route owns its
+      // only scene, so release the retained WebGL context and global listeners.
+      window.UnicornStudio?.destroy?.();
+    };
   }, [projectId]);
 
   return (
@@ -86,7 +141,7 @@ export default function UnicornHero({ projectId }: Props) {
       data-us-project={projectId}
       data-us-scale="1"
       data-us-dpi="1.5"
-      data-us-lazyload="false"
+      data-us-lazyload="true"
       className="absolute inset-0 h-full w-full pointer-events-none"
       aria-hidden="true"
     />

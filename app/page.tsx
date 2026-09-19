@@ -9,6 +9,7 @@ import MarketsGraph from "./components/MarketsGraph";
 import RouteBoard from "./components/RouteBoard";
 import AsciiGlitchRipple from "./components/AsciiGlitchRipple";
 import OperatorPlaybooks from "./components/OperatorPlaybooks";
+import DitheredCanvas from "./components/DitheredCanvas";
 
 const POLICY_KIT_CODE = `import { policy } from "@nexis/agent"
 export const treasury = policy({
@@ -2665,8 +2666,7 @@ export default function Home() {
               <div className="flex flex-col lg:flex-row border-b border-border">
                 <a className="group flex-1 border-b lg:border-b-0 lg:border-r border-border bg-research-bg flex flex-col min-h-95 md:min-h-120 relative overflow-hidden font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research">                <div className="pointer-events-none absolute inset-0 opacity-70 transition-opacity duration-300 group-hover:opacity-90">
                   <div className="absolute inset-0 h-full w-full">
-                    <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
-                    </canvas>
+                    <DitheredCanvas type="research" index={0} />
                   </div>
                   <div className="absolute inset-0 bg-linear-to-b from-black/10 via-research-bg/35 to-research-bg/90">
                   </div>
@@ -2781,8 +2781,7 @@ export default function Home() {
                   <a className="block border-t border-border md:border-r md:last:border-r-0" href="/blog">                  <div className="flex w-full cursor-pointer flex-col overflow-hidden transition-opacity hover:opacity-90 h-[22rem] md:h-[23rem] lg:h-[24rem]">
                     <div className="relative box-border shrink-0 overflow-hidden border-b border-border h-45 md:h-50 lg:h-54">
                       <div className="relative h-full w-full">
-                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
-                        </canvas>
+                        <DitheredCanvas type="research" index={1} />
                       </div>
                     </div>
                     <div className="flex-1 p-5 flex flex-col gap-4">
@@ -2801,8 +2800,7 @@ export default function Home() {
                   <a className="block border-t border-border md:border-r md:last:border-r-0" href="/blog">                  <div className="flex w-full cursor-pointer flex-col overflow-hidden transition-opacity hover:opacity-90 h-[22rem] md:h-[23rem] lg:h-[24rem]">
                     <div className="relative box-border shrink-0 overflow-hidden border-b border-border h-45 md:h-50 lg:h-54">
                       <div className="relative h-full w-full">
-                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
-                        </canvas>
+                        <DitheredCanvas type="research" index={2} />
                       </div>
                     </div>
                     <div className="flex-1 p-5 flex flex-col gap-4">
@@ -2821,8 +2819,7 @@ export default function Home() {
                   <a className="block border-t border-border md:border-r md:last:border-r-0" href="/blog">                  <div className="flex w-full cursor-pointer flex-col overflow-hidden transition-opacity hover:opacity-90 h-[22rem] md:h-[23rem] lg:h-[24rem]">
                     <div className="relative box-border shrink-0 overflow-hidden border-b border-border h-45 md:h-50 lg:h-54">
                       <div className="relative h-full w-full">
-                        <canvas className="absolute inset-0 h-full w-full" style={{ imageRendering: 'pixelated' } as React.CSSProperties} aria-label="Dithered image" role="img">
-                        </canvas>
+                        <DitheredCanvas type="research" index={0} />
                       </div>
                     </div>
                     <div className="flex-1 p-5 flex flex-col gap-4">

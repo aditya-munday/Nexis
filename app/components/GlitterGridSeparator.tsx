@@ -51,6 +51,8 @@ export default function GlitterGridSeparator({ size = "chapter", className = "" 
     let width = 0;
     let height = 0;
     let rafId = 0;
+    let lastFrameTime = 0;
+    let isInView = false;
     let nodes: GridNode[] = [];
     let pulses: DataPulse[] = [];
     let nextPulseTime = 0;
@@ -103,6 +105,13 @@ export default function GlitterGridSeparator({ size = "chapter", className = "" 
     };
 
     const render = (time: number) => {
+      rafId = 0;
+      if (!isInView || document.hidden) return;
+      if (!prefersReducedMotion && time - lastFrameTime < 32) {
+        rafId = requestAnimationFrame(render);
+        return;
+      }
+      lastFrameTime = time;
       ctx.clearRect(0, 0, width, height);
 
       // Spawn periodic horizontal data comet pulses along grid rows
@@ -249,18 +258,38 @@ export default function GlitterGridSeparator({ size = "chapter", className = "" 
     const observer = new ResizeObserver(resize);
     observer.observe(container);
 
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isInView = Boolean(entry?.isIntersecting);
+        if (isInView && !prefersReducedMotion && !rafId && !document.hidden) {
+          lastFrameTime = 0;
+          rafId = requestAnimationFrame(render);
+        }
+        if (isInView && prefersReducedMotion) render(0);
+      },
+      { rootMargin: "150px" }
+    );
+    visibilityObserver.observe(container);
+
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      } else if (isInView && !prefersReducedMotion && !rafId) {
+        lastFrameTime = 0;
+        rafId = requestAnimationFrame(render);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
     container.addEventListener("pointermove", handlePointerMove);
     container.addEventListener("pointerleave", handlePointerLeave);
-
-    if (!prefersReducedMotion) {
-      rafId = requestAnimationFrame(render);
-    } else {
-      render(0);
-    }
 
     return () => {
       cancelAnimationFrame(rafId);
       observer.disconnect();
+      visibilityObserver.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       container.removeEventListener("pointermove", handlePointerMove);
       container.removeEventListener("pointerleave", handlePointerLeave);
     };

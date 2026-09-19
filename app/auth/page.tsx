@@ -16,6 +16,7 @@ function AuthShaderPanel() {
 
     let frame = 0;
     let raf = 0;
+    let lastFrameTime = 0;
 
     const resize = () => {
       if (!canvas) return;
@@ -29,7 +30,14 @@ function AuthShaderPanel() {
     resize();
     window.addEventListener("resize", resize);
 
-    const draw = () => {
+    const draw = (now: number) => {
+      raf = 0;
+      if (document.hidden) return;
+      if (now - lastFrameTime < 32) {
+        raf = requestAnimationFrame(draw);
+        return;
+      }
+      lastFrameTime = now;
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       frame++;
@@ -76,8 +84,19 @@ function AuthShaderPanel() {
     };
 
     raf = requestAnimationFrame(draw);
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      } else if (!raf) {
+        lastFrameTime = 0;
+        raf = requestAnimationFrame(draw);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
     return () => {
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       cancelAnimationFrame(raf);
     };
   }, []);

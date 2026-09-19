@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from "react";
 
 const RESEARCH_IMAGES = [
-  "/assets/nex-landing/art/workflows-background.png",
+  "/assets/nex-landing/figma/workflows-background.png",
   "/assets/backgrounds/compute-bg.png",
   "/assets/backgrounds/lab.png",
 ];
@@ -14,7 +14,6 @@ const PLAYBOOK_IMAGES = [
 ];
 
 function dither(
-  ctx: CanvasRenderingContext2D,
   imgData: ImageData,
   w: number,
   h: number
@@ -42,7 +41,6 @@ function dither(
       distribute(x + 1, y + 1, 1 / 16);
     }
   }
-  ctx.putImageData(imgData, 0, 0);
 }
 
 interface DitheredCanvasProps {
@@ -70,28 +68,28 @@ export default function DitheredCanvas({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const parent = canvas.parentElement;
+    if (!parent) return;
+
     const imageSrc =
       src ||
       (type === "playbook"
         ? PLAYBOOK_IMAGES[index % PLAYBOOK_IMAGES.length]
         : RESEARCH_IMAGES[index % RESEARCH_IMAGES.length]);
 
-    const img = new window.Image();
-    img.crossOrigin = "anonymous";
-    img.onload = () => {
-      const parent = canvas.parentElement;
-      const w = parent?.clientWidth || 400;
-      const h = parent?.clientHeight || 225;
-      canvas.width = w;
-      canvas.height = h;
-      ctx.drawImage(img, 0, 0, w, h);
-      const imgData = ctx.getImageData(0, 0, w, h);
-      dither(ctx, imgData, w, h);
+    let image: HTMLImageElement | null = null;
+    let isVisible = false;
+    let resizeFrame = 0;
+
+    const dimensions = () => {
+      const width = parent.clientWidth || 400;
+      const height = parent.clientHeight || 225;
+      const scale = Math.min(1, 640 / Math.max(width, height));
+      return { width: Math.max(1, Math.round(width * scale)), height: Math.max(1, Math.round(height * scale)) };
     };
-    img.onerror = () => {
-      const parent = canvas.parentElement;
-      const w = parent?.clientWidth || 400;
-      const h = parent?.clientHeight || 225;
+
+    const drawFallback = () => {
+      const { width: w, height: h } = dimensions();
       canvas.width = w;
       canvas.height = h;
       ctx.fillStyle = "#0a0a0a";
@@ -111,7 +109,55 @@ export default function DitheredCanvas({
         }
       }
     };
-    img.src = imageSrc!;
+
+    const drawImage = () => {
+      if (!image?.complete || !image.naturalWidth) return;
+      const { width: w, height: h } = dimensions();
+      canvas.width = w;
+      canvas.height = h;
+      ctx.drawImage(image, 0, 0, w, h);
+      const imgData = ctx.getImageData(0, 0, w, h);
+      dither(imgData, w, h);
+      ctx.putImageData(imgData, 0, 0);
+    };
+
+    const load = () => {
+      if (image) return;
+      image = new window.Image();
+      image.decoding = "async";
+      image.onload = drawImage;
+      image.onerror = drawFallback;
+      image.src = imageSrc!;
+    };
+
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = Boolean(entry?.isIntersecting);
+        if (isVisible) load();
+      },
+      { rootMargin: "250px" }
+    );
+    intersectionObserver.observe(parent);
+
+    const resizeObserver = new ResizeObserver(() => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        if (isVisible && image?.complete) drawImage();
+      });
+    });
+    resizeObserver.observe(parent);
+
+    return () => {
+      cancelAnimationFrame(resizeFrame);
+      intersectionObserver.disconnect();
+      resizeObserver.disconnect();
+      if (image) {
+        image.onload = null;
+        image.onerror = null;
+      }
+      canvas.width = 1;
+      canvas.height = 1;
+    };
   }, [src, index, type]);
 
   return (
