@@ -8,6 +8,7 @@ import GlitterGridSeparator from "./components/GlitterGridSeparator";
 import MarketsGraph from "./components/MarketsGraph";
 import RouteBoard from "./components/RouteBoard";
 import AsciiGlitchRipple from "./components/AsciiGlitchRipple";
+import OperatorPlaybooks from "./components/OperatorPlaybooks";
 
 const POLICY_KIT_CODE = `import { policy } from "@nexis/agent"
 export const treasury = policy({
@@ -2841,51 +2842,7 @@ export default function Home() {
               </div>
             </section>
             <GlitterGridSeparator size="beforeStories" />
-            <section>
-              <div className="w-full border border-border flex flex-col">
-                <div className="flex items-start px-5 py-5 md:py-8 lg:py-10 overflow-hidden">
-                  <p className="flex-1 min-w-0 font-sans text-h3-title leading-normal text-white">
-                    Operator Playbooks
-                  </p>
-                </div>
-                <div className="flex flex-col lg:flex-row">
-                  <a className="relative flex flex-col items-start justify-between h-122.5 p-5 overflow-hidden border-t border-border min-w-0 flex-1 lg:shrink-0 transition-[flex-grow,flex-basis] duration-500 ease-in-out bg-[#101010] lg:grow-3 lg:basis-0" href="/blog">                  <img alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none object-cover object-left opacity-85 transition-transform duration-500 ease-in-out select-none group-hover:scale-[1.03]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/art/playbook-treasury.webp" />
-                  <div className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-60 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.035)_0px,rgba(255,255,255,0.035)_1px,transparent_1px,transparent_34px)]" aria-hidden="true">
-                  </div>
-                  <div className="customer-story-readable-gradient pointer-events-none absolute inset-x-0 bottom-0 h-41.25" aria-hidden="true">
-                  </div>
-                  <div className="relative z-10 flex items-center w-full">
-                    <span className="font-favorit text-xs uppercase leading-none text-white/70">                    PLAYBOOK / 01
-</span>
-                  </div>
-                  <div className="relative z-30 flex flex-col gap-3 items-start w-full mt-4 lg:mt-0">
-                    <span className="inline-flex items-center justify-center border border-white/22 text-white/50 text-xs font-favorit leading-none uppercase tracking-[0.24px] p-1">                    Payments
-</span>
-                    <p className="font-sans max-w-98.5 text-h3-title leading-normal text-white">
-                      Running a treasury on policy-gated stablecoin operations
-                    </p>
-                  </div>
-</a>
-                  <a className="relative flex flex-col items-start justify-between h-122.5 p-5 overflow-hidden border-t border-border min-w-0 flex-1 lg:shrink-0 transition-[flex-grow,flex-basis] duration-500 ease-in-out bg-[#101010] lg:grow-0 lg:basis-92.5 lg:border-l" href="/blog">                  <img alt="" aria-hidden="true" loading="lazy" decoding="async" className="pointer-events-none object-cover object-right opacity-85 transition-transform duration-500 ease-in-out select-none group-hover:scale-[1.03]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/art/playbook-yield.webp" />
-                  <div className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-60 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.035)_0px,rgba(255,255,255,0.035)_1px,transparent_1px,transparent_34px)]" aria-hidden="true">
-                  </div>
-                  <div className="customer-story-readable-gradient pointer-events-none absolute inset-x-0 bottom-0 h-41.25" aria-hidden="true">
-                  </div>
-                  <div className="relative z-10 flex items-center w-full">
-                    <span className="font-favorit text-xs uppercase leading-none text-white/70">                    PLAYBOOK / 02
-</span>
-                  </div>
-                  <div className="relative z-30 flex flex-col gap-3 items-start w-full mt-4 lg:mt-0">
-                    <span className="inline-flex items-center justify-center border border-white/22 text-white/50 text-xs font-favorit leading-none uppercase tracking-[0.24px] p-1">                    DeFi
-</span>
-                    <p className="font-sans max-w-98.5 text-h3-title leading-normal text-white">
-                      Risk-adjusted yield without giving up custody
-                    </p>
-                  </div>
-</a>
-                </div>
-              </div>
-            </section>
+            <OperatorPlaybooks />
             <GlitterGridSeparator size="beforeJoin" />
             <div className="pb-12 md:pb-16 lg:pb-40">
               <section className="flex flex-col lg:flex-row p-5 justify-between gap-5 lg:gap-0 border border-border">

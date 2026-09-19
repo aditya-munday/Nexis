@@ -153,3 +153,43 @@ a {
     transform: none;
   }
 }
+
+/* ─── Operator Playbooks Animated Focus Transition ─── */
+.h-122\.5 {
+  height: 490px;
+}
+.max-w-98\.5 {
+  max-width: 394px;
+}
+.h-41\.25 {
+  height: 165px;
+}
+
+.playbook-focused,
+.playbook-unfocused {
+  transition: flex-grow 500ms cubic-bezier(0.4, 0, 0.2, 1),
+              flex-basis 500ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: flex-grow, flex-basis;
+}
+
+@media (min-width: 1024px) {
+  .lg\:grow-3,
+  .playbook-focused {
+    flex-grow: 3 !important;
+  }
+  .lg\:grow-0,
+  .playbook-unfocused {
+    flex-grow: 0 !important;
+  }
+  .lg\:basis-0,
+  .playbook-focused {
+    flex-basis: 0% !important;
+    flex-shrink: 0 !important;
+  }
+  .lg\:basis-92\.5,
+  .playbook-unfocused {
+    flex-basis: 370px !important;
+    flex-shrink: 0 !important;
+  }
+}
+
