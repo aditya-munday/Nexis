@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { createSupabaseBrowserClient } from "../../lib/supabase/browser";
 
 /* ─── Animated blue canvas shader for left visual panel ─── */
 function AuthShaderPanel() {
@@ -110,7 +111,7 @@ function AuthShaderPanel() {
   );
 }
 
-function ChainIcon({ sym }: { sym: string }) {
+function CapabilityIcon({ sym, index }: { sym: string; index: number }) {
   const [hovered, setHovered] = useState(false);
   return (
     <span
@@ -124,6 +125,7 @@ function ChainIcon({ sym }: { sym: string }) {
         transition: "transform 0.18s ease, background 0.18s ease",
         transform: hovered ? "scale(1.12)" : "scale(1)", cursor: "default",
         fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)",
+        animation: `auth-icon-float 4.8s ease-in-out ${index * 0.18}s infinite`,
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -134,21 +136,22 @@ function ChainIcon({ sym }: { sym: string }) {
 }
 
 function ProviderButton({
-  provider, label, gradientColors, children,
+  provider, label, gradientColors, children, onClick,
 }: {
-  provider: string; label: string; gradientColors: string[]; children: React.ReactNode;
+  provider: string; label: string; gradientColors: string[]; children: React.ReactNode; onClick: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
   const gradientId = `pgrad-${provider}`;
   return (
     <button
       type="button" title={provider.charAt(0).toUpperCase() + provider.slice(1)} aria-label={label}
+      onClick={onClick}
       style={{
         position: "relative", display: "flex", alignItems: "center", justifyContent: "center",
-        width: "100%", aspectRatio: "1", maxHeight: "52px",
-        background: hovered ? "#efefef" : "#f8f8f8", border: "none", borderRadius: "12px",
+        width: "100%", height: "64px",
+        background: hovered ? "#ececec" : "#f7f7f7", border: "1px solid #eeeeee", borderRadius: "12px",
         cursor: "pointer", overflow: "hidden",
-        transition: "background 0.15s, transform 0.15s", transform: hovered ? "scale(1.04)" : "scale(1)",
+        transition: "background 0.15s, border-color 0.15s, transform 0.15s", transform: hovered ? "translateY(-2px)" : "translateY(0)",
       }}
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
     >
@@ -164,15 +167,15 @@ function ProviderButton({
           style={{ fill: "none", strokeWidth: "1px", strokeLinecap: "round", stroke: `url(#${gradientId})`, strokeDasharray: "1", strokeDashoffset: hovered ? "0" : "1", transition: "stroke-dashoffset 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.08s" }} />
       </svg>
       <span aria-hidden="true" style={{ position: "absolute", inset: 0, borderRadius: "12px", background: "linear-gradient(135deg, rgba(255,255,255,0.35) 0%, transparent 60%)", opacity: hovered ? 1 : 0, transition: "opacity 0.3s", pointerEvents: "none" }} />
-      <span style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center", width: 22, height: 22 }}>{children}</span>
+      <span style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center", width: 24, height: 24 }}>{children}</span>
     </button>
   );
 }
 
-function AuthSubmitButton({ isSignup }: { isSignup: boolean }) {
+function AuthSubmitButton({ isSignup, label, disabled }: { isSignup: boolean; label?: string; disabled?: boolean }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <button type="submit"
+    <button type="submit" disabled={disabled}
       style={{
         position: "relative", display: "flex", width: "100%", alignItems: "center", justifyContent: "center",
         gap: "6px", padding: "0 20px", height: "42px",
@@ -184,7 +187,7 @@ function AuthSubmitButton({ isSignup }: { isSignup: boolean }) {
       }}
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
     >
-      <span style={{ position: "relative", zIndex: 1 }}>{isSignup ? "Create account" : "Sign in"}</span>
+      <span style={{ position: "relative", zIndex: 1 }}>{disabled ? "Working..." : label ?? (isSignup ? "Create account" : "Sign in")}</span>
       <span aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", opacity: hovered ? 1 : 0, transition: "opacity 0.15s" }}>
         <span style={{ position: "absolute", top: 0, left: 0, width: 6, height: 6, borderTop: "1px solid currentColor", borderLeft: "1px solid currentColor" }} />
         <span style={{ position: "absolute", top: 0, right: 0, width: 6, height: 6, borderTop: "1px solid currentColor", borderRight: "1px solid currentColor" }} />
@@ -195,9 +198,9 @@ function AuthSubmitButton({ isSignup }: { isSignup: boolean }) {
   );
 }
 
-const CHAIN_ROWS = [
-  ["Ξ", "◈", "₮", "▲", "OP", "▲", "⬡", "⚛", "◎"],
-  ["⬡", "₿", "🦄", "◎", "■"],
+const CAPABILITY_ROWS = [
+  ["PLAN", "POL", "REV", "RUN", "LOG", "RB", "ARIA"],
+  ["CPU", "MEM", "I/O", "SAFE", "A/B"],
 ];
 
 function AuthForm() {
@@ -208,41 +211,113 @@ function AuthForm() {
   const [emailFocused, setEmailFocused] = useState(false);
   const [passFocused, setPassFocused] = useState(false);
   const isSignup = mode === "signup";
+  const isResetRequest = mode === "reset";
+  const isPasswordUpdate = mode === "update-password";
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const signInWithProvider = async (provider: "google" | "github" | "discord" | "twitter") => {
+    setError("");
+    try {
+      const supabase = createSupabaseBrowserClient();
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback?next=/app`,
+        },
+      });
+      if (oauthError) setError(oauthError.message);
+    } catch (oauthError) {
+      setError(oauthError instanceof Error ? oauthError.message : "OAuth is not configured.");
+    }
+  };
+
+  const submitEmailAuth = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError("");
+    setSubmitting(true);
+    const form = new FormData(event.currentTarget);
+    const email = String(form.get("email") ?? "").trim().toLowerCase();
+    const password = String(form.get("password") ?? "");
+
+    try {
+      const supabase = createSupabaseBrowserClient();
+      if (isResetRequest) {
+        const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/auth/callback?next=%2Fauth%3Fmode%3Dupdate-password`,
+        });
+        if (resetError) throw resetError;
+        setError("Check your email for a secure password reset link.");
+        return;
+      }
+
+      if (isPasswordUpdate) {
+        const confirmation = String(form.get("password-confirmation") ?? "");
+        if (password.length < 8) throw new Error("Use at least 8 characters for your new password.");
+        if (password !== confirmation) throw new Error("The new passwords do not match.");
+        const { error: updateError } = await supabase.auth.updateUser({ password });
+        if (updateError) throw updateError;
+        window.location.assign("/auth?mode=signin&reset=success");
+        return;
+      }
+
+      const result = isSignup
+        ? await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/auth/callback?next=/app` } })
+        : await supabase.auth.signInWithPassword({ email, password });
+      if (result.error) throw result.error;
+      if (isSignup && !result.data.session) {
+        setError("Check your email to confirm your account before signing in.");
+      } else {
+        window.location.assign("/app");
+      }
+    } catch (authError) {
+      setError(authError instanceof Error ? authError.message : "Authentication failed.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
       <style>{`
         .auth-aside { display: none !important; }
         @media (min-width: 1024px) { .auth-aside { display: flex !important; } }
+        @keyframes auth-icon-float {
+          0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+          50% { transform: translate3d(0, -7px, 0) rotate(2deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .auth-aside [style*="auth-icon-float"] { animation: none !important; }
+        }
       `}</style>
       <div style={{
-        minHeight: "100vh", width: "100%", background: "#ffffff",
-        display: "flex", padding: "12px",
+        minHeight: "100dvh", width: "100%", background: "#ffffff",
+        display: "flex", flexWrap: "nowrap", padding: "12px",
         fontFamily: "var(--font-sans, Inter, -apple-system, Arial, sans-serif)",
         color: "#111", boxSizing: "border-box",
       }}>
         {/* LEFT: Blue Visual Panel */}
-        <aside className="auth-aside" aria-label="Nexis authentication visual"
+        <aside className="auth-aside" aria-label="Directioner-OS authentication visual"
           style={{
             position: "relative", flexDirection: "column", justifyContent: "space-between",
             overflow: "hidden", borderRadius: "20px", padding: "48px 40px",
-            flex: "0 0 46%", maxWidth: "580px",
+            flex: "0 1 46%", width: "46%", minWidth: 0, maxWidth: "580px",
           }}>
           <AuthShaderPanel />
           <div style={{ position: "relative", zIndex: 10 }}>
             <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", margin: "0 0 20px", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)" }}>
-              Autonomous DeFi execution
+              Autonomous desktop automation execution
             </p>
             <h2 style={{ fontSize: "clamp(28px, 3.5vw, 42px)", fontWeight: 700, lineHeight: 1.18, letterSpacing: "-0.02em", color: "#ffffff", margin: 0 }}>
               <span style={{ display: "block" }}>Review, approve,</span>
               <span style={{ display: "block" }}>and execute across</span>
-              <span style={{ display: "block" }}>every wallet.</span>
+              <span style={{ display: "block" }}>every machine.</span>
             </h2>
           </div>
           <div style={{ position: "relative", zIndex: 10 }}>
-            {CHAIN_ROWS.map((row, ri) => (
+            {CAPABILITY_ROWS.map((row, ri) => (
               <div key={ri} style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: ri === 0 ? 0 : "10px" }}>
-                {row.map((sym, i) => <ChainIcon key={i} sym={sym} />)}
+                {row.map((sym, i) => <CapabilityIcon key={i} sym={sym} index={ri * 10 + i} />)}
               </div>
             ))}
           </div>
@@ -250,13 +325,14 @@ function AuthForm() {
 
         {/* RIGHT: Sign-In Form */}
         <section aria-labelledby="auth-screen-title"
-          style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "32px 24px" }}>
+          style={{ flex: "1 1 54%", minWidth: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "clamp(24px, 5vw, 64px) clamp(16px, 5vw, 72px)", boxSizing: "border-box" }}>
           <div style={{ width: "100%", maxWidth: "380px" }}>
             <h1 id="auth-screen-title" style={{ fontSize: "clamp(20px, 2.5vw, 26px)", fontWeight: 600, letterSpacing: "-0.02em", color: "#111", margin: "0 0 28px" }}>
-              {isSignup ? "Create your account" : "Sign in to your account"}
+              {isResetRequest ? "Reset your password" : isPasswordUpdate ? "Choose a new password" : isSignup ? "Create your account" : "Sign in to your account"}
             </h1>
 
-            <form onSubmit={(e) => { e.preventDefault(); window.location.href = "/app"; }} style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+            {error && <p role="alert" style={{ marginBottom: "16px", color: "#b42318", fontSize: "12px" }}>{error}</p>}
+            <form onSubmit={submitEmailAuth} style={{ display: "flex", flexDirection: "column", gap: 0 }}>
               {/* Email */}
               <div style={{ marginBottom: "14px" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
@@ -274,14 +350,13 @@ function AuthForm() {
                 </div>
               </div>
 
-              {/* Password */}
-              <div style={{ marginBottom: "4px" }}>
+              {!isResetRequest && <div style={{ marginBottom: "4px" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
                   <label htmlFor="auth-password" style={{ fontSize: "11px", fontWeight: 500, color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)" }}>Password</label>
                   {!isSignup && <a href="/auth?mode=reset" style={{ fontSize: "11px", color: "#2563eb", textDecoration: "none", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)" }}>Forgot your password?</a>}
                 </div>
                 <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
-                  <input autoComplete={isSignup ? "new-password" : "current-password"} id="auth-password" minLength={8} placeholder="Enter your password" type={showPassword ? "text" : "password"} name="password" required
+                  <input autoComplete={isSignup || isPasswordUpdate ? "new-password" : "current-password"} id="auth-password" minLength={8} placeholder={isPasswordUpdate ? "Enter your new password" : "Enter your password"} type={showPassword ? "text" : "password"} name="password" required
                     onFocus={() => setPassFocused(true)} onBlur={() => setPassFocused(false)}
                     style={{ width: "100%", height: "42px", padding: "0 42px 0 12px", fontSize: "13px", color: "#111", background: passFocused ? "#fff" : "#f9f9f9", border: passFocused ? "1.5px solid #111" : "1px solid #e0e0e0", borderRadius: "8px", outline: "none", fontFamily: "var(--font-sans, Inter, Arial, sans-serif)", boxSizing: "border-box", transition: "border-color 0.15s, background 0.15s, box-shadow 0.15s", boxShadow: passFocused ? "0 0 0 3px rgba(0,0,0,0.06)" : "none" }} />
                   <span style={{ position: "absolute", right: 0, top: 0, bottom: 0, display: "flex", alignItems: "center", padding: "0 12px" }}>
@@ -298,48 +373,54 @@ function AuthForm() {
                     </button>
                   </span>
                 </div>
-              </div>
+              </div>}
+
+              {isPasswordUpdate && <div style={{ marginTop: "14px" }}>
+                <label htmlFor="auth-password-confirmation" style={{ display: "block", marginBottom: "6px", fontSize: "11px", fontWeight: 500, color: "#444", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)" }}>Confirm new password</label>
+                <input autoComplete="new-password" id="auth-password-confirmation" minLength={8} placeholder="Repeat your new password" type="password" name="password-confirmation" required
+                  style={{ width: "100%", height: "42px", padding: "0 12px", fontSize: "13px", color: "#111", background: "#f9f9f9", border: "1px solid #e0e0e0", borderRadius: "8px", outline: "none", fontFamily: "var(--font-sans, Inter, Arial, sans-serif)", boxSizing: "border-box" }} />
+              </div>}
 
               {/* Remember */}
-              <label style={{ display: "flex", alignItems: "center", gap: "10px", margin: "10px 0 18px", cursor: "pointer" }}>
+              {!isResetRequest && !isPasswordUpdate && <label style={{ display: "flex", alignItems: "center", gap: "10px", margin: "10px 0 18px", cursor: "pointer" }}>
                 <span onClick={() => setRemember(!remember)} style={{ width: "16px", height: "16px", borderRadius: "4px", border: remember ? "1.5px solid #111" : "1.5px solid #ccc", display: "flex", alignItems: "center", justifyContent: "center", background: remember ? "#111" : "#fff", flexShrink: 0, transition: "border-color 0.15s, background 0.15s", cursor: "pointer" }}>
                   {remember && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                 </span>
                 <input type="checkbox" style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap", borderWidth: 0 }} checked={remember} onChange={(e) => setRemember(e.target.checked)} />
                 <span style={{ fontSize: "11px", color: "#555", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)", textTransform: "uppercase", letterSpacing: "0.06em", userSelect: "none" }}>Remember me on this device</span>
-              </label>
+              </label>}
 
-              <AuthSubmitButton isSignup={isSignup} />
+              <AuthSubmitButton isSignup={isSignup} label={isResetRequest ? "Send reset link" : isPasswordUpdate ? "Update password" : undefined} disabled={submitting} />
             </form>
 
             {/* Divider */}
-            <div style={{ position: "relative", textAlign: "center", margin: "22px 0", fontSize: "11px", color: "#aaa", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            {!isResetRequest && !isPasswordUpdate && <div style={{ position: "relative", textAlign: "center", margin: "22px 0", fontSize: "11px", color: "#aaa", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
               <span style={{ position: "absolute", top: "50%", left: 0, right: 0, height: "1px", background: "#e8e8e8", transform: "translateY(-50%)" }} />
               <span style={{ position: "relative", background: "#fff", padding: "0 10px" }}>{isSignup ? "Or sign up with" : "Or sign in with"}</span>
-            </div>
+            </div>}
 
             {/* Provider Buttons */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "10px" }}>
-              <ProviderButton provider="google" label="Sign in with Google" gradientColors={["rgba(234, 67, 53, 1)", "rgba(251, 188, 5, 1)", "rgba(52, 168, 83, 1)", "rgba(66, 133, 244, 1)"]}>
+            {!isResetRequest && !isPasswordUpdate && <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: "12px" }}>
+              <ProviderButton provider="google" label="Sign in with Google" onClick={() => signInWithProvider("google")} gradientColors={["rgba(234, 67, 53, 1)", "rgba(251, 188, 5, 1)", "rgba(52, 168, 83, 1)", "rgba(66, 133, 244, 1)"]}>
                 <img alt="" src="/assets/auth/social/google-logo-base.svg" style={{ width: 20, height: 20, objectFit: "contain" }} />
               </ProviderButton>
-              <ProviderButton provider="discord" label="Sign in with Discord" gradientColors={["#5865F2", "#7289DA", "#5865F2"]}>
+              <ProviderButton provider="discord" label="Sign in with Discord" onClick={() => signInWithProvider("discord")} gradientColors={["#5865F2", "#7289DA", "#5865F2"]}>
                 <img alt="" src="/assets/auth/social/discord-logo-base.svg" style={{ width: 20, height: 20, objectFit: "contain" }} />
               </ProviderButton>
-              <ProviderButton provider="github" label="Sign in with GitHub" gradientColors={["#333", "#666", "#333"]}>
-                <img alt="" src="/assets/auth/social/github-logo-base.svg" style={{ width: 20, height: 20, objectFit: "contain" }} />
+              <ProviderButton provider="github" label="Sign in with GitHub" onClick={() => signInWithProvider("github")} gradientColors={["#333", "#666", "#333"]}>
+                <img alt="" src="/assets/auth/social/github-logo-base.svg" style={{ width: 20, height: 20, objectFit: "contain", filter: "invert(1)" }} />
               </ProviderButton>
-              <ProviderButton provider="x" label="Sign in with X" gradientColors={["#000", "#444", "#000"]}>
-                <img alt="" src="/assets/auth/social/x-logo-base.svg" style={{ width: 16, height: 16, objectFit: "contain" }} />
+              <ProviderButton provider="x" label="Sign in with X" onClick={() => signInWithProvider("twitter")} gradientColors={["#000", "#444", "#000"]}>
+                <img alt="" src="/assets/auth/social/x-logo-base.svg" style={{ width: 17, height: 17, objectFit: "contain", filter: "invert(1)" }} />
               </ProviderButton>
-            </div>
+            </div>}
 
             {/* Switch panel */}
             <div style={{ marginTop: "24px", textAlign: "center", fontSize: "12px", color: "#666", fontFamily: "var(--font-favorit, 'Chivo Mono', monospace)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
-              {isSignup ? (
+              {isResetRequest || isPasswordUpdate ? <Link href="/auth?mode=signin" style={{ color: "#2563eb", fontWeight: 600, textDecoration: "none" }}>Back to sign in</Link> : isSignup ? (
                 <span>Already have an account?{" "}<Link href="/auth?mode=signin&next=%2Fapp" style={{ color: "#2563eb", fontWeight: 600, textDecoration: "none" }}>Sign in</Link></span>
               ) : (
-                <span>New to Nexis?{" "}<Link href="/auth?mode=signup&next=%2Fapp" style={{ color: "#2563eb", fontWeight: 600, textDecoration: "none" }}>Create account</Link></span>
+                <span>New to Directioner-OS?{" "}<Link href="/auth?mode=signup&next=%2Fapp" style={{ color: "#2563eb", fontWeight: 600, textDecoration: "none" }}>Create account</Link></span>
               )}
             </div>
           </div>

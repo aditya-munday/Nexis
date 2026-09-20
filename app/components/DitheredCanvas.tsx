@@ -9,7 +9,7 @@ const RESEARCH_IMAGES = [
 ];
 
 const PLAYBOOK_IMAGES = [
-  "/assets/nex-landing/art/playbook-treasury.webp",
+  "/assets/nex-landing/art/playbook-system.webp",
   "/assets/nex-landing/art/playbook-yield.webp",
 ];
 

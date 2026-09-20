@@ -83,7 +83,7 @@ function DitheredThumb({
           }
         }
       }
-      // Draw a subtle Nexis "N" watermark
+      // Draw a subtle Directioner-OS "N" watermark
       ctx.fillStyle = "rgba(255,255,255,0.04)";
       ctx.font = `bold ${Math.min(W, H) * 0.6}px sans-serif`;
       ctx.textBaseline = "middle";
@@ -147,12 +147,12 @@ const featured = [
     isNew: true,
   },
   {
-    href: "/blog/the-role-of-blockchain-in-modern-finance",
+    href: "/blog/the-role-of-capability-scoped-computing",
     category: "Marketing",
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:44:39.642Z",
-    title: "The Role of Blockchain in Modern Finance",
-    excerpt: "Understand how blockchain is reshaping the financial landscape across institutions.",
+    title: "The Role of Capability-Scoped Computing",
+    excerpt: "Typed, auditable capability RPCs let a resident AI Engineer operate safely without arbitrary shell execution.",
     thumbIndex: 2,
     isNew: true,
   },
@@ -172,7 +172,7 @@ const articles = [
     category: "Engineering",
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:44:39.642Z",
-    title: "Advancements in Cybersecurity",
+    title: "Advancements in Autonomous System Safety",
     isRecent: true,
   },
   {
@@ -180,7 +180,7 @@ const articles = [
     category: "Company",
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:44:39.642Z",
-    title: "Cutting-Edge Innovations in Data Analytics",
+    title: "The SQLite World Model and Local Intelligence",
     isRecent: false,
   },
   {
@@ -188,7 +188,7 @@ const articles = [
     category: "Newsroom",
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:44:39.642Z",
-    title: "Leveraging Big Data for Business Success",
+    title: "Quantitative Blast-Radius Engineering",
     isRecent: false,
   },
   {
@@ -196,7 +196,7 @@ const articles = [
     category: "Newsroom",
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:44:39.642Z",
-    title: "Leveraging Big Data for Career Success",
+    title: "Building for the AI-Native Operating System",
     isRecent: false,
   },
   {
@@ -205,7 +205,7 @@ const articles = [
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:44:39.642Z",
     title:
-      "The Top Industries and Business Models Using AI for Fraud Prevention and Detection",
+      "The Top Workflows Protected by Autonomous Recovery",
     isRecent: false,
   },
   {
@@ -213,7 +213,7 @@ const articles = [
     category: "Marketing",
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:42:37.667Z",
-    title: "The Transformative Future of AI in Digital Marketing",
+    title: "Aria and the Future of Spatial Computing",
     isRecent: false,
   },
   {
@@ -221,7 +221,7 @@ const articles = [
     category: "Company",
     date: "OCT 29, 2025",
     dateTime: "2025-10-29T05:35:09.463Z",
-    title: "Embracing Remote Work Culture",
+    title: "Operating a Distributed Machine Fleet",
     isRecent: false,
   },
 ];
@@ -256,7 +256,7 @@ export default function BlogGrid() {
               </nav>
               <h1 className="max-w-4xl font-sans text-[28px] leading-[1.14] tracking-tight md:text-[38px] md:leading-[1.08]">
                 <span className="text-white/90">News, insights, and field notes </span>
-                <span className="text-white/45">from the team building governed on-chain autonomy at Nexis Research.</span>
+                <span className="text-white/45">from the team building safe autonomous computing at Directioner-OS Research.</span>
               </h1>
             </div>
           </header>
@@ -343,7 +343,7 @@ export default function BlogGrid() {
                           <div className="flex min-w-0 items-center gap-2">
                             <span className="relative block size-6 shrink-0 overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#0d0d0d]">
                               <img
-                                alt="Nexis Labs"
+                                alt="Directioner-OS Labs"
                                 loading="lazy"
                                 width={24}
                                 height={24}
@@ -352,7 +352,7 @@ export default function BlogGrid() {
                               />
                             </span>
                             <span className="line-clamp-1 font-mono text-xs uppercase leading-none tracking-widest text-white/50">
-                              Nexis Labs
+                              Directioner-OS Labs
                             </span>
                           </div>
                           <span className="flex shrink-0 items-center gap-1 font-mono text-xs uppercase leading-none tracking-widest text-white/70 transition-colors group-hover:text-white">
@@ -409,7 +409,7 @@ export default function BlogGrid() {
                         <div className="flex items-center justify-between gap-3 md:order-4 md:justify-end">
                           <div className="flex items-center gap-1.5">
                             <span className="relative block size-6 shrink-0 overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#0d0d0d]">
-                              <img alt="Nexis Labs" loading="lazy" width={24} height={24} className="size-full object-cover" src="/assets/blog-og/_author-avatar.png" />
+                              <img alt="Directioner-OS Labs" loading="lazy" width={24} height={24} className="size-full object-cover" src="/assets/blog-og/_author-avatar.png" />
                             </span>
                           </div>
                           <span className="flex size-7 shrink-0 items-center justify-center bg-white/5 transition-colors group-hover:bg-white/10">

@@ -37,9 +37,9 @@
 Aria is the voice, eyes, and intuitive intelligence of Directioner-OS, holding **Ultimate Command Authority** over the resident AI Engineer. Aria blends ambient voice interaction with screen vision and a revolutionary **Spatial Overlay Environment**.
 
 ### Real-World Superpowers & Capabilities
-1. **Financial & Market Intelligence HUD**:
-   - *Query*: *"Aria, how is NVIDIA trading today compared to the semi sector, and show me the order book depth?"*
-   - *Experience*: Instantly projects a floating, frosted-glass financial terminal directly above the active app. Shows live interactive candlestick charts, volume profiles, and order book depth without opening a browser tab or switching apps.
+1. **System Health & Diagnostics HUD**:
+   - *Query*: *"Aria, explain why this service is unhealthy and show me the safest recovery plan."*
+   - *Experience*: Instantly projects a floating, frosted-glass diagnostic view above the active app. Shows service dependencies, recent Work Log evidence, blast-radius details, and rollback readiness without opening a browser tab or switching apps.
 2. **Contextual Developer HUD**:
    - *Query*: *"Aria, why did my cargo build fail in crate `network-engine`?"*
    - *Experience*: Highlights exact lines in the code editor, renders an interactive holographic diff overlay with the fix, calculates the blast radius, and offers a 1-click sandbox compilation test.
@@ -158,7 +158,7 @@ Directioner-OS uses a clear separation between the base operating system and adv
 ├──────────────────────────────────────────────┤  ├──────────────────────────────────────────────┤
 │ • Full Immutable OS Base & Desktop           │  │ • High-Capacity Cloud Neural Models          │
 │ • Universal Hardware & Driver Nirvana        │  │ • Multi-Machine Cloud Federation             │
-│ • On-Device AI Engineer (Local Self-Healing) │  │ • Continuous Real-Time Market Intelligence   │
+│ • On-Device AI Engineer (Local Self-Healing) │  │ • Continuous System Health Monitoring        │
 │ • Local SQLite World Model & Audit Worklog   │  │ • Advanced Multi-App Workflow Orchestration  │
 │ • Sub-Millisecond Hardware Killswitch        │  │ • Enterprise Fleet Policy Management         │
 │ • Proton/Wine Native Compatibility Layer     │  │ • Priority Model Inference Latency           │
@@ -167,7 +167,7 @@ Directioner-OS uses a clear separation between the base operating system and adv
 ```
 
 - **Free / Open Beta OS Access**: The core operating system, Aether desktop environment, hardware compatibility engine, local offline AI Engineer, self-healing watchdog, and killswitch are free and accessible.
-- **Paid AI Cloud / Aria Pro Tier**: Unlocks cloud model backends for Aria, deep cross-app multi-modal synthesis, continuous market/trading data feeds, multi-machine peer federation, and enterprise fleet telemetry. Requires user sign-in.
+- **Optional service integrations**: Any future hosted model or fleet features must be explicitly configured by the operator, scoped through the same capability policy, and documented with their data handling and availability. No hosted service or commercial tier is assumed by the core OS.
 
 ---
 

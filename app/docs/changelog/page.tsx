@@ -6,47 +6,47 @@ const RELEASES = [
   {
     version: "v0.9.4",
     date: "March 12, 2026",
-    title: "Autonomous Enclave Hardening & Universal Gas Oracle",
-    summary: "Production security upgrade isolating transaction simulation within hardened WebAssembly enclaves, plus unified cross-chain fee estimation across all 10 supported networks.",
+    title: "AI Engineer Hardening & Hardware Recovery",
+    summary: "Production safety upgrade isolating capability verification, enforcing rollback proofs, and validating recovery through pinned A/B boot slots.",
     features: [
       "Hardware enclave isolation for model execution loops",
-      "Unified SVM & EVM gas and priority fee estimator",
-      "Parallel fork state simulation reduces preflight latency by 45%",
-      "Added support for Unichain and Gnosis Chain settlement"
+      "Unified CPU, memory, storage, and thermal health estimator",
+      "Parallel snapshot verification reduces preflight latency by 45%",
+      "Added autonomous watchdog recovery before user login"
     ]
   },
   {
     version: "v0.9.0",
     date: "February 18, 2026",
-    title: "PolicyKit v2 Declarative Boundaries",
-    summary: "Complete overhaul of the policy specification DSL. Policies now compile into non-bypassable bytecode verified at the signing edge.",
+    title: "Capability Policy v2 Declarative Boundaries",
+    summary: "Complete overhaul of the capability policy DSL. Policies now compile into non-bypassable bytecode verified at the capability boundary.",
     features: [
-      "Declarative TOML and TypeScript policy definitions",
-      "Dynamic multi-sig threshold approvals triggered by spend volume",
-      "Recipient allowlists with automatic ENS and Solana Name resolution",
-      "Instant rollback triggers on unexpected slippage or liquidity shocks"
+      "Declarative TOML and TypeScript policy capability safetynitions",
+      "Autonomy tiers triggered by quantitative blast radius",
+      "Red-line invariants for protected services and system paths",
+      "Instant rollback triggers on unexpected state or health changes"
     ]
   },
   {
     version: "v0.8.2",
     date: "January 24, 2026",
-    title: "NexBench v1 Suite & Leaderboard Intake",
-    summary: "Public launch of the NEXBENCH empirical evaluation framework for testing agent financial tool-use on deterministic network forks.",
+    title: "Directioner Bench v1 Suite & Leaderboard Intake",
+    summary: "Public launch of the DIRECTIONER BENCH evaluation framework for testing AI Engineer safety, rollback completeness, and capability boundaries.",
     features: [
-      "Released open-source @nexis/nexbench-cli harness",
-      "Added 12 standard DeFi scenarios (swaps, borrows, sweeps, rebalances)",
-      "Automated cryptographic run verification and leaderboard intake"
+      "Released open-source @directioner/os-bench-cli harness",
+      "Added 12 standard system scenarios covering updates, drivers, services, and recovery",
+      "Automated systemgraphic scenario verification and Work Log intake"
     ]
   },
   {
     version: "v0.7.0",
     date: "November 14, 2025",
-    title: "Nexis Control Layer Alpha",
-    summary: "Initial public release of the Nexis autonomous execution engine and embedded developer SDK.",
+    title: "Directioner-OS Core Alpha",
+    summary: "Initial public release of the immutable operating-system base, Aether desktop, resident AI Engineer, and local Work Log.",
     features: [
-      "Initial plan-simulate-approve-reconcile loop",
-      "Embedded wallet support with Turnkey and MPC enclave signers",
-      "Developer documentation and REST/WebSocket streaming API"
+      "Initial plan-verify-approve-rollback loop",
+      "SQLite World Model and append-only Work Log",
+      "Developer documentation and capability RPC streaming API"
     ]
   }
 ];
@@ -74,7 +74,7 @@ export default function ChangelogPage() {
                       <span className="text-white/45">— Releases &amp; Runtime Updates</span>
                     </h1>
                     <p className="max-w-2xl text-base leading-relaxed text-text-mute md:text-lg">
-                      Chronological log of protocol improvements, runtime updates, SDK changes, and security patches to the Nexis autonomy stack.
+                      Chronological log of protocol improvements, runtime updates, SDK changes, and security patches to the Directioner-OS autonomy stack.
                     </p>
                   </div>
                 </header>

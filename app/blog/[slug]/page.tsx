@@ -11,7 +11,7 @@ const POSTS_DATA: Record<string, { title: string; category: string; date: string
     title: "Leveraging Big Data for Intelligence Success",
     category: "Newsroom",
     date: "OCT 29, 2025",
-    summary: "How deterministic on-chain data pipelines and big data analytics unlock sovereign intelligence opportunities for autonomous agents."
+    summary: "How deterministic system-level data pipelines and big data analytics unlock sovereign intelligence opportunities for autonomous AI Engineers."
   },
   "sustainability-in-tech-a-growing-focus": {
     title: "Sustainability in Tech: A Growing Focus",
@@ -19,59 +19,59 @@ const POSTS_DATA: Record<string, { title: string; category: string; date: string
     date: "OCT 29, 2025",
     summary: "Exploring computational efficiency and sustainable practices in decentralized verification architectures."
   },
-  "the-role-of-blockchain-in-modern-finance": {
-    title: "The Role of Blockchain in Modern Finance",
+  "the-role-of-capability-scoped-computing": {
+    title: "The Role of Capability-Scoped Computing",
     category: "Marketing",
     date: "OCT 29, 2025",
-    summary: "Understanding how governed on-chain execution and automated settlement are reshaping modern institutional capital flows."
+    summary: "Typed, auditable capability RPCs let a resident AI Engineer operate safely without arbitrary shell execution."
   },
   "embracing-remote-work-culture-strategies-for-success-in-a-distributed-workforce": {
     title: "Embracing Remote Work Culture: Strategies for Success in a Distributed Workforce",
     category: "Company",
     date: "OCT 29, 2025",
-    summary: "How the Nexis engineering team coordinates decentralized protocol development across global time zones."
+    summary: "How the Directioner-OS engineering team coordinates distributed system development across global time zones."
   },
   "advancements-in-cybersecurity": {
-    title: "Advancements in Cybersecurity for On-Chain Agents",
+    title: "Advancements in Cybersecurity for System-Level AI Engineers",
     category: "Engineering",
     date: "OCT 29, 2025",
-    summary: "Deep dive into secure hardware enclaves, isolated execution loops, and cryptographic bounds protecting agent wallets."
+    summary: "Deep dive into secure hardware boundaries, isolated execution loops, and cryptographic proofs protecting system authority."
   },
   "cutting-edge-innovations-in-data-analytics": {
     title: "Cutting-Edge Innovations in Data Analytics",
     category: "Company",
     date: "OCT 29, 2025",
-    summary: "Real-time indexing of forked state simulations across EVM and SVM transaction graphs."
+    summary: "Real-time indexing of staged system snapshots, dependency graphs, and rollback proofs."
   },
   "leveraging-big-data-for-business-success": {
     title: "Leveraging Big Data for Business Success",
     category: "Newsroom",
     date: "OCT 29, 2025",
-    summary: "Converting raw blockchain liquidity metrics into actionable risk parameters for autonomous balance-sheet managers."
+    summary: "Converting system health metrics into actionable risk parameters for autonomous maintenance."
   },
   "leveraging-big-data-for-career-success": {
     title: "Leveraging Big Data for Career Success",
     category: "Newsroom",
     date: "OCT 29, 2025",
-    summary: "Developing technical proficiency in agentic workflow orchestration and on-chain policy verification."
+    summary: "Developing technical proficiency in AI workflow orchestration and system-level capability verification."
   },
   "the-top-industries-and-business-models-using-ai-for-fraud-prevention-and-detection": {
     title: "The Top Industries and Business Models Using AI for Fraud Prevention and Detection",
     category: "Company",
     date: "OCT 29, 2025",
-    summary: "Evaluating automated transaction scoring, anomalous transfer detection, and edge-enforced circuit breakers."
+    summary: "Evaluating automated mutation scoring, anomaly detection, and edge-enforced emergency killswitches."
   },
   "the-transformative-future-of-ai-in-digital-marketing": {
     title: "The Transformative Future of AI in Digital Marketing",
     category: "Marketing",
     date: "OCT 29, 2025",
-    summary: "How decentralized protocols engage technical developer communities and drive open-source harness adoption."
+    summary: "How Aria and the AI Engineer make safe autonomous computing accessible to technical teams."
   },
   "embracing-remote-work-culture": {
     title: "Embracing Remote Work Culture",
     category: "Company",
     date: "OCT 29, 2025",
-    summary: "Core communication rhythms, asynchronous RFCs, and continuous integration workflows at Nexis Research."
+    summary: "Core communication rhythms, asynchronous RFCs, and continuous integration workflows at Directioner-OS Research."
   }
 };
 
@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: Props) {
     title: formatTitleFromSlug(slug),
     category: "Research",
     date: "OCT 29, 2025",
-    summary: "Exploration of governed autonomous execution, on-chain state simulation, and verifiable agent constraints."
+    summary: "Exploration of governed autonomous execution, system-level state simulation, and verifiable AI Engineer constraints."
   };
 
   return (
@@ -120,10 +120,10 @@ export default async function BlogPostPage({ params }: Props) {
 
                     <div className="mt-6 flex items-center gap-3">
                       <span className="relative block size-8 shrink-0 overflow-hidden border border-border bg-surface-card rounded-full">
-                        <img alt="Nexis Labs" width="48" height="48" className="size-full object-cover" src="/assets/blog-og/_author-avatar.png" />
+                        <img alt="Directioner-OS Labs" width="48" height="48" className="size-full object-cover" src="/assets/blog-og/_author-avatar.png" />
                       </span>
                       <div className="flex flex-col">
-                        <span className="font-sans text-sm text-white font-medium">Nexis Research</span>
+                        <span className="font-sans text-sm text-white font-medium">Directioner-OS Research</span>
                         <span className="font-favorit text-xs uppercase tracking-4 text-white/40">Core Protocol Team</span>
                       </div>
                     </div>
@@ -136,34 +136,34 @@ export default async function BlogPostPage({ params }: Props) {
 
                     <h2 className="mt-4 font-sans text-2xl text-white">1. Defining the Autonomy Boundary</h2>
                     <p>
-                      When autonomous software interacts with economic rails, non-deterministic model outputs cannot be directly hooked to raw private keys. Every planned route must first pass through a deterministic preflight sandbox that validates balance constraints, execution limits, and recipient allowlists.
+                      When autonomous software operates a computer, non-deterministic model outputs cannot directly control privileged system resources. Every request becomes a typed plan and passes through the Planner, Policy Engine, Reviewer, Implementer, and Auditor.
                     </p>
 
                     <div className="bg-black/60 p-4 border border-border font-mono text-xs text-white/90 whitespace-pre overflow-x-auto my-2">
-{`import { policy } from "@nexis/agent";
+{`import { policy } from "@directioner/os";
 
-export const treasuryPolicy = policy({
-  dailyLimit: "50,000 USDC",
-  perTxLimit: "10,000 USDC",
-  requireApprovalAbove: "2,500 USDC",
-  allowedChains: ["ethereum", "base", "arbitrum"]
+export const systemPolicy = policy({
+  capabilities: ["health.read", "updates.stage", "worklog.append"],
+  requireConfirmationAbove: 36,
+  requireExpertReviewAbove: 61,
+  rollbackRequired: true
 });`}
                     </div>
 
-                    <h2 className="mt-4 font-sans text-2xl text-white">2. Simulation Before Settlement</h2>
+                    <h2 className="mt-4 font-sans text-2xl text-white">2. Test Before Activation</h2>
                     <p>
-                      Transactions are simulated against a fork of live chain state. If slippage exceeds tolerance, liquidity pools are insufficient, or unexpected revert conditions occur, the plan is rejected prior to broadcast.
+                      Proposed updates and mutations are tested against the staged system before they reach the active system. Directioner-OS calculates blast radius, checks defensive invariants, and rejects changes without a safe rollback path.
                     </p>
 
-                    <h2 className="mt-4 font-sans text-2xl text-white">3. Immutable Audit Trails</h2>
+                    <h2 className="mt-4 font-sans text-2xl text-white">3. The Work Log and Recovery</h2>
                     <p>
-                      Every execution produces a comprehensive receipt combining the model&#x27;s natural language reasoning, the typed transaction plan, the simulation state delta, and the cryptographic signature.
+                      Every action is recorded in the append-only Work Log. Cryptographically pinned A/B boot slots and hardware watchdog recovery restore the system if an update fails.
                     </p>
                   </div>
 
                   <footer className="mt-12 pt-8 border-t border-border flex items-center justify-between">
                     <a href="/blog" className="font-favorit text-xs uppercase text-white/70 hover:text-white transition-colors">← All Writings</a>
-                    <a href="/app" className="font-favorit text-xs uppercase bg-white text-black px-4 py-2 hover:bg-white/90 transition-colors">Launch Nexis App →</a>
+                    <a href="/app" className="font-favorit text-xs uppercase bg-white text-black px-4 py-2 hover:bg-white/90 transition-colors">Launch Directioner-OS →</a>
                   </footer>
                 </article>
               </div>

@@ -11,26 +11,25 @@ import AsciiGlitchRipple from "./components/AsciiGlitchRipple";
 import OperatorPlaybooks from "./components/OperatorPlaybooks";
 import DitheredCanvas from "./components/DitheredCanvas";
 
-const POLICY_KIT_CODE = `import { policy } from "@nexis/agent"
-export const treasury = policy({
-  dailyLimit: "25,000 USDC",
-  perTx: "5,000 USDC",
-  allowlist: recipients,
-  approvals: "above 1,000",
+const POLICY_KIT_CODE = `import { capability } from "@directioner/os"
+export const maintenance = capability({
+  scope: "display.driver",
+  blastRadius: "0-15",
+  rollback: "required",
+  approval: "tier-0",
 })`;
 
-const NEX_CLI_CODE = `nex run \\
-  playbooks/treasury.toml \\
-  --simulate \\
-  --require-approval \\
-  --receipts out/`;
+const NEX_CLI_CODE = `ai-engineer explain \\
+  --action update-display-driver \\
+  --depth full-diagnostic \\
+  --include-rollback-proof`;
 
 export default function Home() {
   return (
     <div className="pi-root chivo_mono_b95da7ba-module__6lSSaG__variable">
       <Header />
       <main className="min-h-screen">
-            <section className="relative -mx-4 flex flex-col md:-mx-5">
+            <section className="relative mx-0 flex w-full min-w-0 flex-col md:-mx-5 md:w-auto">
               <div className="hero-video-edge-blend pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[528px] overflow-hidden bg-surface max-[560px]:h-[680px] md:h-[640px]">
                 <div className="absolute inset-0">
                   <div className="absolute inset-0 transform-gpu will-change-transform" style={{ transform: 'translate3d(0, var(--hero-parallax-y, 0px), 0)' } as React.CSSProperties} aria-hidden="true">
@@ -42,22 +41,22 @@ export default function Home() {
                 <div className="relative z-10 flex w-full flex-col items-start font-sans xl:flex-row xl:items-end xl:justify-between xl:gap-10">
                   <div className="flex flex-1 flex-col items-start">
                     <h1 className="font-sans leading-100 tracking-normal">
-                      <span className="block font-favorit text-sm leading-none uppercase text-white/30">                      The On-Chain Autonomy Stack
+                      <span className="block font-favorit text-sm leading-none uppercase text-white/30">                      The AI-Native Operating System
 </span>
-                      <span className="group/title-glow relative text-white/90 [text-shadow:0_0_44px_rgba(120,231,114,0.2)] mt-2 block text-[36px] leading-[1.1]" style={{ '--glow-x': '50%', '--glow-y': '50%' } as React.CSSProperties}>                      <span className="relative z-0">                      Own Your Execution
+                      <span className="group/title-glow relative text-white/90 [text-shadow:0_0_44px_rgba(120,231,114,0.2)] mt-2 block text-[36px] leading-[1.1]" style={{ '--glow-x': '50%', '--glow-y': '50%' } as React.CSSProperties}>                                            <span className="relative z-0">                      The Operating System Employs an Engineer
 </span>
-                      <span className="pointer-events-none absolute inset-0 z-10 animate-[hero-title-wash_9s_ease-in-out_infinite] bg-[linear-gradient(105deg,rgba(255,255,255,0)_0%,rgba(219,255,212,0.34)_42%,rgba(255,255,255,0.68)_50%,rgba(120,231,114,0.28)_58%,rgba(255,255,255,0)_100%)] bg-[length:220%_100%] bg-clip-text text-transparent opacity-28 motion-reduce:animate-none" aria-hidden="true">                      Own Your Execution
+                      <span className="pointer-events-none absolute inset-0 z-10 animate-[hero-title-wash_9s_ease-in-out_infinite] bg-[linear-gradient(105deg,rgba(255,255,255,0)_0%,rgba(219,255,212,0.34)_42%,rgba(255,255,255,0.68)_50%,rgba(120,231,114,0.28)_58%,rgba(255,255,255,0)_100%)] bg-[length:220%_100%] bg-clip-text text-transparent opacity-28 motion-reduce:animate-none" aria-hidden="true">                      The Operating System Employs an Engineer
 </span>
-                      <span className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(circle_140px_at_var(--glow-x)_var(--glow-y),rgba(236,255,232,0.72)_0%,rgba(120,231,114,0.28)_34%,rgba(255,255,255,0)_72%)] bg-clip-text text-transparent opacity-0 transition-opacity duration-300 [filter:drop-shadow(0_0_14px_rgba(120,231,114,0.16))] group-hover/title-glow:opacity-55" aria-hidden="true">                      Own Your Execution
+                      <span className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(circle_140px_at_var(--glow-x)_var(--glow-y),rgba(236,255,232,0.72)_0%,rgba(120,231,114,0.28)_34%,rgba(255,255,255,0)_72%)] bg-clip-text text-transparent opacity-0 transition-opacity duration-300 [filter:drop-shadow(0_0_14px_rgba(120,231,114,0.16))] group-hover/title-glow:opacity-55" aria-hidden="true">                      The Operating System Employs an Engineer
 </span>
 </span>
                     </h1>
                     <p className="mt-3 max-w-120 text-lg leading-normal text-white/45">
-                      Plan, simulate, approve, and reconcile wallet operations across payments and DeFi from one governed control layer.
+                      Directioner-OS combines a resident, capability-scoped AI Engineer with Aria spatial intelligence, self-healing rollback, universal hardware support, and mathematical safety.
                     </p>
                     <div className="mt-6 flex items-center gap-1 font-favorit">
                       <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
-                        <AsciiGlitchRipple animateOn="parentHover">LAUNCH NEXIS</AsciiGlitchRipple>
+                        <AsciiGlitchRipple animateOn="parentHover">LAUNCH DIRECTIONER-OS</AsciiGlitchRipple>
                       <div className="w-3 h-3 overflow-hidden relative">
                         <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                           <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -85,14 +84,14 @@ export default function Home() {
 </span>
 </a>
                     </div>
-                    <p className="mt-6 font-mono text-sm leading-none text-white/46 [text-shadow:0_0_24px_rgba(120,231,114,0.2)]">
+                    <p className="mt-6 max-w-full overflow-hidden font-mono text-sm leading-none text-white/46 [text-shadow:0_0_24px_rgba(120,231,114,0.2)]">
                       <span className="text-[#78e772] [text-shadow:0_0_18px_rgba(120,231,114,0.3)]">                      $
 </span>
-                      <span className="relative inline-block whitespace-pre">                      <span className="invisible">                      nex send 250 usdc
+                      <span className="relative inline-block max-w-full whitespace-pre">                                            <span className="invisible">                      ai-health status
 </span>
                       <span className="absolute bottom-0 left-0 whitespace-pre" aria-hidden="true">                      <span className="ml-px inline-block h-[1.05em] w-[0.55em] translate-y-[0.18em] bg-white/60 animate-[hero-cursor-blink_1.1s_steps(1)_infinite] motion-reduce:animate-none"></span>
 </span>
-                      <span className="sr-only">                      nex send 250 usdc
+                      <span className="sr-only">                      ai-health status nominal
 </span>
 </span>
                     </p>
@@ -104,42 +103,42 @@ export default function Home() {
                       Runs on
                     </p>
                     <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1.5 xl:flex-nowrap xl:whitespace-nowrap">
-                      <span className="flex items-center gap-x-3">                      <span className="text-white/62">                      Bitcoin
+                      <span className="flex items-center gap-x-3">                      <span className="text-white/62">                      LAPTOP
 </span>
 </span>
                       <span className="flex items-center gap-x-3">                      <span className="text-white/30">                      /
 </span>
-                      <span className="text-white/62">                      Ethereum
+                      <span className="text-white/62">                      DESKTOP
 </span>
 </span>
                       <span className="flex items-center gap-x-3">                      <span className="text-white/30">                      /
 </span>
-                      <span className="text-white/62">                      Solana
+                      <span className="text-white/62">                      WORKSTATION
 </span>
 </span>
                       <span className="flex items-center gap-x-3">                      <span className="text-white/30">                      /
 </span>
-                      <span className="text-white/62">                      Base
+                      <span className="text-white/62">                      VM / QEMU
 </span>
 </span>
                       <span className="flex items-center gap-x-3">                      <span className="text-white/30">                      /
 </span>
-                      <span className="text-white/62">                      Arbitrum
+                      <span className="text-white/62">                      SERVER
 </span>
 </span>
                       <span className="flex items-center gap-x-3">                      <span className="text-white/30">                      /
 </span>
-                      <span className="text-white/62">                      Optimism
+                      <span className="text-white/62">                      ARM64
 </span>
 </span>
                       <span className="flex items-center gap-x-3">                      <span className="text-white/30">                      /
 </span>
-                      <span className="text-white/62">                      BNB Chain
+                      <span className="text-white/62">                      X86_64
 </span>
 </span>
                       <span className="flex items-center gap-x-3">                      <span className="text-white/30">                      /
 </span>
-                      <span className="text-white/62">                      Sui
+                      <span className="text-white/62">                      RECOVERY
 </span>
 </span>
                     </div>
@@ -147,9 +146,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative z-10 bg-surface px-5">
-                <div className="grid grid-cols-5 border border-border">
-                  <a aria-label="Ethereum: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5   border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Ethereum.png" />
-                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Ethereum
+                <div className="grid grid-cols-2 border border-border sm:grid-cols-5">
+                  <a aria-label="Laptop support" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/downloads">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  LAPTOP
 </span>
 </span>
                   <span className="pointer-events-none absolute top-0 right-0 z-10 flex items-center gap-1.5 bg-white/4 p-1.5 font-favorit text-xs leading-none font-normal uppercase text-white/50 transition-colors group-hover:bg-white/8 group-hover:text-white">                  <span className="hidden md:inline">                  Live
@@ -160,8 +159,8 @@ export default function Home() {
                   </svg>
 </span>
 </a>
-                  <a aria-label="Solana: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Solana.png" />
-                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Solana
+                  <a aria-label="Desktop support" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/downloads">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  DESKTOP
 </span>
 </span>
                   <span className="pointer-events-none absolute top-0 right-0 z-10 flex items-center gap-1.5 bg-white/4 p-1.5 font-favorit text-xs leading-none font-normal uppercase text-white/50 transition-colors group-hover:bg-white/8 group-hover:text-white">                  <span className="hidden md:inline">                  Live
@@ -172,8 +171,8 @@ export default function Home() {
                   </svg>
 </span>
 </a>
-                  <a aria-label="Base: Live" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/app">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Base.png" />
-                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Base
+                  <a aria-label="Workstation support" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/downloads">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  WORKSTATION
 </span>
 </span>
                   <span className="pointer-events-none absolute top-0 right-0 z-10 flex items-center gap-1.5 bg-white/4 p-1.5 font-favorit text-xs leading-none font-normal uppercase text-white/50 transition-colors group-hover:bg-white/8 group-hover:text-white">                  <span className="hidden md:inline">                  Live
@@ -185,31 +184,31 @@ export default function Home() {
 </span>
 </a>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Arbitrum.png" />
-                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Arbitrum
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    VM / QEMU
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l  border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Optimism.png" />
-                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Optimism
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    SERVER
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5  border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Bitcoin.png" />
-                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Bitcoin
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    RECOVERY
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/BNB.png" />
-                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    BNB Chain
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    LOCAL AI
 </span>
 </span>
                   </div>
-                  <a aria-label="Polygon: Read more" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/blog">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Polygon.png" />
-                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  Polygon
+                  <a aria-label="ARM64 support" className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/downloads">                  <span className="relative flex items-center justify-center gap-2">                  <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                  <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                  ARM64
 </span>
 </span>
                   <span className="pointer-events-none absolute top-0 right-0 z-10 flex items-center gap-1.5 bg-white/4 p-1.5 font-favorit text-xs leading-none font-normal uppercase text-white/50 transition-colors group-hover:bg-white/8 group-hover:text-white">                  <span className="hidden md:inline">                  Read more
@@ -221,14 +220,14 @@ export default function Home() {
 </span>
 </a>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Sui.png" />
-                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Sui
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    X86_64
 </span>
 </span>
                   </div>
                   <div className="relative flex h-25 min-w-0 items-center justify-center p-2.5 border-l border-t border-border">
-                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/chains/Sei.png" />
-                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    Sei
+                    <span className="relative flex items-center justify-center gap-2">                    <img alt="" aria-hidden="true" loading="lazy" width="24" height="24" decoding="async" className="object-contain transition-opacity max-h-6" src="/icon.svg" />
+                    <span className="hidden font-favorit text-xs uppercase leading-none text-white/70 md:inline">                    LIVE IMAGE
 </span>
 </span>
                   </div>
@@ -247,12 +246,12 @@ export default function Home() {
                   <p className="relative z-10 font-sans text-7 leading-120">
                     <span className="text-white">                    Platform.
 </span>
-                    <span className="text-white/50">                    Run governed agents across your wallets
+                    <span className="text-white/50">                    Run a resident AI Engineer across your system
 </span>
                   </p>
                   <div className="relative z-10 flex items-center gap-1">
                     <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
-                      <AsciiGlitchRipple animateOn="parentHover">Launch Nexis</AsciiGlitchRipple>
+                      <AsciiGlitchRipple animateOn="parentHover">Launch Directioner-OS</AsciiGlitchRipple>
                     <div className="w-3 h-3 overflow-hidden relative">
                       <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                         <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -302,7 +301,7 @@ export default function Home() {
                               PLAN
                             </text>
                             <text x="60" y="51" className="font-favorit" fontSize="8" fill="rgba(255,255,255,0.32)">
-                              intent · route graph
+                              intent · capability graph
                             </text>
                             <rect x="186" y="38" width="4" height="4" fill="rgba(255,255,255,0.5)">
                             </rect>
@@ -322,7 +321,7 @@ export default function Home() {
                               GOVERN
                             </text>
                             <text x="60" y="117" className="font-favorit" fontSize="8" fill="rgba(255,255,255,0.32)">
-                              limits · allowlists
+                              capability scopes · approval gates
                             </text>
                             <rect x="186" y="104" width="4" height="4" fill="rgba(255,255,255,0.5)">
                             </rect>
@@ -342,7 +341,7 @@ export default function Home() {
                               SIMULATE
                             </text>
                             <text x="60" y="183" className="font-favorit" fontSize="8" fill="rgba(255,255,255,0.32)">
-                              forked state · fees
+                              staged state · rollback
                             </text>
                             <rect x="186" y="170" width="4" height="4" fill="rgba(255,255,255,0.5)">
                             </rect>
@@ -362,7 +361,7 @@ export default function Home() {
                               EXECUTE
                             </text>
                             <text x="60" y="249" className="font-favorit" fontSize="8" fill="rgba(255,255,255,0.32)">
-                              approval · receipts
+                              blast radius · rollback proof
                             </text>
                             <rect x="186" y="236" width="4" height="4" fill="rgba(255,255,255,0.5)">
                             </rect>
@@ -379,19 +378,19 @@ export default function Home() {
                             <rect className="fig-node" x="330" y="88" width="102" height="138" stroke="#2a2a2a" fill="#0e0e0e">
                             </rect>
                             <text className="font-favorit fig-node-label" x="342" y="110" fontSize="9" fill="rgba(255,255,255,0.7)">
-                              ROUTE
+                              CAPABILITY
                             </text>
                             <text x="342" y="132" className="font-favorit" fontSize="8.5" fill="rgba(255,255,255,0.38)">
-                              usdc → base
+                              driver → staged
                             </text>
                             <text x="342" y="154" className="font-favorit" fontSize="8.5" fill="rgba(255,255,255,0.38)">
-                              fee 0.8 bps
+                              score 18 / 100
                             </text>
                             <text x="342" y="176" className="font-favorit" fontSize="8.5" fill="rgba(255,255,255,0.38)">
-                              slip 0.11%
+                              rollback ready
                             </text>
                             <text x="342" y="198" className="font-favorit" fontSize="8.5" fill="rgba(255,255,255,0.38)">
-                              eta 24s
+                              Work Log active
                             </text>
                           </g>
                           <line x1="268" y1="172" x2="330" y2="172" stroke="#2a2a2a">
@@ -411,14 +410,14 @@ export default function Home() {
 </span>
                           </div>
                           <p className="text-white/50">
-                            Turn any goal into a governed workflow. Plan, gate, and run with the Nex CLI.
+                            Turn any goal into a governed workflow. Plan, gate, and run with the Direct CLI.
                           </p>
                         </div>
                         <div className="flex flex-col gap-3 text-sm min-w-0 lg:flex-1">
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            1.1
 </span>
-                            <span className="text-white/50 flex-1">                            Built on typed intents and route plans
+                            <span className="text-white/50 flex-1">                            Built on typed intents and capability plans
 </span>
                           </div>
                           <div className="flex gap-2.5">
@@ -467,7 +466,7 @@ export default function Home() {
                       <div className="flex items-center justify-center h-full px-3 md:px-0">
                         <div className="w-full max-w-121 border border-border bg-[#101010] font-favorit">
                           <div className="flex items-center justify-between border-b border-border px-4 py-3">
-                            <span className="text-2xs uppercase text-white/70">                            Policy set / treasury
+                            <span className="text-2xs uppercase text-white/70">                            Policy set / system
 </span>
                             <span className="text-2xs uppercase text-white/30">                            v12
 </span>
@@ -475,9 +474,9 @@ export default function Home() {
                           <div className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-white/3 border-b border-border">
                             <span className="w-6 shrink-0 text-2xs text-white/25 tabular-nums">                            01
 </span>
-                            <span className="w-26 shrink-0 text-xs text-white/80">                            daily_limit
+                            <span className="w-26 shrink-0 text-xs text-white/80">                            capability_scope
 </span>
-                            <span className="flex-1 truncate text-xs text-white/40">                            25,000 USDC / day
+                            <span className="flex-1 truncate text-xs text-white/40">                            Tier 0 · score 0–15
 </span>
                             <span className="text-2xs uppercase text-white/50">                            ENFORCED
 </span>
@@ -485,9 +484,9 @@ export default function Home() {
                           <div className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-white/3 border-b border-border">
                             <span className="w-6 shrink-0 text-2xs text-white/25 tabular-nums">                            02
 </span>
-                            <span className="w-26 shrink-0 text-xs text-white/80">                            per_tx_cap
+                            <span className="w-26 shrink-0 text-xs text-white/80">                            autonomy_tier
 </span>
-                            <span className="flex-1 truncate text-xs text-white/40">                            5,000 USDC
+                            <span className="flex-1 truncate text-xs text-white/40">                            Tier 2 · score 36–60
 </span>
                             <span className="text-2xs uppercase text-white/50">                            ENFORCED
 </span>
@@ -495,9 +494,9 @@ export default function Home() {
                           <div className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-white/3 border-b border-border">
                             <span className="w-6 shrink-0 text-2xs text-white/25 tabular-nums">                            03
 </span>
-                            <span className="w-26 shrink-0 text-xs text-white/80">                            allowlist
+                            <span className="w-26 shrink-0 text-xs text-white/80">                            approval_gate
 </span>
-                            <span className="flex-1 truncate text-xs text-white/40">                            14 recipients
+                            <span className="flex-1 truncate text-xs text-white/40">                            reviewer required
 </span>
                             <span className="text-2xs uppercase text-white/50">                            ACTIVE
 </span>
@@ -505,9 +504,9 @@ export default function Home() {
                           <div className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-white/3 border-b border-border">
                             <span className="w-6 shrink-0 text-2xs text-white/25 tabular-nums">                            04
 </span>
-                            <span className="w-26 shrink-0 text-xs text-white/80">                            contracts
+                            <span className="w-26 shrink-0 text-xs text-white/80">                            work_log
 </span>
-                            <span className="flex-1 truncate text-xs text-white/40">                            8 audited targets
+                            <span className="flex-1 truncate text-xs text-white/40">                            append-only evidence
 </span>
                             <span className="text-2xs uppercase text-white/50">                            ACTIVE
 </span>
@@ -517,7 +516,7 @@ export default function Home() {
 </span>
                             <span className="w-26 shrink-0 text-xs text-white/80">                            approvals
 </span>
-                            <span className="flex-1 truncate text-xs text-white/40">                            above 1,000 USDC
+                            <span className="flex-1 truncate text-xs text-white/40">                            Tier 3 · score 61–100
 </span>
                             <span className="text-2xs uppercase text-available fig-pulse-soft">                            REQUIRED
 </span>
@@ -545,7 +544,7 @@ export default function Home() {
 </span>
                           </div>
                           <p className="text-white/50">
-                            Boundaries for every wallet: limits, allowlists, and approval gates.
+                            Boundaries for every capability: scopes, invariants, and approval gates.
                           </p>
                         </div>
                         <div className="flex flex-col gap-3 text-sm min-w-0 lg:flex-1">
@@ -558,13 +557,13 @@ export default function Home() {
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            2.2
 </span>
-                            <span className="text-white/50 flex-1">                            Recipient and contract allowlists
+                            <span className="text-white/50 flex-1">                            Capability scopes and approval gates
 </span>
                           </div>
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            2.3
 </span>
-                            <span className="text-white/50 flex-1">                            Approvals enforced at the signing edge
+                            <span className="text-white/50 flex-1">                            Approvals enforced at the capability boundary
 </span>
                           </div>
                         </div>
@@ -610,26 +609,26 @@ export default function Home() {
 </span>
                           </div>
                           <p className="text-white/50">
-                            Preview routes, fees, recipients, and outcomes on forked state before anything signs.
+                            Preview scope, blast radius, rollback, and outcomes before anything changes.
                           </p>
                         </div>
                         <div className="flex flex-col gap-3 text-sm min-w-0 lg:flex-1">
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            3.1
 </span>
-                            <span className="text-white/50 flex-1">                            Deterministic preflight on forked chain state
+                            <span className="text-white/50 flex-1">                            Deterministic preflight on staged system state
 </span>
                           </div>
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            3.2
 </span>
-                            <span className="text-white/50 flex-1">                            Slippage, gas, and failure paths surfaced
+                            <span className="text-white/50 flex-1">                            Blast radius, dependencies, and rollback paths surfaced
 </span>
                           </div>
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            3.3
 </span>
-                            <span className="text-white/50 flex-1">                            Every receipt begins at the simulation
+                            <span className="text-white/50 flex-1">                            Every Work Log entry begins at the simulation
 </span>
                           </div>
                         </div>
@@ -675,7 +674,7 @@ export default function Home() {
 </span>
                           </div>
                           <p className="text-white/50">
-                            Approve once, execute across chains, and reconcile every result into durable receipts.
+                            Verify once, execute through typed capabilities, and reconcile every result into durable Work Log entries.
                           </p>
                         </div>
                         <div className="flex flex-col gap-3 text-sm min-w-0 lg:flex-1">
@@ -688,13 +687,13 @@ export default function Home() {
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            4.2
 </span>
-                            <span className="text-white/50 flex-1">                            Cross-chain routing with bounded retries
+                            <span className="text-white/50 flex-1">                            Capability execution with bounded retries
 </span>
                           </div>
                           <div className="flex gap-2.5">
                             <span className="text-white/20 whitespace-nowrap w-5 z-10">                            4.3
 </span>
-                            <span className="text-white/50 flex-1">                            Durable receipts. No raw signing authority.
+                            <span className="text-white/50 flex-1">                            Durable Work Log entries. No arbitrary shell execution.
 </span>
                           </div>
                         </div>
@@ -734,7 +733,7 @@ export default function Home() {
                     <img alt="" aria-hidden="true" loading="lazy" width="40" height="40" decoding="async" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                     <div className="flex flex-col font-sans">
                       <p className="text-18 text-white leading-normal">
-                        Nexis Receipts
+                        Direct Work Log
                       </p>
                       <p className="text-base text-white/50 leading-normal">
                         Execution evidence
@@ -744,14 +743,14 @@ export default function Home() {
                 </div>
 </a>
                 <a className="group flex flex-col p-5 overflow-hidden gap-8 bg-[#101010] xl:min-h-75 xl:gap-0 xl:justify-between" href="/research">                <p className="text-24 leading-120 text-white font-sans">
-                  “Policies are the foundation of autonomy you can trust. Nexis turns your boundaries into gates the runtime cannot skip.”
+                  “Policies are the foundation of autonomy you can trust. Directioner-OS turns your boundaries into gates the runtime cannot skip.”
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-5">
                     <img alt="" aria-hidden="true" loading="lazy" width="28" height="28" decoding="async" className="[filter:invert(1)] opacity-90" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                     <div className="flex flex-col font-sans">
                       <p className="text-18 text-white leading-normal">
-                        Nexis Policies
+                        Directioner-OS Policies
                       </p>
                       <p className="text-base text-white/50 leading-normal">
                         Boundary engine
@@ -778,7 +777,7 @@ export default function Home() {
                         Workflow Hub
                       </p>
                       <p className="text-white/50 max-w-115 leading-normal">
-                        Access and contribute to community playbooks for payments, DeFi, and treasury operations — versioned, reviewed, and policy-aware.
+                        Access and contribute to community playbooks for desktop automation and system operations — versioned, reviewed, and policy-aware.
                       </p>
                     </div>
                     <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white self-start" href="/app">
@@ -852,7 +851,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
-                                <span className="text-2xs text-white/50">                                nexis
+                                <span className="text-2xs text-white/50">                                directioner
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -866,17 +865,17 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                usdc-dca
+                                model-health-watch
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Dollar-cost average into ETH with policy-capped clip sizes
+                                Stage updates with capability-scoped limits
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                payments
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                desktop
 </span>
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                dca
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                staged
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                +1
 </span>
@@ -901,7 +900,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
-                                <span className="text-2xs text-white/50">                                nexis
+                                <span className="text-2xs text-white/50">                                directioner
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -915,17 +914,17 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                yield-rotator
+                                recovery-rotator
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Rotate stablecoin yield across governed venues with receipts
+                                Rotate system services across verified boot slots with Work Log entries
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                defi
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                safety
 </span>
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                yield
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                rollback
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                +1
 </span>
@@ -964,10 +963,10 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                gas-sentinel
+                                health-sentinel
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Watch gas and slippage bounds, act only inside policy
+                                Watch resource health and blast radius bounds, act only inside policy
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
@@ -1000,7 +999,7 @@ export default function Home() {
                       <div className="flex flex-col gap-2 opacity-40">
                         <div className="flex items-center gap-3 px-2">
                           <div className="flex items-center gap-1.5">
-                            <span className="text-sm text-white">                            Payments
+                            <span className="text-sm text-white">                            System operations
 </span>
                             <span className="bg-white/10 text-2xs text-white/50 leading-none px-1 py-0.5">                            3
 </span>
@@ -1011,7 +1010,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
-                                <span className="text-2xs text-white/50">                                nexis
+                                <span className="text-2xs text-white/50">                                directioner
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -1025,15 +1024,15 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                payment-links
+                                capability-links
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Issue claimable stablecoin links with expiry and limits
+                                Issue auditable capability proposals with expiry and limits
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                payments
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                safety
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                links
 </span>
@@ -1060,7 +1059,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
-                                <span className="text-2xs text-white/50">                                nexis
+                                <span className="text-2xs text-white/50">                                directioner
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -1074,15 +1073,15 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                payroll-batch
+                                system-maintenance
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Batch salary runs with per-recipient allowlist checks
+                                Apply a reviewed system change with rollback checks
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                payroll
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                operations
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                batch
 </span>
@@ -1107,7 +1106,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
-                                <span className="text-2xs text-white/50">                                nexis
+                                <span className="text-2xs text-white/50">                                directioner
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -1121,15 +1120,15 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                bridge-guard
+                                rollback-guard
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Bridge with quotes compared across routes before approval
+                                Updates tested and scored before activation
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                bridge
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                watchdog
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                routing
 </span>
@@ -1157,7 +1156,7 @@ export default function Home() {
                       <div className="flex flex-col gap-2 opacity-40">
                         <div className="flex items-center gap-3 px-2">
                           <div className="flex items-center gap-1.5">
-                            <span className="text-sm text-white">                            DeFi
+                            <span className="text-sm text-white">                            desktop automation
 </span>
                             <span className="bg-white/10 text-2xs text-white/50 leading-none px-1 py-0.5">                            13
 </span>
@@ -1170,7 +1169,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <span className="w-2.5 h-2.5 rounded-full bg-white/50" aria-hidden="true"></span>
-                                <span className="text-2xs text-white/50">                                vaultkeep
+                                <span className="text-2xs text-white/50">                                direct-labs
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -1184,17 +1183,17 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                lp-rebalance
+                                model-rebalance
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Rebalance LP ranges when price drifts outside your band
+                                Rebalance model workloads when system risk drifts outside policy
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                defi
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                models
 </span>
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                lp
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                runtime
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                +2
 </span>
@@ -1219,7 +1218,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <span className="w-2.5 h-2.5 rounded-full bg-white/50" aria-hidden="true"></span>
-                                <span className="text-2xs text-white/50">                                vaultkeep
+                                <span className="text-2xs text-white/50">                                direct-labs
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -1233,15 +1232,15 @@ export default function Home() {
                             </div>
                             <div className="flex flex-col gap-1">
                               <p className="text-xs text-white leading-none">
-                                loop-unwind
+                                rollback-unwind
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Unwind leveraged positions when health factor dips
+                                Unwind a staged change when its health score dips
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                defi
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                rollback
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                risk
 </span>
@@ -1266,7 +1265,7 @@ export default function Home() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <img alt="" aria-hidden="true" loading="lazy" width="10" height="10" decoding="async" className="size-2.5 rounded-full object-cover [filter:invert(1)]" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
-                                <span className="text-2xs text-white/50">                                nexis
+                                <span className="text-2xs text-white/50">                                directioner
 </span>
                               </div>
                               <div className="flex items-center gap-1">
@@ -1283,14 +1282,14 @@ export default function Home() {
                                 stable-park
                               </p>
                               <p className="text-xs text-white/50 leading-130 line-clamp-3">
-                                Park idle balances in allowlisted yield with daily receipts
+                                Stage updates in an isolated slot with a verified rollback path
                               </p>
                             </div>
                             <div className="flex flex-col gap-2.5 mt-auto">
                               <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                defi
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                capability
 </span>
-                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                treasury
+                                <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                system
 </span>
                                 <span className="px-1 py-0.5 bg-white/6 text-2xs text-white/50 leading-none">                                +1
 </span>
@@ -1319,7 +1318,7 @@ export default function Home() {
                 <div className="flex flex-col lg:flex-row border border-t-0 border-border lg:min-h-99.5">
                   <div className="group flex-1 border-b lg:border-b-0 lg:border-r border-border flex flex-col gap-5 p-5">
                     <a className="flex items-center gap-3" href="/research">                    <div className="flex items-center gap-3 text-white/50 group-hover:text-white transition-colors font-sans text-sm leading-normal">
-                      Policy Kit
+                      Capability Policy
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-3 h-3" aria-hidden="true">
                         <path d="M5 12h14">
                         </path>
@@ -1328,9 +1327,9 @@ export default function Home() {
                       </svg>
                     </div>
 </a>
-                    <div className="relative flex-1 bg-white/2 p-3 overflow-hidden flex items-center justify-center transition-colors duration-300 group-hover:bg-white/4">
+                    <div className="relative flex-1 min-w-0 max-w-full bg-white/2 p-3 overflow-hidden flex items-center justify-center transition-colors duration-300 group-hover:bg-white/4">
                       <div className="absolute top-2 right-2 z-20">
-                        <CopyButton text={POLICY_KIT_CODE} label="Copy Policy Kit code" />
+                        <CopyButton text={POLICY_KIT_CODE} label="Copy Capability Policy code" />
                       </div>
                       <div className="flex gap-3 items-start font-mono text-xs leading-normal">
                         <div className="flex flex-col text-white/12 select-none">
@@ -1360,16 +1359,16 @@ export default function Home() {
 </span>
                           <span className="text-code-green">                          from
 </span>
-                          <span>                          &#34;@nexis/agent&#34;
+                          <span>                          &#34;@directioner/os&#34;
 </span>
-                          <span>                          export const treasury =
+                          <span>                          export const maintenance =
 </span>
                           <span className="text-white">                          {"policy({"}
 </span>
-                          <span>                          dailyLimit: &#34;25,000 USDC&#34;,
-  perTx: &#34;5,000 USDC&#34;,
-  allowlist: recipients,
-  approvals: &#34;above 1,000&#34;,
+                          <span>                          capability: &#34;display.driver&#34;,
+  autonomy: &#34;tier-2&#34;,
+  blastRadius: &#34;36-60&#34;,
+  rollback: &#34;required&#34;,
 </span>
                           <span className="text-white">                          {"})"}
 </span>
@@ -1377,12 +1376,12 @@ export default function Home() {
                       </div>
                     </div>
                     <p className="text-base text-white/50 font-sans leading-normal">
-                      A typed library for defining wallet boundaries the runtime can enforce.
+                      A typed library for defining capability boundaries the runtime can enforce.
                     </p>
                   </div>
                   <div className="group flex-1 border-b lg:border-b-0 lg:border-r border-border flex flex-col gap-5 p-5">
                     <a className="flex items-center gap-3" href="/blog">                    <div className="flex items-center gap-3 text-white/50 group-hover:text-white transition-colors font-sans text-sm leading-normal">
-                      Nex CLI
+                      Direct CLI
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-3 h-3" aria-hidden="true">
                         <path d="M5 12h14">
                         </path>
@@ -1393,21 +1392,21 @@ export default function Home() {
 </a>
                     <div className="relative flex-1 bg-white/2 p-3 overflow-hidden flex items-center justify-center transition-colors duration-300 group-hover:bg-white/4">
                       <div className="absolute top-2 right-2 z-20">
-                        <CopyButton text={NEX_CLI_CODE} label="Copy Nex CLI command" />
+                        <CopyButton text={NEX_CLI_CODE} label="Copy Direct CLI command" />
                       </div>
-                      <pre className="font-mono text-xs leading-normal whitespace-pre-wrap">
-                        <span className="text-code-green">                        nex run \
+                      <pre className="min-w-0 w-full max-w-full overflow-x-auto text-left font-mono text-xs leading-normal whitespace-pre-wrap break-words">
+                        <span className="text-code-green">                        directioner run \
 </span>
-                        <span className="text-white/50">                        playbooks/treasury.toml \
+                        <span className="text-white/50">                        playbooks/system.toml \
   --simulate \
   --require-approval \
-  --receipts out/
+  --work-log out/
 </span>
                         <span className="fig-cli-cursor" aria-hidden="true"></span>
                       </pre>
                     </div>
                     <p className="text-base text-white/50 font-sans leading-normal">
-                      One loop from plan to receipt, in your terminal.
+                      One loop from plan to Work Log entry, in your terminal.
                     </p>
                   </div>
                   <a className="group flex-1 flex flex-col gap-5 p-5" href="/app">                  <div className="flex items-center gap-3">
@@ -1461,7 +1460,7 @@ export default function Home() {
                             sim-base-1
                           </p>
                           <p className="text-2xs text-white/22 leading-normal">
-                            forked:base-mainnet
+                            staged:system-a
                           </p>
                         </div>
                       </div>
@@ -1480,10 +1479,10 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col gap-px font-favorit uppercase">
                           <p className="text-xs text-white/50 tracking-wider leading-tight">
-                            sim-eth-1
+                            model-planner-1
                           </p>
                           <p className="text-2xs text-white/22 leading-normal">
-                            forked:eth-mainnet
+                            staged:system-b
                           </p>
                         </div>
                         <div className="bg-white/2 w-full mt-auto">
@@ -1526,10 +1525,10 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col gap-px font-favorit uppercase">
                           <p className="text-xs text-white/50 tracking-wider leading-tight">
-                            sim-sol-1
+                            model-reviewer-1
                           </p>
                           <p className="text-2xs text-white/22 leading-normal">
-                            forked:solana
+                            staged:workspace
                           </p>
                         </div>
                       </div>
@@ -1543,17 +1542,17 @@ export default function Home() {
               </div>
             </section>
             <GlitterGridSeparator size="chapter" />
-            <section id="payments" className="border border-border flex flex-col bg-[linear-gradient(180deg,#111_0%,#0e0e0e_100%)] scroll-mt-17 xl:scroll-mt-[104px]">
+            <section id="capabilities" className="border border-border flex flex-col bg-[linear-gradient(180deg,#111_0%,#0e0e0e_100%)] scroll-mt-17 xl:scroll-mt-[104px]">
               <div className="h-90 border-b border-border flex flex-col items-start p-5 gap-8 relative overflow-hidden">
                 <div className="pointer-events-none absolute inset-0 mix-blend-lighten" aria-hidden="true">
                   <img alt="" loading="lazy" decoding="async" className="object-cover object-center opacity-100 saturate-[1.58] brightness-[1.28] contrast-[1.16]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="100vw" src="/backgrounds/compute-bg.png" />
                 </div>
                 <p className="relative z-10 font-sans text-white text-7 leading-120 max-w-170">
-                  <span className="text-white">                  Payments.
+                  <span className="text-white">                  Model Workbench.
 </span>
-                  <span className="text-white/50">                  Move value across chains
+                  <span className="text-white/50">                  Maintain every system surface
                   <br />
-                  through the same rails your agent plans on.
+                  through the same typed capability interface your AI Engineer plans on.
 </span>
                 </p>
                 <div className="relative z-10 flex items-center gap-1">
@@ -1590,7 +1589,7 @@ export default function Home() {
               <div className="grid min-h-[420px] border-b border-border bg-[#101010] lg:grid-cols-[0.92fr_1.08fr]">
                 <div className="flex flex-col justify-center p-5 lg:p-8">
                   <p className="max-w-170 font-sans text-7 leading-120 text-white/50">
-                    Stablecoin sends, bridge-and-swap routing, and claimable payment links — one loop that carries your policy from intent to settlement.
+                    System updates, driver changes, and workspace automation — one loop that carries your capability policy from intent to verified recovery.
                   </p>
                 </div>
                 <div className="flex min-h-[420px] items-center justify-center border-t border-border p-5 lg:border-t-0 lg:border-l lg:p-10">
@@ -1607,7 +1606,7 @@ export default function Home() {
                           INTENT
                         </text>
                         <text x="72" y="72" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
-                          send 250 usdc → ops
+                          repair display.driver → workstation
                         </text>
                         <rect x="356" y="56" width="4" height="4" fill="rgba(255,255,255,0.4)">
                         </rect>
@@ -1621,7 +1620,7 @@ export default function Home() {
                           POLICY
                         </text>
                         <text x="72" y="146" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
-                          limits · allowlist · approvals
+                          scopes · rollback · approvals
                         </text>
                         <rect x="356" y="130" width="4" height="4" fill="rgba(255,255,255,0.4)">
                         </rect>
@@ -1632,10 +1631,10 @@ export default function Home() {
                         <rect className="fig-node" x="54" y="180" width="321" height="54" fill="#0e0e0e" stroke="#2a2a2a">
                         </rect>
                         <text x="72" y="204" className="font-favorit fig-node-label" fontSize="10.5" fill="rgba(255,255,255,0.82)">
-                          ROUTE
+                          IMPLEMENT
                         </text>
                         <text x="72" y="220" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
-                          best of 4 quotes
+                          best of 4 model evaluations
                         </text>
                         <rect x="356" y="204" width="4" height="4" fill="rgba(255,255,255,0.4)">
                         </rect>
@@ -1646,7 +1645,7 @@ export default function Home() {
                         <rect className="fig-node" x="54" y="254" width="321" height="54" fill="#0e0e0e" stroke="#2a2a2a">
                         </rect>
                         <text x="72" y="278" className="font-favorit fig-node-label" fontSize="10.5" fill="rgba(255,255,255,0.82)">
-                          SETTLEMENT
+                          AUDIT
                         </text>
                         <text x="72" y="294" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
                           base · 24s
@@ -1669,7 +1668,7 @@ export default function Home() {
                         </rect>
                       </g>
                       <text x="54" y="20" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.25)">
-                        NEXIS PAYMENT RAILS
+                        DIRECTIONER-OS CAPABILITY PIPELINE
                       </text>
                     </svg>
                   </div>
@@ -1679,10 +1678,10 @@ export default function Home() {
                 <div className="text-card-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.045),0_24px_60px_rgba(0,0,0,0.18)] relative flex min-h-[34rem] flex-col justify-between overflow-hidden border-0 border-b border-border bg-transparent p-8 last:border-b-0 lg:border-r lg:border-b-0 lg:last:border-r-0">
                   <div className="relative z-10">
                     <div className="font-sans text-card-foreground text-xl">
-                      Stablecoin sends
+                      Capability execution
                     </div>
                     <div className="font-sans text-base text-muted-foreground mt-3 max-w-105 leading-normal">
-                      Send USDC and other stables with the recipient resolved and shown before approval — to wallets, names, or contacts.
+                      Stage system changes with the target path, blast radius, and rollback proof shown before approval.
                     </div>
                   </div>
                   <div className="mt-10 flex flex-1 items-end justify-center">
@@ -1692,10 +1691,10 @@ export default function Home() {
                           <rect className="fig-node" x="24" y="18" width="162" height="64" stroke="#2a2a2a" fill="#101010">
                           </rect>
                           <text className="font-favorit fig-node-label" x="40" y="44" fontSize="10" fill="rgba(255,255,255,0.8)">
-                            OPS WALLET
+                            ARIA PLAN
                           </text>
                           <text x="40" y="62" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
-                            balance 41,270 usdc
+                            display.driver · staged
                           </text>
                         </g>
                         <line x1="105" y1="82" x2="105" y2="140" stroke="#2a2a2a">
@@ -1705,7 +1704,7 @@ export default function Home() {
                         <rect x="52" y="112" width="106" height="26" fill="#0e0e0e" stroke="#3a4a38">
                         </rect>
                         <text x="66" y="129" className="font-favorit fig-pulse-soft" fontSize="9.5" fill="#85ed75">
-                          250 USDC
+                          score 18 / 100
                         </text>
                         <line x1="105" y1="138" x2="105" y2="196" stroke="#2a2a2a">
                         </line>
@@ -1715,14 +1714,14 @@ export default function Home() {
                           <rect className="fig-node" x="24" y="196" width="162" height="64" stroke="#2a2a2a" fill="#101010">
                           </rect>
                           <text className="font-favorit fig-node-label" x="40" y="222" fontSize="10" fill="rgba(255,255,255,0.8)">
-                            RECIPIENT
+                            TARGET SURFACE
                           </text>
                           <text x="40" y="240" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
-                            ops.nexis.eth · shown first
+                            systemd-udevd · protected
                           </text>
                         </g>
                         <text x="24" y="278" className="font-favorit" fontSize="8.5" fill="rgba(255,255,255,0.25)">
-                          POLICY: WITHIN DAILY LIMIT
+                          POLICY: WITHIN TIER 1
                         </text>
                       </svg>
                     </div>
@@ -1731,10 +1730,10 @@ export default function Home() {
                 <div className="text-card-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.045),0_24px_60px_rgba(0,0,0,0.18)] relative flex min-h-[34rem] flex-col justify-between overflow-hidden border-0 border-b border-border bg-transparent p-8 last:border-b-0 lg:border-r lg:border-b-0 lg:last:border-r-0">
                   <div className="relative z-10">
                     <div className="font-sans text-card-foreground text-xl">
-                      Bridge &amp; swap
+                      Stage &amp; recover
                     </div>
                     <div className="font-sans text-base text-muted-foreground mt-3 max-w-105 leading-normal">
-                      Quotes compared across routes with fees, slippage, and time-to-settle surfaced. The best passing route is the one that executes.
+                      Capability plans compared with blast radius, rollback readiness, and verification latency surfaced. The best passing plan is the one that safely executes.
                     </div>
                   </div>
                   <div className="mt-10 flex flex-1 items-end justify-center">
@@ -1743,7 +1742,7 @@ export default function Home() {
                         <rect x="24" y="252" width="120" height="56" stroke="#2a2a2a" fill="#101010">
                         </rect>
                         <text x="40" y="276" className="font-favorit" fontSize="10" fill="rgba(255,255,255,0.8)">
-                          ETHEREUM
+                          LOCAL SYSTEM
                         </text>
                         <text x="40" y="292" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
                           origin
@@ -1763,15 +1762,15 @@ export default function Home() {
                         <rect className="fig-pulse-strong" x="205" y="128" width="4" height="4" fill="#85ed75">
                         </rect>
                         <text x="164" y="112" className="font-favorit" fontSize="9" fill="rgba(133,237,117,0.9)">
-                          ROUTE A · 0.8 BPS · 24S
+                          MODEL A · 0.8S · PASS
                         </text>
                         <path className="fig-dash-flow-slow" d="M84 252 C 84 190, 330 190, 330 252" stroke="#2a2a2a" strokeDasharray="3 3" fill="none">
                         </path>
                         <text x="168" y="180" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.3)">
-                          ROUTE B · 2.1 BPS · 6M
+                          MODEL B · 2.1S · REVIEW
                         </text>
                         <text x="24" y="336" className="font-favorit" fontSize="8.5" fill="rgba(255,255,255,0.25)">
-                          QUOTES COMPARED BEFORE APPROVAL
+                          MODELS COMPARED BEFORE APPROVAL
                         </text>
                       </svg>
                     </div>
@@ -1780,10 +1779,10 @@ export default function Home() {
                 <div className="text-card-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.045),0_24px_60px_rgba(0,0,0,0.18)] relative flex min-h-[34rem] flex-col justify-between overflow-hidden border-0 border-b border-border bg-transparent p-8 last:border-b-0 lg:border-r lg:border-b-0 lg:last:border-r-0">
                   <div className="relative z-10">
                     <div className="font-sans text-card-foreground text-xl">
-                      Payment links
+                      Capability proposals
                     </div>
                     <div className="font-sans text-base text-muted-foreground mt-3 max-w-105 leading-normal">
-                      Issue claimable links with expiry, limits, and receipts. Recipients do not need a wallet to start.
+                      Issue capability proposals with expiry, limits, and Work Log entries. Operators retain authority at every boundary.
                     </div>
                   </div>
                   <div className="mt-10 flex flex-1 items-end justify-center">
@@ -1792,10 +1791,10 @@ export default function Home() {
                         <rect x="30" y="34" width="213" height="188" stroke="#2a2a2a" fill="#101010">
                         </rect>
                         <text x="48" y="64" className="font-favorit" fontSize="10" fill="rgba(255,255,255,0.8)">
-                          PAYMENT LINK
+                          CAPABILITY PROPOSAL
                         </text>
                         <text x="48" y="82" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.34)">
-                          nexis.to/p/9f2k · 100 usdc
+                          aria explain · depth 3
                         </text>
                         <rect className="fig-wave" style={{ '--fig-delay': '0s', '--fig-dur': '5.6s' } as React.CSSProperties} x="48" y="104" width="6" height="6" fill="rgba(255,255,255,0.42)">
                         </rect>
@@ -1861,13 +1860,13 @@ export default function Home() {
                           EXPIRES 72H
                         </text>
                         <text x="160" y="150" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.5)">
-                          LIMIT 1 CLAIM
+                          APPROVAL REQUIRED
                         </text>
                         <text x="160" y="168" className="font-favorit fig-pulse-soft" fontSize="9" fill="#85ed75">
-                          RECEIPT ON
+                          ROLLBACK ON
                         </text>
                         <text x="30" y="252" className="font-favorit" fontSize="8.5" fill="rgba(255,255,255,0.25)">
-                          CLAIMABLE WITHOUT A WALLET
+                          EXECUTABLE ONLY WITH APPROVAL
                         </text>
                       </svg>
                     </div>
@@ -1878,10 +1877,10 @@ export default function Home() {
                 <div className="order-2 flex min-h-96 flex-col justify-between gap-8 border-b border-border bg-[#101010] p-5 lg:order-2 lg:border-b-0 lg:border-l">
                   <div className="flex flex-col gap-1 font-sans">
                     <p className="text-7 leading-120 text-white">
-                      Turn receipts into the next policy.
+                      Turn Work Log entries into the next capability policy.
                     </p>
                     <p className="max-w-115 text-white/50 leading-normal">
-                      Cluster failures and near-misses from settled runs, convert them into tighter limits and better routes, then ship the policy update in one review.
+                      Cluster failures and near-misses from system runs, convert them into tighter capabilities and safer rollbacks, then ship the policy update in one review.
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-1">
@@ -2276,14 +2275,14 @@ export default function Home() {
                     <rect className="fig-pulse-strong" x="347" y="60" width="4" height="4" fill="#85ed75">
                     </rect>
                     <text x="350" y="366" textAnchor="middle" className="font-favorit" fontSize="9" fill="rgba(255,255,255,0.3)">
-                      RECEIPTS FEED THE NEXT RUN
+                      WORK LOG FEEDS THE NEXT RUN
                     </text>
                   </svg>
                 </div>
               </div>
             </section>
             <GlitterGridSeparator size="chapter" />
-            <section id="markets" className="border border-border flex flex-col scroll-mt-17 xl:scroll-mt-[104px]">
+            <section id="models" className="border border-border flex flex-col scroll-mt-17 xl:scroll-mt-[104px]">
               <div className="h-90 border-b border-border flex flex-col items-start p-5 gap-8 relative overflow-hidden bg-surface">
                 <MarketsGraph />
                 <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -2295,14 +2294,14 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="relative z-10 font-sans text-white text-7 leading-120 max-w-170">
-                  <span className="text-white">                  Markets.
+                  <span className="text-white">                  Active models.
 </span>
-                  <span className="text-white/50">                  Watch prices, routes, and yield across chains from a single governed surface.
+                  <span className="text-white/50">                  Watch health, updates, and resource pressure across machines from a single governed surface.
 </span>
                 </p>
                 <div className="relative z-10 flex items-center gap-1">
                   <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
-                    <AsciiGlitchRipple animateOn="parentHover">OPEN MARKETS</AsciiGlitchRipple>
+                    <AsciiGlitchRipple animateOn="parentHover">OPEN MODEL LAB</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -2336,12 +2335,12 @@ export default function Home() {
                   <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-1">
                       <p className="text-white text-h3-title leading-122">
-                        Live routes
+                        Live capabilities
                       </p>
                       <p className="text-white/50 text-h3-title max-w-115 leading-122">
-                        Streaming quotes across venues.
+                        Streaming evaluations across local models.
                         <br />
-                        One surface for every chain you operate on.
+                        One surface for every machine and workspace you operate.
                       </p>
                     </div>
                     <div className="flex flex-col">
@@ -2351,7 +2350,7 @@ export default function Home() {
 </span>
                           <span className="flex flex-col flex-1">                          <span className="text-white">                          Smart order routing
 </span>
-                          <span className="block text-white/50 max-w-80 leading-122 pt-3">                          Quotes gathered across venues and bridges, ranked by policy-adjusted cost.
+                          <span className="block text-white/50 max-w-80 leading-122 pt-3">                          Proposed actions ranked by quantitative blast radius and system criticality.
 </span>
 </span>
                         </div>
@@ -2362,9 +2361,9 @@ export default function Home() {
                         <div className="flex gap-2.5 items-start text-sm w-full text-left">
                           <span className="whitespace-nowrap text-white">                          1.2
 </span>
-                          <span className="flex flex-col flex-1">                          <span className="text-white">                          Market alerts
+                          <span className="flex flex-col flex-1">                          <span className="text-white">                          Model alerts
 </span>
-                          <span className="block text-white/50 max-w-80 leading-122 pt-3">                          Price, gas, and depth triggers that wake your agent only inside its boundaries.
+                          <span className="block text-white/50 max-w-80 leading-122 pt-3">                          Health and update triggers wake the AI Engineer only inside its capabilities.
 </span>
 </span>
                         </div>
@@ -2375,9 +2374,9 @@ export default function Home() {
                         <div className="flex gap-2.5 items-start text-sm w-full text-left">
                           <span className="whitespace-nowrap text-white">                          1.3
 </span>
-                          <span className="flex flex-col flex-1">                          <span className="text-white">                          Position telemetry
+                          <span className="flex flex-col flex-1">                          <span className="text-white">                          Run telemetry
 </span>
-                          <span className="block text-white/50 max-w-80 leading-122 pt-3">                          Health factors, ranges, and exposure streamed into the same receipts trail.
+                          <span className="block text-white/50 max-w-80 leading-122 pt-3">                          CPU, memory, storage, and World Model health stream into the same Work Log.
 </span>
 </span>
                         </div>
@@ -2385,7 +2384,7 @@ export default function Home() {
                     </div>
                   </div>
                   <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
-                    <AsciiGlitchRipple animateOn="parentHover">GET ROUTES</AsciiGlitchRipple>
+                    <AsciiGlitchRipple animateOn="parentHover">COMPARE MODELS</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -2412,12 +2411,12 @@ export default function Home() {
                   <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-1">
                       <p className="text-white text-h3-title leading-122">
-                        Treasury automation
+                        System automation
                       </p>
                       <p className="text-white/50 max-w-115 leading-122">
-                        Plan positions against live conditions.
+                        Plan system changes against live conditions.
                         <br />
-                        Idle balances earn inside your allowlist.
+                        Every capability runs inside an explicit policy boundary.
                       </p>
                     </div>
                     <div className="flex flex-col">
@@ -2425,9 +2424,9 @@ export default function Home() {
                         <div className="flex gap-2.5 items-start text-sm">
                           <span className="whitespace-nowrap text-white">                          1.1
 </span>
-                          <span className="flex flex-col gap-2">                          <span className="text-white">                          Plans priced against live quotes before approval
+                          <span className="flex flex-col gap-2">                          <span className="text-white">                          Plans scored against live system state before approval
 </span>
-                          <span className="text-white/35 leading-122 max-w-80">                          Every proposed position carries its entry cost, exit cost, and downside math.
+                          <span className="text-white/35 leading-122 max-w-80">                          Every proposed change carries its blast radius, rollback path, and verification evidence.
 </span>
 </span>
                         </div>
@@ -2438,9 +2437,9 @@ export default function Home() {
                         <div className="flex gap-2.5 items-start text-sm">
                           <span className="whitespace-nowrap text-white">                          1.2
 </span>
-                          <span className="flex flex-col gap-2">                          <span className="text-white">                          Idle balances parked in governed yield
+                          <span className="flex flex-col gap-2">                          <span className="text-white">                          Updates staged in governed recovery slots
 </span>
-                          <span className="text-white/35 leading-122 max-w-80">                          Allowlisted venues only, with daily receipts and instant unwind triggers.
+                          <span className="text-white/35 leading-122 max-w-80">                          Typed capabilities only, with append-only audit trails and rollback triggers.
 </span>
 </span>
                         </div>
@@ -2451,9 +2450,9 @@ export default function Home() {
                         <div className="flex gap-2.5 items-start text-sm">
                           <span className="whitespace-nowrap text-white">                          1.3
 </span>
-                          <span className="flex flex-col gap-2">                          <span className="text-white">                          Direct help from the Nexis operations team
+                          <span className="flex flex-col gap-2">                          <span className="text-white">                          Direct help from the Directioner-OS operations team
 </span>
-                          <span className="text-white/35 leading-122 max-w-80">                          A named engineer from first policy to steady-state automation.
+                          <span className="text-white/35 leading-122 max-w-80">                          A resident systems engineer from first diagnosis to steady-state automation.
 </span>
 </span>
                         </div>
@@ -2462,7 +2461,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-1">
                     <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white" href="/app">
-                      <AsciiGlitchRipple animateOn="parentHover">PLAN A POSITION</AsciiGlitchRipple>
+                      <AsciiGlitchRipple animateOn="parentHover">PLAN A RUN</AsciiGlitchRipple>
                     <div className="w-3 h-3 overflow-hidden relative">
                       <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                         <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -2509,7 +2508,7 @@ export default function Home() {
                           </circle>
                         </svg>
                         <p className="text-white/50 text-sm flex-1">
-                          Enter token or pair..
+                          Enter model or capability..
                         </p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down shrink-0 text-white/50" aria-hidden="true">
                           <path d="m6 9 6 6 6-6">
@@ -2522,7 +2521,7 @@ export default function Home() {
                             <img alt="" aria-hidden="true" loading="lazy" width="30" height="30" decoding="async" className="[filter:invert(1)] opacity-80" style={{ color: 'transparent' } as React.CSSProperties} src="/assets/logo-new.svg" />
                             <div className="flex flex-col gap-4">
                               <p className="text-white text-xl leading-none">
-                                USDC → ETH × 25,000
+                                UPDATE → VERIFIED
                               </p>
                               <div className="flex items-center gap-2">
                                 <span className="text-sm text-white">                                BASE
@@ -2542,7 +2541,7 @@ export default function Home() {
                                     <path d="M6 18v-7">
                                     </path>
                                   </svg>
-                                  <span className="text-sm text-white">                                  POLICY: TREASURY-V12
+                                  <span className="text-sm text-white">                                  POLICY: DIRECT-CORE-V1
 </span>
                                 </div>
                               </div>
@@ -2551,14 +2550,14 @@ export default function Home() {
                           <div className="flex flex-col items-end gap-1.5">
                             <p className="text-white text-lg leading-none whitespace-nowrap">
                               $1.90
-                              <span className="text-white/40">                              /1K/BPS
+                              <span className="text-white/40">                              /RUN
 </span>
                             </p>
                             <p className="text-2xs font-favorit uppercase whitespace-nowrap">
                               <span className="text-white">                              TOTAL
                               
 </span>
-                              <span className="text-white/50">                              4.75 bps
+                              <span className="text-white/50">                              4.75 ms
 </span>
                             </p>
                           </div>
@@ -2587,7 +2586,7 @@ export default function Home() {
                       <div className="p-4 border-b border-border opacity-45">
                         <div className="flex flex-col gap-4">
                           <div className="flex items-center gap-3">
-                            <span className="text-sm text-white/50 whitespace-nowrap">                            Entry cost (all-in)
+                            <span className="text-sm text-white/50 whitespace-nowrap">                            Planning latency
 </span>
                             <div className="flex-1 border-t border-border">
                             </div>
@@ -2595,7 +2594,7 @@ export default function Home() {
 </span>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="text-sm text-white/50 whitespace-nowrap">                            Exit cost (simulated)
+                            <span className="text-sm text-white/50 whitespace-nowrap">                            Verification latency
 </span>
                             <div className="flex-1 border-t border-border">
                             </div>
@@ -2603,7 +2602,7 @@ export default function Home() {
 </span>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="text-sm text-white/50 whitespace-nowrap">                            Idle yield forgone
+                            <span className="text-sm text-white/50 whitespace-nowrap">                            Rollback readiness
 </span>
                             <div className="flex-1 border-t border-border">
                             </div>
@@ -2611,11 +2610,11 @@ export default function Home() {
 </span>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="text-sm text-white/50 whitespace-nowrap">                            Yield at 4.1% APY
+                            <span className="text-sm text-white/50 whitespace-nowrap">                            Verification latency
 </span>
                             <div className="flex-1 border-t border-border">
                             </div>
-                            <span className="text-sm text-white whitespace-nowrap">                            $19.70 / wk
+                            <span className="text-sm text-white whitespace-nowrap">                            240 ms
 </span>
                           </div>
                         </div>
@@ -2679,10 +2678,10 @@ export default function Home() {
                       Research
                     </p>
                     <p className="text-white text-xl leading-normal lg:text-h3-title underline-offset-4 decoration-white/60 group-hover:underline">
-                      Deterministic simulation for wallet operations
+                      Deterministic verification for system operations
                     </p>
                     <p className="text-white/60 text-base leading-6 max-w-100 transition-colors group-hover:text-white/75">
-                      How Nexis previews every transaction on forked chain state before approval.
+                      How Directioner-OS previews every mutation, scores its blast radius, and proves its rollback before approval.
                     </p>
                   </div>
                   <span className="inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors bg-surface text-text-mute min-h-7 px-2 py-2 text-xs leading-none border border-white/12 self-start group-hover:bg-surface-hover group-hover:text-white">                  READ MORE
@@ -2704,12 +2703,12 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-sm leading-5 text-white/50 max-w-74.5 transition-colors group-hover:text-white/70">
-                    Turning settled runs into policy improvements and evals.
+                    Turning audited mutations into safer capabilities and recovery proofs.
                   </p>
 </a>
                   <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.3571428571428572, minHeight: '134px' } as React.CSSProperties}>                  <div className="flex items-start justify-between gap-5">
                     <p className="text-white leading-6 underline-offset-4 decoration-white/60 group-hover:underline">
-                      The policy engine behind Nexis
+                      The safety engine behind Directioner-OS
                     </p>
                     <div className="bg-white/4 p-2 shrink-0 flex items-center justify-center size-7 transition-colors group-hover:bg-surface-hover">
                       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right text-white/70" aria-hidden="true">
@@ -2726,7 +2725,7 @@ export default function Home() {
 </a>
                   <a className="group border-b border-border p-5 flex flex-col gap-3 font-sans focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/research" style={{ flexGrow: 1.3571428571428572, minHeight: '134px' } as React.CSSProperties}>                  <div className="flex items-start justify-between gap-5">
                     <p className="text-white leading-6 underline-offset-4 decoration-white/60 group-hover:underline">
-                      Cross-chain routing under constraints
+                      Autonomous maintenance under constraints
                     </p>
                     <div className="bg-white/4 p-2 shrink-0 flex items-center justify-center size-7 transition-colors group-hover:bg-surface-hover">
                       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right text-white/70" aria-hidden="true">
@@ -2738,7 +2737,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-sm leading-5 text-white/50 max-w-74.5 transition-colors group-hover:text-white/70">
-                    Route selection when fees, time, and depth all bind.
+                    Model selection when context, risk, and capability scope all bind.
                   </p>
 </a>
                   <a className="group flex-1 min-h-15 lg:min-h-19 flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60" href="/blog">                  <div className="flex items-center gap-2 p-2">
@@ -2792,7 +2791,7 @@ export default function Home() {
 </span>
                       </div>
                       <div className="text-white text-base font-normal md:font-350">
-                        Simulation coverage for DeFi workflows
+                        Verification coverage for desktop and system workflows
                       </div>
                     </div>
                   </div>
@@ -2850,10 +2849,10 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col gap-3">
                     <h2 className="text-white text-7 leading-122">
-                      Build on Nexis
+                      Build on Directioner-OS
                     </h2>
                     <p className="max-w-100 leading-normal text-white/50 mt-5">
-                      Ship agents that move value under boundaries you define — with the SDK, the CLI, and receipts for everything they do.
+                      Build autonomous workflows inside boundaries you define — with typed capabilities, local explanations, and a Work Log for everything they do.
                     </p>
                   </div>
                   <a className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white uppercase" href="/app">
@@ -2878,7 +2877,7 @@ export default function Home() {
 </a>
                 </div>
                 <div className="relative w-full h-50 md:h-70 lg:h-auto lg:max-w-204.75 lg:self-stretch overflow-hidden">
-                  <img alt="Nexis platform artwork" loading="lazy" decoding="async" className="object-cover object-center opacity-90 saturate-[1.12]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/figma/workflows-background.png" />
+                  <img alt="Directioner-OS platform artwork" loading="lazy" decoding="async" className="object-cover object-center opacity-90 saturate-[1.12]" style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0, color: 'transparent' } as React.CSSProperties} sizes="(min-width: 1024px) 55vw, 100vw" src="/assets/nex-landing/figma/workflows-background.png" />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(14,14,14,0.9)_0%,rgba(14,14,14,0.25)_40%,rgba(14,14,14,0)_100%)]" aria-hidden="true">
                   </div>
                 </div>

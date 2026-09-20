@@ -3,8 +3,8 @@ import Footer from "../components/Footer";
 import BlogGrid from "../components/BlogGrid";
 
 export const metadata = {
-  title: "Blog — Nexis",
-  description: "News, insights, and field notes from the team building governed on-chain autonomy at Nexis Research.",
+  title: "Blog — Directioner-OS",
+  description: "News, architecture notes, and field reports from the team building Directioner-OS, Aria, and the resident AI Engineer.",
 };
 
 export default function BlogPage() {

@@ -12,73 +12,69 @@ const DOCS_CONTENT: Record<string, { title: string; category: string; descriptio
   "quickstart": {
     title: "Quickstart Guide",
     category: "Getting Started",
-    description: "Initialize your first governed autonomous agent on Nexis in under 5 minutes.",
-    code: `npm install @nexis/agent @nexis/sdk
-npx nexis init my-agent
-cd my-agent
-nexis run --simulate`
+    description: "Initialize your first capability-scoped AI Engineer on Directioner-OS in under 5 minutes.",
+    code: `npm install @directioner/os
+directioner init my-system
+cd my-system
+directioner run --simulate`
   },
   "tutorial-first-agent": {
-    title: "Tutorial: Building Your First Agent",
+    title: "Tutorial: Building Your First AI Engineer",
     category: "Guides & Tutorials",
-    description: "Step-by-step walkthrough connecting an LLM reasoning engine to the Nexis execution enclave with spend limits and allowlists.",
-    code: `import { Agent, policy } from "@nexis/agent";
+    description: "Step-by-step walkthrough connecting an AI reasoning engine to the Directioner-OS capability daemon with typed scopes and rollback requirements.",
+    code: `import { CapabilityClient } from "@directioner/os";
 
-const agent = new Agent({
-  name: "TreasuryRebalancer",
-  policy: policy({
-    dailyLimit: "10,000 USDC",
-    approvals: "above 1,000 USDC"
-  })
+const engineer = new CapabilityClient({
+  name: "SystemEngineer",
+  capability: "display.driver",
+  rollback: "required"
 });
 
-await agent.planAndSimulate({
-  action: "rebalance",
-  from: "USDC",
-  to: "ETH",
-  amount: "500 USDC"
+await engineer.planAndVerify({
+  action: "update-display-driver",
+  depth: "full-diagnostic"
 });`
   },
   "runs-and-streaming": {
     title: "Runs & Real-Time Streaming",
     category: "Core Platform",
-    description: "Subscribe to live execution streams, simulation diffs, state updates, and signed receipts over WebSockets or server-sent events.",
-    code: `const stream = await agent.streamRun(runId);
+    description: "Subscribe to live capability streams, verification diffs, state updates, and signed Work Log entries over WebSockets or server-sent events.",
+    code: `const stream = await engineer.streamRun(runId);
 
 for await (const event of stream) {
   console.log(event.type, event.payload);
 }`
   },
-  "wallets-and-portfolio": {
-    title: "Wallets & Multi-Chain Portfolio",
-    category: "On-Chain",
-    description: "Manage embedded MPC wallets, non-custodial Turnkey signer enclaves, and multi-network asset custody across EVM, SVM, UTXO, and Cosmos.",
-    code: `import { WalletManager } from "@nexis/sdk";
+  "systems-and-workspace": {
+    title: "Systems & Workspace",
+    category: "System-Level",
+    description: "Manage local capabilities, protected user data, A/B boot slots, and the SQLite World Model without surrendering operator control.",
+    code: `import { SystemModel } from "@directioner/os";
 
-const wm = new WalletManager({ enclave: "production-us-east" });
-const balance = await wm.getCrossChainPortfolio("0xYourWalletAddress");`
+const model = new SystemModel({ mode: "local-first" });
+const health = await model.getHealthSnapshot();`
   },
   "api-reference": {
     title: "API Reference",
     category: "Operations",
-    description: "Complete REST and RPC endpoint reference for the Nexis agent control plane.",
-    code: `POST /v1/agents/runs
+    description: "Complete REST and RPC endpoint reference for the Directioner-OS capability control plane.",
+    code: `POST /v1/capabilities/runs
 Authorization: Bearer <API_KEY>
 Content-Type: application/json
 
 {
-  "agentId": "ag_89f02c",
-  "intent": "Swap 1000 USDC for ETH on Base with max 0.2% slippage",
-  "simulateOnly": true
+  "capabilityId": "cap_89f02c",
+  "intent": "Update the display driver with rollback proof",
+  "explanationDepth": 3
 }`
   },
-  "nexbench-overview": {
-    title: "NEXBENCH Overview",
-    category: "NEXBENCH",
-    description: "Methodology, task suites, deterministic fork harnesses, and evaluation criteria for benchmarking on-chain LLM agents.",
-    code: `nexbench run --suite defi-v2 --trials 10
-nexbench score --format json
-nexbench export --sign`
+  "directioner-bench-overview": {
+    title: "DIRECTIONER BENCH Overview",
+    category: "DIRECTIONER BENCH",
+    description: "Methodology, safety suites, verification harnesses, and evaluation criteria for benchmarking autonomous system maintenance.",
+    code: `directioner bench run --suite safety-v1 --trials 10
+directioner bench score --format json
+directioner bench export`
   }
 };
 
@@ -87,9 +83,9 @@ export function generateStaticParams() {
     { slug: ["quickstart"] },
     { slug: ["tutorial-first-agent"] },
     { slug: ["runs-and-streaming"] },
-    { slug: ["wallets-and-portfolio"] },
+    { slug: ["systems-and-workspace"] },
     { slug: ["api-reference"] },
-    { slug: ["nexbench-overview"] }
+    { slug: ["directioner-bench-overview"] }
   ];
 }
 
@@ -109,8 +105,8 @@ export default async function DocsSubpage({ params }: Props) {
   const doc = DOCS_CONTENT[key] || {
     title: formatTitle(slugArr),
     category: "Documentation",
-    description: "Technical reference and implementation guide for Nexis on-chain autonomy runtime.",
-    code: `nex run --help`
+    description: "Technical reference and implementation guide for Directioner-OS autonomous computing runtime.",
+    code: `directioner run --help`
   };
 
   return (
@@ -143,7 +139,7 @@ export default async function DocsSubpage({ params }: Props) {
                   <div className="mt-8 flex flex-col gap-6 font-sans text-base leading-relaxed text-text-mute">
                     <h2 className="font-sans text-xl text-white">Overview</h2>
                     <p>
-                      The Nexis protocol standardizes how language models communicate with blockchain networks. All requests are compiled into typed intermediate plans, preflight simulated against live chain state, and bounded by non-bypassable signing edge policies.
+                      Directioner-OS standardizes how AI models communicate with system capabilities. Every request is compiled into typed intermediate plans, verified against live system state, and bounded by non-bypassable capability policies.
                     </p>
 
                     {doc.code && (
@@ -160,7 +156,7 @@ export default async function DocsSubpage({ params }: Props) {
 
                     <h2 className="mt-6 font-sans text-xl text-white">Security &amp; Policy Guarantees</h2>
                     <p>
-                      Every operation executed via this interface adheres to the zero-trust autonomy boundary: models suggest and plan, the execution engine simulates on fork state, and the signing enclave requires affirmative cryptographic authorization before funds move.
+                      Every operation executed through this interface follows the zero-trust autonomy boundary: models suggest and plan, the execution engine tests staged system state, and the Policy Engine requires explicit approval before privileged capabilities run.
                     </p>
                   </div>
 

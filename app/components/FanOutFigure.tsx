@@ -2,12 +2,12 @@
 
 import React from "react";
 
-const CHAINS = [
-  { name: "BASE", d: "M350 92 C 350 180, 96 210, 96 288", endX: 96, endY: 288, delay: "0s" },
-  { name: "ETHEREUM", d: "M350 92 C 350 180, 222 210, 222 288", endX: 222, endY: 288, delay: "0.75s" },
-  { name: "SOLANA", d: "M350 92 C 350 180, 350 210, 350 288", endX: 350, endY: 288, delay: "1.5s" },
-  { name: "ARBITRUM", d: "M350 92 C 350 180, 478 210, 478 288", endX: 478, endY: 288, delay: "2.25s" },
-  { name: "BITCOIN", d: "M350 92 C 350 180, 596 210, 596 288", endX: 596, endY: 288, delay: "3s" },
+const CAPABILITIES = [
+  { name: "PLANNER", d: "M350 92 C 350 180, 96 210, 96 288", endX: 96, endY: 288, delay: "0s" },
+  { name: "POLICY", d: "M350 92 C 350 180, 222 210, 222 288", endX: 222, endY: 288, delay: "0.75s" },
+  { name: "REVIEWER", d: "M350 92 C 350 180, 350 210, 350 288", endX: 350, endY: 288, delay: "1.5s" },
+  { name: "IMPLEMENTER", d: "M350 92 C 350 180, 478 210, 478 288", endX: 478, endY: 288, delay: "2.25s" },
+  { name: "AUDITOR", d: "M350 92 C 350 180, 596 210, 596 288", endX: 596, endY: 288, delay: "3s" },
 ];
 
 export default function FanOutFigure() {
@@ -23,7 +23,7 @@ export default function FanOutFigure() {
       >
         {/* Header Badges */}
         <text x="24" y="34" className="font-mono" fontSize="9" fill="rgba(255,255,255,0.25)">
-          EXECUTION FAN-OUT
+          CAPABILITY PIPELINE
         </text>
         <text x="604" y="34" className="font-mono" fontSize="9" fill="rgba(255,255,255,0.25)">
           T+24S
@@ -31,12 +31,12 @@ export default function FanOutFigure() {
 
         {/* Root Runtime Box */}
         <rect x="292" y="58" width="116" height="34" stroke="#373737" fill="#101010" rx="2" />
-        <text x="308" y="79" className="font-mono font-medium" fontSize="9.5" fill="rgba(255,255,255,0.85)">
-          NEXIS RUNTIME
+        <text x="350" y="79" textAnchor="middle" className="font-mono font-medium" fontSize="9.5" fill="rgba(255,255,255,0.85)">
+          DIRECT
         </text>
 
-        {/* Chain Paths with Streaming Comets */}
-        {CHAINS.map((chain) => (
+        {/* Capability paths with streaming comets */}
+        {CAPABILITIES.map((chain) => (
           <g key={chain.name} className="fig-chain group cursor-pointer">
             {/* Background static trajectory */}
             <path
@@ -53,7 +53,7 @@ export default function FanOutFigure() {
               pathLength={100}
               style={{ animationDelay: chain.delay } as React.CSSProperties}
             />
-            {/* Target chain terminal box */}
+            {/* Target capability terminal box */}
             <rect
               x={chain.endX - 2}
               y={chain.endY - 2}
@@ -62,7 +62,7 @@ export default function FanOutFigure() {
               fill="rgba(255,255,255,0.5)"
               className="group-hover:fill-[#85ed75] transition-colors"
             />
-            {/* Chain Label */}
+            {/* Capability label */}
             <text
               x={chain.endX}
               y={chain.endY + 26}
@@ -85,7 +85,7 @@ export default function FanOutFigure() {
           fill="#85ed75"
         />
 
-        {/* Flowing dotted pipe downwards to receipts */}
+        {/* Flowing dotted pipe downwards to Work Log entrys */}
         <path
           className="fig-dash-flow-slow"
           d="M350 292 V 344"

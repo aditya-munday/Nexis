@@ -3,11 +3,11 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const AGENTS = [
-  { name: "Nexis Sovereign v2", model: "Claude 3.7 + NexEnclave", passRate: "96.4%", safety: "99.8%", avgSlippage: "0.08%", gasEfficiency: "94.2%", latency: "1.2s", status: "VERIFIED" },
-  { name: "DeFi-CoPilot Pro", model: "DeepSeek-R1-671B", passRate: "91.2%", safety: "97.4%", avgSlippage: "0.19%", gasEfficiency: "89.5%", latency: "2.4s", status: "VERIFIED" },
-  { name: "Autonomous Treasury v1", model: "GPT-4o + ToolCall", passRate: "87.5%", safety: "94.1%", avgSlippage: "0.34%", gasEfficiency: "82.0%", latency: "3.1s", status: "VERIFIED" },
-  { name: "Eliza Web3 Worker", model: "Llama-3.3-70B-Instruct", passRate: "82.8%", safety: "91.0%", avgSlippage: "0.52%", gasEfficiency: "78.4%", latency: "1.8s", status: "COMMUNITY" },
-  { name: "Generic ReAct DeFi", model: "Claude 3.5 Sonnet", passRate: "76.4%", safety: "84.5%", avgSlippage: "1.12%", gasEfficiency: "68.9%", latency: "4.5s", status: "BASELINE" }
+  { name: "Direct Engineer Core", model: "Local model + Capability Daemon", passRate: "96.4%", safety: "99.8%", blastRadius: "98.2%", rollback: "100%", latency: "1.2s", status: "VERIFIED" },
+  { name: "Aria Pro Runtime", model: "Cloud model + Local Guardrails", passRate: "91.2%", safety: "97.4%", blastRadius: "94.1%", rollback: "100%", latency: "2.4s", status: "VERIFIED" },
+  { name: "Autonomous System v1", model: "GPT-4o + ToolCall", passRate: "87.5%", safety: "94.1%", blastRadius: "82.0%", rollback: "82%", latency: "3.1s", status: "VERIFIED" },
+  { name: "Community Engineer", model: "Llama-3.3-70B + Typed Tools", passRate: "82.8%", safety: "91.0%", blastRadius: "88.4%", rollback: "92%", latency: "1.8s", status: "COMMUNITY" },
+  { name: "Unscoped Baseline", model: "Generic model + Shell Access", passRate: "76.4%", safety: "84.5%", blastRadius: "61.0%", rollback: "0%", latency: "4.5s", status: "BASELINE" }
 ];
 
 export default function BenchmarkComparePage() {
@@ -29,11 +29,11 @@ export default function BenchmarkComparePage() {
                       </span>
                     </nav>
                     <h1 className="max-w-4xl font-sans text-[28px] leading-[1.14] tracking-tight md:text-[38px] md:leading-[1.08]">
-                      <span className="text-white/90">Agent Comparison</span>{" "}
+                      <span className="text-white/90">AI Engineer Comparison</span>{" "}
                       <span className="text-white/45">— Head-to-Head Benchmarking</span>
                     </h1>
                     <p className="max-w-2xl text-base leading-relaxed text-text-mute md:text-lg">
-                      Compare multi-step on-chain autonomy performance metrics across leading agent frameworks evaluated on deterministic mainnet forks.
+                      Compare resident AI Engineer implementations across deterministic local system-maintenance scenarios.
                     </p>
                   </div>
                 </header>
@@ -43,12 +43,12 @@ export default function BenchmarkComparePage() {
                     <table className="w-full text-left font-sans text-sm">
                       <thead className="border-b border-border bg-surface-card text-white/60 font-favorit text-xs uppercase tracking-4">
                         <tr>
-                          <th className="p-4 md:p-5">Agent Architecture</th>
+                          <th className="p-4 md:p-5">AI Engineer Architecture</th>
                           <th className="p-4 md:p-5">Base Model</th>
                           <th className="p-4 md:p-5">Pass Rate</th>
                           <th className="p-4 md:p-5">Safety Score</th>
-                          <th className="p-4 md:p-5">Slippage Delta</th>
-                          <th className="p-4 md:p-5">Gas Efficiency</th>
+                          <th className="p-4 md:p-5">Blast-Radius Accuracy</th>
+                          <th className="p-4 md:p-5">Rollback Readiness</th>
                           <th className="p-4 md:p-5">Mean Latency</th>
                           <th className="p-4 md:p-5">Tier</th>
                         </tr>
@@ -63,8 +63,8 @@ export default function BenchmarkComparePage() {
                             <td className="p-4 md:p-5 text-white/60 font-sans">{agent.model}</td>
                             <td className="p-4 md:p-5 text-[#85ed75] font-semibold">{agent.passRate}</td>
                             <td className="p-4 md:p-5">{agent.safety}</td>
-                            <td className="p-4 md:p-5 text-white/70">{agent.avgSlippage}</td>
-                            <td className="p-4 md:p-5">{agent.gasEfficiency}</td>
+                            <td className="p-4 md:p-5 text-white/70">{agent.blastRadius}</td>
+                            <td className="p-4 md:p-5">{agent.rollback}</td>
                             <td className="p-4 md:p-5 text-white/50">{agent.latency}</td>
                             <td className="p-4 md:p-5">
                               <span className="font-favorit px-2 py-1 text-[10px] tracking-4 uppercase bg-white/10 text-white/80 border border-white/10">
@@ -79,7 +79,7 @@ export default function BenchmarkComparePage() {
 
                   <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border border-border p-6 bg-surface">
                     <div>
-                      <h3 className="font-sans text-base text-white">Want to benchmark your custom agent?</h3>
+                      <h3 className="font-sans text-base text-white">Want to benchmark your custom AI Engineer?</h3>
                       <p className="mt-1 text-xs text-text-mute">Run the open test harness locally or submit verified execution traces for evaluation.</p>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">

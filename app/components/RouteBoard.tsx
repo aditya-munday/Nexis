@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-interface RouteQuote {
+interface CapabilityEvaluation {
   pair: string;
   venue: string;
   status: string;
@@ -12,45 +12,45 @@ interface RouteQuote {
   active?: boolean;
 }
 
-const SWAP_ROUTES: RouteQuote[][] = [
+const MUTATION_PLANS: CapabilityEvaluation[][] = [
   [
-    { pair: "USDC → ETH", venue: "ethereum", status: "Streaming", price: "4.2 BPS", stats: ["0.09% slip", "31s settle", "depth ok"], active: false },
-    { pair: "USDC → ETH", venue: "arbitrum", status: "Streaming", price: "3.1 BPS", stats: ["0.07% slip", "19s settle", "depth ok"], active: false },
-    { pair: "USDC → ETH", venue: "optimism", status: "Streaming", price: "3.8 BPS", stats: ["0.08% slip", "22s settle", "depth ok"], active: false },
-    { pair: "USDC → ETH", venue: "polygon", status: "Streaming", price: "5.0 BPS", stats: ["0.12% slip", "40s settle", "depth low"], active: false },
+    { pair: "driver → staged", venue: "planner", status: "Proposed", price: "TIER 0", stats: ["score 08", "rollback ready", "scope valid"], active: false },
+    { pair: "service → reviewed", venue: "policy engine", status: "Proposed", price: "TIER 1", stats: ["score 24", "rollback ready", "scope valid"], active: false },
+    { pair: "package → tested", venue: "reviewer", status: "Proposed", price: "TIER 2", stats: ["score 48", "review required", "scope valid"], active: false },
+    { pair: "kernel → isolated", venue: "reviewer", status: "Blocked", price: "TIER 3", stats: ["score 78", "expert review", "red line"], active: false },
   ],
   [
-    { pair: "USDC → ETH", venue: "base", status: "Best route", price: "1.9 BPS", spot: "Gas 0.4 gwei", stats: ["0.04% slip", "12s settle", "depth deep"], active: true },
-    { pair: "ETH → SOL", venue: "wormhole", status: "Best route", price: "2.6 BPS", stats: ["0.06% slip", "48s settle", "depth ok"], active: true },
-    { pair: "USDC → BTC", venue: "thorchain", status: "Best route", price: "4.4 BPS", stats: ["0.09% slip", "4m settle", "depth ok"], active: true },
-    { pair: "DAI → USDC", venue: "curve", status: "Best route", price: "0.4 BPS", spot: "Spot 0.9998", stats: ["0.01% slip", "14s settle", "depth deep"], active: true },
+    { pair: "update → verified", venue: "implementer", status: "Selected", price: "SCORE 18", spot: "Rollback READY", stats: ["policy pass", "0.4s verify", "scope valid"], active: true },
+    { pair: "driver → verified", venue: "sandbox", status: "Selected", price: "SCORE 26", stats: ["policy pass", "1.2s verify", "scope valid"], active: true },
+    { pair: "service → verified", venue: "watchdog", status: "Selected", price: "SCORE 42", stats: ["review pass", "2.4s verify", "rollback ready"], active: true },
+    { pair: "kernel → held", venue: "reviewer", status: "Selected", price: "SCORE 72", spot: "Expert review", stats: ["red line checked", "no mutation", "audit ready"], active: true },
   ],
   [
-    { pair: "SOL → USDC", venue: "jupiter", status: "Streaming", price: "2.2 BPS", stats: ["0.05% slip", "9s settle", "depth deep"], active: false },
-    { pair: "ETH → USDT", venue: "uniswap", status: "Streaming", price: "2.9 BPS", stats: ["0.06% slip", "16s settle"], active: false },
-    { pair: "WBTC → ETH", venue: "ethereum", status: "Streaming", price: "3.6 BPS", stats: ["0.08% slip", "28s settle"], active: false },
-    { pair: "USDC → SUI", venue: "sui bridge", status: "Streaming", price: "6.1 BPS", stats: ["0.14% slip", "2m settle"], active: false },
+    { pair: "health → monitored", venue: "ai-cockpit", status: "Streaming", price: "CPU 42%", stats: ["memory nominal", "thermal nominal", "log active"], active: false },
+    { pair: "package → staged", venue: "world model", status: "Streaming", price: "READY", stats: ["snapshot valid", "dependencies clear"], active: false },
+    { pair: "workspace → synced", venue: "Aria", status: "Streaming", price: "ONLINE", stats: ["screen local", "voice local"], active: false },
+    { pair: "boot slot → pinned", venue: "watchdog", status: "Streaming", price: "A/B GOOD", stats: ["zero loss", "recovery armed"], active: false },
   ],
 ];
 
-const BRIDGE_ROUTES: RouteQuote[][] = [
+const RECOVERY_PATHS: CapabilityEvaluation[][] = [
   [
-    { pair: "ETH → ARB", venue: "arbitrum bridge", status: "Streaming", price: "1.2 BPS", stats: ["0.01% slip", "10m settle"], active: false },
-    { pair: "USDC → OP", venue: "superchain", status: "Streaming", price: "1.5 BPS", stats: ["0.02% slip", "2m settle"], active: false },
+    { pair: "snapshot → active", venue: "boot slot A", status: "Streaming", price: "PINNED", stats: ["verified", "watchdog armed"], active: false },
+    { pair: "update → sandbox", venue: "boot slot B", status: "Streaming", price: "STAGED", stats: ["isolated", "rollback ready"], active: false },
   ],
   [
-    { pair: "USDC → BASE", venue: "cctp", status: "Best bridge", price: "0.2 BPS", spot: "Native mint", stats: ["0.00% slip", "18s settle"], active: true },
-    { pair: "SOL → BASE", venue: "deBridge", status: "Best bridge", price: "2.1 BPS", stats: ["0.04% slip", "45s settle"], active: true },
+    { pair: "active → recovery", venue: "watchdog", status: "Best recovery", price: "0.38ms", spot: "Zero loss", stats: ["A/B pinned", "user-space safe"], active: true },
+    { pair: "mutation → rollback", venue: "auditor", status: "Best recovery", price: "READY", stats: ["compensating step", "Work Log entry"], active: true },
   ],
   [
-    { pair: "AVAX → ETH", venue: "across", status: "Streaming", price: "2.8 BPS", stats: ["0.05% slip", "3m settle"], active: false },
-    { pair: "MATIC → POL", venue: "polygon pos", status: "Streaming", price: "3.4 BPS", stats: ["0.08% slip", "15m settle"], active: false },
+    { pair: "service → safe", venue: "killswitch", status: "Streaming", price: "HALTED", stats: ["SIGKILL", "under 0.4ms"], active: false },
+    { pair: "model → explain", venue: "Aria", status: "Streaming", price: "DEPTH 3", stats: ["diff ready", "proof ready"], active: false },
   ],
 ];
 
 export default function RouteBoard() {
-  const [tab, setTab] = useState<"swap" | "bridge">("swap");
-  const columns = tab === "swap" ? SWAP_ROUTES : BRIDGE_ROUTES;
+  const [tab, setTab] = useState<"mutations" | "recovery">("mutations");
+  const columns = tab === "mutations" ? MUTATION_PLANS : RECOVERY_PATHS;
 
   return (
     <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-[#090909]">
@@ -58,7 +58,7 @@ export default function RouteBoard() {
         <p className="text-2xs text-white/25 uppercase font-favorit">FIG.6</p>
         <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-white/35">
           <span className="size-1.5 rounded-full bg-[#85ed75] shadow-[0_0_8px_rgba(133,237,117,0.75)]" />
-          12 venues live
+          12 capabilities live
         </div>
       </div>
       <div className="flex min-h-0 flex-1 flex-col overflow-hidden px-5 pb-5 pt-4">
@@ -66,27 +66,27 @@ export default function RouteBoard() {
         <div className="mb-4 ml-auto flex w-92 border border-border bg-black/40 p-0.5">
           <button
             type="button"
-            onClick={() => setTab("swap")}
+            onClick={() => setTab("mutations")}
             className={`flex flex-1 min-w-0 items-center justify-center gap-2 px-2 py-2 font-mono text-xs uppercase transition-colors cursor-pointer ${
-              tab === "swap" ? "bg-white/10 text-white font-medium shadow-sm" : "text-white/40 hover:text-white/70"
+              tab === "mutations" ? "bg-white/10 text-white font-medium shadow-sm" : "text-white/40 hover:text-white/70"
             }`}
           >
-            <span className={`inline-block size-1.5 rounded-full ${tab === "swap" ? "bg-[#85ed75]" : "bg-transparent"}`} />
-            <span>Swap Routes</span>
+            <span className={`inline-block size-1.5 rounded-full ${tab === "mutations" ? "bg-[#85ed75]" : "bg-transparent"}`} />
+            <span>Mutation Plans</span>
           </button>
           <button
             type="button"
-            onClick={() => setTab("bridge")}
+            onClick={() => setTab("recovery")}
             className={`flex flex-1 min-w-0 items-center justify-center gap-2 px-2 py-2 font-mono text-xs uppercase transition-colors cursor-pointer ${
-              tab === "bridge" ? "bg-white/10 text-white font-medium shadow-sm" : "text-white/40 hover:text-white/70"
+              tab === "recovery" ? "bg-white/10 text-white font-medium shadow-sm" : "text-white/40 hover:text-white/70"
             }`}
           >
-            <span className={`inline-block size-1.5 rounded-full ${tab === "bridge" ? "bg-[#85ed75]" : "bg-transparent"}`} />
-            <span>Bridge Routes</span>
+            <span className={`inline-block size-1.5 rounded-full ${tab === "recovery" ? "bg-[#85ed75]" : "bg-transparent"}`} />
+            <span>Recovery Paths</span>
           </button>
         </div>
 
-        {/* Route Quotes Matrix */}
+        {/* Capability evaluation matrix */}
         <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
           <div className="flex h-full min-h-0 w-full justify-center gap-3 overflow-x-auto pb-0 transition-all duration-300">
             {columns.map((col, colIdx) => (
@@ -106,8 +106,8 @@ export default function RouteBoard() {
                     }`}
                   >
                     <div className="mb-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-white/25">
-                      <span>Route {String(routeIdx + 1).padStart(2, "0")}</span>
-                      <span className={route.active ? "text-[#85ed75]/80" : "text-white/30"}>{route.active ? "Selected" : "Quote"}</span>
+                      <span>Evaluation {String(routeIdx + 1).padStart(2, "0")}</span>
+                      <span className={route.active ? "text-[#85ed75]/80" : "text-white/30"}>{route.active ? "Selected" : "Evaluated"}</span>
                     </div>
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-start gap-2.5">

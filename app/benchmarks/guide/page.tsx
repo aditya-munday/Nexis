@@ -21,11 +21,11 @@ export default function BenchmarkGuidePage() {
                       </span>
                     </nav>
                     <h1 className="max-w-4xl font-sans text-[28px] leading-[1.14] tracking-tight md:text-[38px] md:leading-[1.08]">
-                      <span className="text-white/90">NEXBENCH Guide</span>{" "}
+                      <span className="text-white/90">DIRECTIONER BENCH Guide</span>{" "}
                       <span className="text-white/45">— How to Run &amp; Submit Evaluations</span>
                     </h1>
                     <p className="max-w-2xl text-base leading-relaxed text-text-mute md:text-lg">
-                      Step-by-step instructions for running the NEXBENCH evaluation harness against local or remote AI agents and preparing verifiable submission receipts.
+                      Step-by-step instructions for running the DIRECTIONER BENCH evaluation harness against local or remote AI systems and preparing verifiable submission Work Log entries.
                     </p>
                   </div>
                 </header>
@@ -38,12 +38,12 @@ export default function BenchmarkGuidePage() {
                           <span className="font-favorit text-xs uppercase tracking-4 text-[#85ed75]">Step 01</span>
                           <span className="h-px flex-1 bg-border" aria-hidden="true"></span>
                         </div>
-                        <h2 className="mt-3 font-sans text-xl text-white">Install the NEXBENCH CLI</h2>
+                        <h2 className="mt-3 font-sans text-xl text-white">Install the DIRECTIONER BENCH CLI</h2>
                         <p className="mt-2 text-sm text-text-mute">
                           The evaluation harness is packaged as an open-source command line tool supporting Node.js 18+ and Python 3.10+.
                         </p>
                         <div className="mt-4 bg-black/60 p-4 border border-border font-mono text-xs text-white/90">
-                          <code>npm install -g @nexis/nexbench-cli</code>
+                          <code>npm install -g @directioner/os-bench-cli</code>
                         </div>
                       </article>
 
@@ -52,20 +52,20 @@ export default function BenchmarkGuidePage() {
                           <span className="font-favorit text-xs uppercase tracking-4 text-[#85ed75]">Step 02</span>
                           <span className="h-px flex-1 bg-border" aria-hidden="true"></span>
                         </div>
-                        <h2 className="mt-3 font-sans text-xl text-white">Configure Target Agent Endpoint</h2>
+                        <h2 className="mt-3 font-sans text-xl text-white">Configure Target AI Engineer Endpoint</h2>
                         <p className="mt-2 text-sm text-text-mute">
-                          Define your agent connector in a <code className="font-mono text-white/80">nexbench.config.toml</code> file with your RPC URL and signing enclave settings.
+                          autonomous computingne your AI Engineer connector in a <code className="font-mono text-white/80">directioner-os.config.toml</code> file with its typed capability endpoint, local system target, policy profile, and Work Log destination.
                         </p>
                         <div className="mt-4 bg-black/60 p-4 border border-border font-mono text-xs text-white/80 whitespace-pre overflow-x-auto">
-{`[agent]
-name = "MyAgent-v1"
-endpoint = "http://localhost:8080/v1/actions"
-protocol = "nexis-agent-v1"
+{`[engineer]
+name = "Direct Engineer v1"
+endpoint = "unix:///run/direct/capability.sock"
+protocol = "directioner-capability-v1"
 
 [environment]
-network = "ethereum-mainnet-fork"
-block_number = 21980400
-simulation_engine = "anvil"`}
+target = "local-system"
+world_model = "sqlite"
+work_log = "./work-log"`}
                         </div>
                       </article>
 
@@ -76,10 +76,10 @@ simulation_engine = "anvil"`}
                         </div>
                         <h2 className="mt-3 font-sans text-xl text-white">Execute the Test Suite</h2>
                         <p className="mt-2 text-sm text-text-mute">
-                          Run the standardized test battery covering cross-chain routing, liquidity sweeps, multi-sig approvals, and emergency circuit breakers.
+                          Run the standardized test battery covering capability routing, update staging, blast-radius scoring, rollback verification, and emergency killswitch behavior.
                         </p>
                         <div className="mt-4 bg-black/60 p-4 border border-border font-mono text-xs text-white/90">
-                          <code>nexbench run --suite full-battery --trials 5 --output ./results/</code>
+                          <code>directioner bench run --suite full-battery --trials 5 --output ./results/</code>
                         </div>
                       </article>
 
@@ -90,10 +90,10 @@ simulation_engine = "anvil"`}
                         </div>
                         <h2 className="mt-3 font-sans text-xl text-white">Export &amp; Submit Results</h2>
                         <p className="mt-2 text-sm text-text-mute">
-                          Export the cryptographically sealed archive and submit it via the intake portal for official leaderboard scoring.
+                          Export the append-only Work Log, execution traces, policy decisions, blast-radius calculations, and rollback evidence for reproducible scoring.
                         </p>
                         <div className="mt-4 bg-black/60 p-4 border border-border font-mono text-xs text-white/90">
-                          <code>nexbench export --sign --key ./runner.key</code>
+                          <code>directioner bench export --sign --output ./results/</code>
                         </div>
                         <div className="mt-6">
                           <a href="/benchmarks/submit" className="inline-block bg-white px-5 py-2 font-favorit text-xs uppercase text-black hover:bg-white/90 transition-colors">Go to Run Intake Portal →</a>
@@ -108,7 +108,7 @@ simulation_engine = "anvil"`}
                           <a href="/benchmarks" className="text-white/80 hover:text-white transition-colors">Suite Overview</a>
                           <a href="/benchmarks/leaderboard" className="text-white/80 hover:text-white transition-colors">Leaderboard</a>
                           <a href="/benchmarks/compare" className="text-white/80 hover:text-white transition-colors">Compare Models</a>
-                          <a href="https://github.com/Nexis-AI/NexBench" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors">GitHub Repository ↗</a>
+                          <a href="https://github.com/Directioner-OS-AI/Directioner Bench" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors">GitHub Repository ↗</a>
                         </div>
                       </div>
                     </aside>

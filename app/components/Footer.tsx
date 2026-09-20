@@ -915,7 +915,7 @@ function FooterGlassMatrix() {
         p.chromatic = chromatic;
 
         // Button Legibility Shield:
-        // Lower-left quadrant where "LAUNCH NEXIS", "DOCS", and copyright sit:
+        // Lower-left quadrant where "LAUNCH DIRECTIONER-OS", "DOCS", and copyright sit:
         // Soften dots in that zone so buttons stay immaculate and readable!
         if (p.x < 380 && p.y > h - 190) {
           const shieldDist = Math.hypot(p.x - 40, p.y - h);
@@ -1111,9 +1111,9 @@ export default function Footer() {
       <div className="relative z-10 px-10 pt-8 pb-5 md:pt-14 md:gap-14 lg:pt-20 flex flex-col gap-10 lg:gap-20 max-w-350 mx-auto">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-0">
           <div className="w-full flex flex-none flex-col gap-22 items-start lg:w-2/3">
-            <Link aria-label="Nexis home" href="/">
+            <Link aria-label="Directioner-OS home" href="/">
               <img
-                alt="Nexis"
+                alt="Directioner-OS"
                 loading="lazy"
                 width="101"
                 height="17"
@@ -1129,7 +1129,7 @@ export default function Footer() {
                   className="group inline-flex w-fit shrink-0 items-center justify-center gap-1 whitespace-nowrap font-favorit uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 bg-white text-black min-h-7 px-2 py-2 text-xs leading-none relative hover:cursor-none hover:bg-transparent hover:border-transparent hover:text-white"
                   href="/app"
                 >
-                  <AsciiGlitchRipple animateOn="parentHover">Launch Nexis</AsciiGlitchRipple>
+                  <AsciiGlitchRipple animateOn="parentHover">Launch Directioner-OS</AsciiGlitchRipple>
                   <div className="w-3 h-3 overflow-hidden relative">
                     <div className="flex -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0">
                       <svg className="w-3 h-3 shrink-0" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -1170,11 +1170,11 @@ export default function Footer() {
                   <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#platform">
                     <AsciiGlitchRipple animateOn="parentHover">Platform</AsciiGlitchRipple>
                   </a>
-                  <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#payments">
-                    <AsciiGlitchRipple animateOn="parentHover">Payments</AsciiGlitchRipple>
+                  <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#capabilities">
+                    <AsciiGlitchRipple animateOn="parentHover">Capabilities</AsciiGlitchRipple>
                   </a>
-                  <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#markets">
-                    <AsciiGlitchRipple animateOn="parentHover">Markets</AsciiGlitchRipple>
+                  <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#models">
+                    <AsciiGlitchRipple animateOn="parentHover">Models</AsciiGlitchRipple>
                   </a>
                   <a className="font-favorit text-xs text-white uppercase hover:opacity-70 transition-opacity leading-none flex items-center gap-1" href="/#research">
                     <AsciiGlitchRipple animateOn="parentHover">Research</AsciiGlitchRipple>
@@ -1240,7 +1240,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex items-center justify-between font-favorit text-sm text-white uppercase">
-          <span>© 2026 Nexis, Inc.</span>
+          <span>© 2026 Directioner-OS, Inc.</span>
         </div>
       </div>
     </footer>

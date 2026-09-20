@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 
-const siteUrl = "https://nex-t1.ai";
+const siteUrl = "https://directioner-os.ai";
 
 export function GET() {
   const published = new Date("2026-09-19T00:00:00.000Z").toUTCString();
   const items = [
-    ["Nexis — governed autonomy for onchain execution", "/", "Plan, simulate, approve, and reconcile every wallet operation."],
-    ["Nexis Research", "/research", "Notes from the research and engineering teams."],
-    ["Nexis Writings", "/blog", "Product, protocol, and governance updates."],
+    ["Directioner-OS — safe autonomous computing", "/", "Plan, verify, approve, and recover every system mutation."],
+    ["Directioner-OS Research", "/research", "Notes from the research and engineering teams."],
+    ["Directioner-OS Writings", "/blog", "Product, protocol, and governance updates."],
   ]
     .map(
       ([title, path, description]) => `
@@ -24,9 +24,9 @@ export function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <rss version="2.0">
       <channel>
-        <title>Nexis</title>
+        <title>Directioner-OS</title>
         <link>${siteUrl}</link>
-        <description>Governed autonomy for onchain execution.</description>
+        <description>Capability-scoped autonomy for safe computing.</description>
         <language>en</language>
         <lastBuildDate>${published}</lastBuildDate>
         ${items}

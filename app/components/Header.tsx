@@ -69,7 +69,7 @@ interface NavItem {
 const BENCHMARKS_NAV: NavItem[] = [
   { label: "BENCHMARKS", index: "B1", href: "/benchmarks", description: "Suite & methodology" },
   { label: "LEADERBOARD", index: "B2", href: "/benchmarks/leaderboard", description: "Ranked, verified runs" },
-  { label: "COMPARISON", index: "B3", href: "/benchmarks/compare", description: "Agents head-to-head" },
+  { label: "COMPARISON", index: "B3", href: "/benchmarks/compare", description: "Safety systems head-to-head" },
   { label: "GUIDE", index: "B4", href: "/benchmarks/guide", description: "Run & submit" },
   { label: "SUBMIT", index: "B5", href: "/benchmarks/submit", description: "Validated run intake" },
 ];
@@ -77,14 +77,15 @@ const BENCHMARKS_NAV: NavItem[] = [
 const DOCS_NAV: NavItem[] = [
   { label: "DEVELOPER DOCS", index: "D1", href: "/docs", description: "Guides & API reference" },
   { label: "CHANGELOG", index: "D2", href: "/docs/changelog", description: "Monthly product updates" },
-  { label: "GITHUB", index: "D3", href: "https://github.com/Nexis-AI/NexBench", description: "NEXBENCH source & CLI", external: true },
+  { label: "GITHUB", index: "D3", href: "https://github.com/Directioner-OS-AI/Directioner Bench", description: "DIRECTIONER BENCH source & CLI", external: true },
 ];
 
 const PRODUCT_NAV = [
-  { label: "PLATFORM", index: "01", href: "/#platform" },
-  { label: "PAYMENTS", index: "02", href: "/#payments" },
-  { label: "MARKETS", index: "03", href: "/#markets" },
-  { label: "RESEARCH", index: "04", href: "/#research" },
+  { label: "ENGINEER", index: "01", href: "/agent" },
+  { label: "ARIA", index: "02", href: "/#aria" },
+  { label: "SAFETY", index: "03", href: "/#safety" },
+  { label: "PRICING", index: "04", href: "/pricing" },
+  { label: "DOWNLOADS", index: "05", href: "/downloads" },
 ];
 
 function NavDropdown({
@@ -315,7 +316,7 @@ export default function Header() {
         }}
       >
         <span className="inline-flex items-center gap-1.5">
-          Announcing the Nexis agent platform
+          Announcing the Directioner-OS AI Engineer platform
           <span className="text-current">↗</span>
         </span>
       </Link>
@@ -331,10 +332,10 @@ export default function Header() {
         <Link
           className="relative z-[80] flex items-center shrink-0"
           href="/"
-          aria-label="Nexis home"
+          aria-label="Directioner-OS home"
         >
           <img
-            alt="Nexis"
+            alt="Directioner-OS"
             width={190}
             height={32}
             decoding="async"
@@ -417,7 +418,7 @@ export default function Header() {
                 href="/app"
                 prefetch={false}
               >
-                <AsciiGlitchRipple>{`Launch Nexis`}</AsciiGlitchRipple>
+                <AsciiGlitchRipple>{`Launch Directioner-OS`}</AsciiGlitchRipple>
                 <ChevronSlide />
                 <CornerBrackets />
               </Link>
@@ -498,7 +499,7 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
           >
             <span>
-              <AsciiGlitchRipple>{`Launch Nexis`}</AsciiGlitchRipple>
+              <AsciiGlitchRipple>{`Launch Directioner-OS`}</AsciiGlitchRipple>
             </span>
             <span className="text-white/65">↗</span>
           </Link>

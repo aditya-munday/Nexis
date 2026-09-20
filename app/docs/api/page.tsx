@@ -4,21 +4,21 @@ import Footer from "../../components/Footer";
 const endpoints = [
   {
     method: "POST",
-    path: "/v1/agents/run",
-    summary: "Start a governed agent run",
-    body: '{ "playbook": "treasury.toml", "mode": "simulate" }',
+    path: "/v1/capabilities/run",
+    summary: "Start a verified capability run",
+    body: '{ "capability": "display.driver", "mode": "verify" }',
   },
   {
     method: "GET",
     path: "/v1/runs/:id",
-    summary: "Read execution state and receipts",
-    body: "Returns status, approvals, actions, and settlement receipts.",
+    summary: "Read execution state and Work Log entries",
+    body: "Returns status, approvals, actions, and verified Work Log entries.",
   },
   {
     method: "POST",
-    path: "/v1/policies/evaluate",
-    summary: "Evaluate an operation against Policy Kit",
-    body: '{ "asset": "USDC", "amount": "2500", "recipient": "0x..." }',
+    path: "/v1/capabilities/evaluate",
+    summary: "Evaluate a mutation against Capability Policy",
+    body: '{ "path": "/etc/example", "blastRadius": 42, "rollback": true }',
   },
 ];
 
@@ -32,11 +32,11 @@ export default function ApiDocsPage() {
             API Reference
           </p>
           <h1 className="mt-5 max-w-2xl font-sans text-5xl leading-[0.98] tracking-tight text-white md:text-8xl">
-            Build against the governed execution layer.
+            Build against the capability execution layer.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/50">
-            REST endpoints for planning, simulating, approving, and reconciling
-            autonomous wallet operations across supported networks.
+            REST endpoints for planning, verifying, approving, and reconciling
+            autonomous system operations through typed, auditable capabilities.
           </p>
         </div>
         <div className="grid gap-3 border-t border-white/15">

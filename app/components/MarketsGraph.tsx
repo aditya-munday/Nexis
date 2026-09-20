@@ -2,19 +2,19 @@
 
 import React, { useRef, useEffect, useState } from "react";
 
-interface Gainer {
+interface HealthSignal {
   id: string;
   name: string;
   symbol: string;
-  change24h: number;
+  healthScore: number;
   imageUrl: string;
 }
 
-const DEFAULT_GAINERS: Gainer[] = [
-  { id: "base", name: "Base", symbol: "BASE", change24h: 18.42, imageUrl: "/assets/chains/Base.png" },
-  { id: "solana", name: "Solana", symbol: "SOL", change24h: 12.85, imageUrl: "/assets/chains/Solana.png" },
-  { id: "ethereum", name: "Ethereum", symbol: "ETH", change24h: 7.64, imageUrl: "/assets/chains/Ethereum.png" },
-  { id: "arbitrum", name: "Arbitrum", symbol: "ARB", change24h: 5.19, imageUrl: "/assets/chains/Arbitrum.png" },
+const DEFAULT_SIGNALS: HealthSignal[] = [
+  { id: "planner", name: "Planner model", symbol: "PLAN", healthScore: 98, imageUrl: "/assets/backgrounds/compute-bg.png" },
+  { id: "policy", name: "Policy model", symbol: "POL", healthScore: 94, imageUrl: "/assets/backgrounds/lab.png" },
+  { id: "reviewer", name: "Reviewer model", symbol: "REV", healthScore: 100, imageUrl: "/assets/backgrounds/compute-bg.png" },
+  { id: "aria", name: "Aria model", symbol: "ARIA", healthScore: 97, imageUrl: "/assets/backgrounds/lab.png" },
 ];
 
 const ACCENT_COLOR = [133, 237, 117]; // #85ed75
@@ -22,14 +22,13 @@ const ACCENT_COLOR = [133, 237, 117]; // #85ed75
 const numberFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
   minimumFractionDigits: 2,
-  signDisplay: "always",
 });
 
 export default function MarketsGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const badgeRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const [gainers] = useState<Gainer[]>(DEFAULT_GAINERS);
+  const [signals] = useState<HealthSignal[]>(DEFAULT_SIGNALS);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,8 +40,8 @@ export default function MarketsGraph() {
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    let bars: Array<{ x: number; h: number; alpha: number; gainerIndex?: number }> = [];
-    let gainerBarIndexes: number[] = [];
+    let bars: Array<{ x: number; h: number; alpha: number; signalIndex?: number }> = [];
+    let signalBarIndexes: number[] = [];
     let width = 0;
     let height = 0;
     let rafId = 0;
@@ -53,7 +52,7 @@ export default function MarketsGraph() {
     let bursts: Array<{ index: number; start: number }> = [];
     let lastBurstTime = 0;
 
-    const buildBars = (w: number, h: number, gainerCount: number) => {
+    const buildBars = (w: number, h: number, signalCount: number) => {
       const barCount = Math.max(16, Math.floor(w / 4));
       const newBars = Array.from({ length: barCount }, (_, i) => {
         const s = i / (barCount - 1);
@@ -65,26 +64,26 @@ export default function MarketsGraph() {
           alpha: 0.24 + 0.5 * l,
           h: l * h * 0.62,
           x: 4 * i + 2,
-          gainerIndex: undefined as number | undefined,
+          signalIndex: undefined as number | undefined,
         };
       });
 
-      const maxGainers = Math.min(gainerCount, w < 640 ? 2 : w < 1100 ? 3 : 4);
+      const maxSignals = Math.min(signalCount, w < 640 ? 2 : w < 1100 ? 3 : 4);
       const chosenIndexes: number[] = [];
       const isMobile = w < 640;
 
-      for (let g = 0; g < maxGainers; g++) {
-        const targetRatio = (isMobile ? 0.56 : 0.64) + 0.26 * (maxGainers === 1 ? 1 : g / (maxGainers - 1));
+      for (let signal = 0; signal < maxSignals; signal++) {
+        const targetRatio = (isMobile ? 0.56 : 0.64) + 0.26 * (maxSignals === 1 ? 1 : signal / (maxSignals - 1));
         const idx = Math.round(targetRatio * (barCount - 1));
         const bar = newBars[idx];
         if (bar) {
           if (isMobile) bar.h = Math.min(bar.h, 0.24 * h);
-          bar.gainerIndex = g;
+          bar.signalIndex = signal;
           chosenIndexes.push(idx);
         }
       }
 
-      return { bars: newBars, gainerBarIndexes: chosenIndexes };
+      return { bars: newBars, signalBarIndexes: chosenIndexes };
     };
 
     const resize = () => {
@@ -108,9 +107,9 @@ export default function MarketsGraph() {
       });
 
       bursts.length = 0;
-      const built = buildBars(width, height, gainers.length);
+      const built = buildBars(width, height, signals.length);
       bars = built.bars;
-      gainerBarIndexes = built.gainerBarIndexes;
+      signalBarIndexes = built.signalBarIndexes;
     };
 
     const render = (time: number) => {
@@ -123,10 +122,10 @@ export default function MarketsGraph() {
       lastFrameTime = time;
       ctx.clearRect(0, 0, width, height);
 
-      // Continuous autonomous pulse bursts along the graph (never static!)
-      if (!prefersReducedMotion && gainerBarIndexes.length > 0) {
+      // Continuous autonomous pulse bursts show active model evaluation.
+      if (!prefersReducedMotion && signalBarIndexes.length > 0) {
         if (time - lastBurstTime > 420) {
-          const randIndex = gainerBarIndexes[Math.floor(Math.random() * gainerBarIndexes.length)];
+          const randIndex = signalBarIndexes[Math.floor(Math.random() * signalBarIndexes.length)];
           if (randIndex !== undefined) {
             bursts.push({ index: randIndex, start: time });
           }
@@ -151,7 +150,7 @@ export default function MarketsGraph() {
         const bar = bars[i];
         let currentH = bar.h;
         let currentAlpha = bar.alpha;
-        let color: number[] | null = bar.gainerIndex !== undefined ? ACCENT_COLOR : null;
+        let color: number[] | null = bar.signalIndex !== undefined ? ACCENT_COLOR : null;
 
         // Continuous fluid organic harmonic waves
         if (!prefersReducedMotion) {
@@ -190,9 +189,9 @@ export default function MarketsGraph() {
 
         ctx.fillRect(bar.x - 0.7, height - currentH, 1.4, currentH);
 
-        // Position floating token gainer badges at the peak of marked bars
-        if (bar.gainerIndex !== undefined) {
-          const badge = badgeRefs.current[bar.gainerIndex];
+        // Position floating model badges at the peak of marked bars
+        if (bar.signalIndex !== undefined) {
+          const badge = badgeRefs.current[bar.signalIndex];
           if (badge) {
             badge.hidden = false;
             badge.style.left = `${bar.x}px`;
@@ -291,24 +290,24 @@ export default function MarketsGraph() {
       container.removeEventListener("pointermove", handlePointerMove);
       container.removeEventListener("pointerleave", handlePointerLeave);
     };
-  }, [gainers]);
+  }, [signals]);
 
   return (
     <div ref={containerRef} className="absolute inset-0 h-full w-full pointer-events-auto">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full pointer-events-none" aria-hidden="true" />
 
-      {/* Floating Gainers Badges (Exact 1:1 Nexis reference spec) */}
-      <div className="pointer-events-none absolute inset-0 z-10" data-market-gainers="true">
-        <ol aria-label="CoinGecko 24-hour market gainers">
-          {gainers.map((g, idx) => (
+      {/* Floating model status badges */}
+      <div className="pointer-events-none absolute inset-0 z-10" data-model-signals="true">
+        <ol aria-label="Directioner-OS system health signals">
+          {signals.map((g, idx) => (
             <li
               key={g.id}
               ref={(el) => {
                 badgeRefs.current[idx] = el;
               }}
-              aria-label={`${g.name} gained ${g.change24h.toFixed(2)} percent in 24 hours`}
+              aria-label={`${g.name} health score ${g.healthScore} percent`}
               className="absolute flex -translate-x-1/2 -translate-y-2 items-center gap-1.5 whitespace-nowrap text-xs text-available font-mono"
-              data-market-gainer={g.id}
+              data-health-signal={g.id}
               title={`${g.name} (${g.symbol})`}
               hidden
             >
@@ -323,21 +322,15 @@ export default function MarketsGraph() {
                 src={g.imageUrl}
               />
               <span aria-hidden="true" className="font-semibold text-[#85ed75] drop-shadow-[0_0_8px_rgba(133,237,117,0.4)]">
-                ({numberFormatter.format(g.change24h)}%)
+                {numberFormatter.format(g.healthScore)} score
               </span>
             </li>
           ))}
         </ol>
 
-        {/* CoinGecko attribution link matching reference layout */}
-        <a
-          className="pointer-events-auto absolute bottom-4 right-5 text-2xs text-white/50 font-favorit uppercase underline-offset-4 hover:text-white hover:underline focus-visible:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2"
-          href="https://www.coingecko.com/en/api"
-          rel="noreferrer"
-          target="_blank"
-        >
-          Data provided by CoinGecko
-        </a>
+        <span className="absolute bottom-4 right-5 text-2xs text-white/50 font-favorit uppercase">
+          Live model evaluation
+        </span>
       </div>
     </div>
   );

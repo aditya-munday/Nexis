@@ -3,12 +3,11 @@
 import React, { useRef, useState, useEffect } from "react";
 
 const PARAMS = [
-  { key: "max_slippage", value: "0.50%" },
-  { key: "gas_ceiling", value: "21 gwei" },
-  { key: "daily_limit", value: "25,000" },
-  { key: "approvals", value: "required" },
-  { key: "route_depth", value: "3" },
-  { key: "sim_runs", value: "128" },
+  { key: "blast_radius", value: "18 / 100" },
+  { key: "rollback_step", value: "READY" },
+  { key: "policy_status", value: "PASS" },
+  { key: "explanation_depth", value: "3" },
+  { key: "verification_runs", value: "128" },
 ];
 
 const CURVE_POINTS: [number, number][] = (() => {

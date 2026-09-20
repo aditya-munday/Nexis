@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import RouteLifecycle from "./components/RouteLifecycle";
 
 export const metadata: Metadata = {
-  title: "Nex Copilot — The Autonomous Economy Runs on Nexis",
-  description: "Nex Copilot is an on-chain AI agent for stablecoin payments, DeFi automation, cross-chain execution, embedded wallets, market monitoring, dApp workflows, and wallet-controlled approvals.",
+  title: "Directioner-OS — The AI-Native Operating System",
+  description: "Directioner-OS is an AI-native operating system with a resident AI Engineer, Aria spatial assistance, quantitative blast-radius safety, autonomous rollback, and universal hardware support.",
   icons: {
     icon: "/icon.svg"
   }
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="font-sans geist_f3917156-module__8abXJW__variable geist_mono_8135f3c4-module__mC3Wtq__variable chivo_mono_b95da7ba-module__6lSSaG__variable">
       <head>
-        <link rel="alternate" type="application/rss+xml" title="Nexis RSS" href="/rss.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Directioner-OS RSS" href="/rss.xml" />
         <link rel="stylesheet" href="/module/css/0_lip61trs5ex.css" />
         <link rel="stylesheet" href="/module/css/0z2w9nzo7p43w.css" />
         <link rel="stylesheet" href="/module/css/0b4pon~wu5796.css" />

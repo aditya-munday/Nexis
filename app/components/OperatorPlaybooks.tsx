@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 interface Playbook {
-  key: "treasury" | "yield";
+  key: "maintenance" | "recovery";
   label: string;
   tag: string;
   title: string;
@@ -14,19 +14,19 @@ interface Playbook {
 
 const PLAYBOOKS: Playbook[] = [
   {
-    key: "treasury",
+    key: "maintenance",
     label: "PLAYBOOK / 01",
-    tag: "Payments",
-    title: "Running a treasury on policy-gated stablecoin operations",
+    tag: "AI ENGINEER",
+    title: "Running maintenance through capability-gated operations",
     href: "/blog",
-    art: "/assets/nex-landing/art/playbook-treasury.webp",
+    art: "/assets/nex-landing/art/playbook-system.webp",
     artPosition: "object-left",
   },
   {
-    key: "yield",
+    key: "recovery",
     label: "PLAYBOOK / 02",
-    tag: "DeFi",
-    title: "Risk-adjusted yield without giving up custody",
+    tag: "RECOVERY",
+    title: "Recovering safely with rollback and watchdog protection",
     href: "/blog",
     art: "/assets/nex-landing/art/playbook-yield.webp",
     artPosition: "object-right",
@@ -34,7 +34,7 @@ const PLAYBOOKS: Playbook[] = [
 ];
 
 export default function OperatorPlaybooks() {
-  const [focusedKey, setFocusedKey] = useState<"treasury" | "yield">("treasury");
+  const [focusedKey, setFocusedKey] = useState<"maintenance" | "recovery">("maintenance");
 
   return (
     <section>
